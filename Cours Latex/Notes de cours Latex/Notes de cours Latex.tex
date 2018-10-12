@@ -1,0 +1,130 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\graphicspath{{../Images/}}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\hypersetup{
+    linktoc=all,     %set to all if you want both sections and subsections linked
+    linkcolor=blue,  %choose some color if you want links to stand out
+}
+\usepackage[margin=1in]{geometry}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{ulem}
+\title{Notes de cours : \LaTeX}
+\author{Thibaut Marmey}
+\date{Août 2018}
+
+\begin{document}
+
+\maketitle
+% Afficher une image centrée
+\begin{center}
+\includegraphics[scale=0.3]{CV_photo_Thibaut_Marmey}
+%\begin{figure}
+%\caption{image photo de CV}
+%\end{figure}
+\end{center}
+\vspace{0.25cm}
+% Modifier le nom de base de la section "Abstract" en "Résumé"
+\renewcommand{\abstractname}{Résumé}
+\begin{abstract}
+Ce document présente les commandes utiles pour créer un document \LaTeX.
+\end{abstract}
+
+\tableofcontents
+
+\newpage
+\section{Some commands to start a document}
+\begin{enumerate}
+\item Préambule : type de document
+\begin{enumerate}
+\item $\backslash$documentclass[ ]$\lbrace$ $\rbrace$ : \textit{twocolumn, twoside}
+\item $\backslash$usepackage[utf8]{inputenc}
+\item $\backslash$title$\lbrace$ $\rbrace$
+\item $\backslash$author$\lbrace$ $\rbrace$
+\item $\backslash$date$\lbrace$ $\rbrace$
+\end{enumerate}
+\end{enumerate}
+
+\section{Display}
+\begin{enumerate}
+\item $\backslash$begin$\lbrace$document$\rbrace$  $\backslash$end$\lbrace$document$\rbrace$
+\item $\backslash$begin$\lbrace$titlepage$\rbrace$  $\backslash$end$\lbrace$titlepage$\rbrace$ \textit{environnement pour la première page}
+\item $\backslash$maketitle : \textit{écrit les éléments title, author, dates, etc...}
+\item Pour afficher une table des matières cliquable
+\begin{itemize}
+\item \textbackslash usepackage\{hyperref\}
+\item \textbackslash hypersetup\{linktoc=all, linkcolor=blue\}
+\item \textbackslash usepackage\{color\} : \textit{pour ajouter de la couleur au text}
+\end{itemize}
+\item \textbackslash usepackage[margin=1in]\{geometry\} : \textit{changer les marges de la page}
+\end{enumerate}
+
+\section{Basic formatting}
+\begin{enumerate}
+\item $\backslash$begin$\lbrace$abstract$\rbrace$  $\backslash$end$\lbrace$abstract$\rbrace$ : \textit{introduction du document}
+\item $\backslash$newline ou $\backslash$ $\backslash$ : \textit{permet de sauter une ligne}
+\item \textit{Pour commencer un autre paragraphe taper deux fois sur la touche "Entrée"}
+\item \% ou \textit{ctrl + t} : \textit{créer un commentaire}
+\item \textbackslash begin\{enumerate\} \textbackslash end\{enumerate\} : \textit{créer une liste énumérée}
+\item \textbackslash item
+\item \textbackslash begin\{center\} \textbackslash end\{center\}
+\item structure
+\begin{enumerate}
+\item Partie : \textbackslash part\{nom\}
+\item Chapitre : \textbackslash chapter\{nom\}
+\item Section : \textbackslash section\{nom\}
+\item Sous-section : \textbackslash subsection\{nom\}
+\item Sous-sous-section : \textbackslash subsubsection\{nom\}
+\item Paragraphe : \textbackslash paragraph\{nom\}
+\item Sous-paragraph : \textbackslash subparagraph\{nom\}
+\end{enumerate}
+\item Texte barré : \textbackslash usepackage\{ulem\}, \textbackslash sout\{\sout{texte barré}\}
+\item \textbackslash pagebreak ou \textbackslash newpage \textit{permet de commencer une nouvelle page}
+\item \textbackslash usepackage\{hypereff\} \textbackslash href\{url\}\{description\} : \textit{\href{https://en.wikibooks.org/wiki/LaTeX/Hyperlinks}{exemple}}
+\newline Il est possible aussi d'accéder à un dossier ou un fichier via \textit{href} :
+\newline \textbackslash href\{run:pathFolder ou run:pathfile/file.pdf\}
+\item \textbackslash begin\{description\} \textbackslash item [nom] : texte \textbackslash end\{description\} : \textit{pour pouvoir faire comme ci-dessous}
+\begin{description}
+\item [nom] : texte
+\end{description}
+\item \textbackslash vspace\{size in ou cm\}; \textbackslash hspace\{size in ou cm\}
+\item Créer un tableau. \textbackslash begin\{tabular\} vertical separation \textbackslash hline
+\newline \begin{tabular}{|l|c|r|}
+  \hline
+  colonne 1 & colonne 2 & colonne 3 \\
+  \hline
+  1.1 & 1.2 & 1.3 \\ \hline
+  2.1 & 2.2 & 2.3 \\
+  \hline
+\end{tabular}
+\item Ajouter des couleurs au texte : \textbackslash usepackage\{xcolor\}
+\newline \colorbox{blue!30}{\textbackslash colorbox\{blue!30\}}
+\newline \colorbox{green}{\textbackslash colorbox\{green\}}
+\item Pour écrire les symbole \textless et \textgreater écrire respectivement \textbackslash textless et \textbackslash textgreater
+
+\end{enumerate}
+
+\section{Basic Image management}
+\begin{enumerate}
+\item Gérer les images
+\item \textbackslash usepackage\{graphicx\}, \textbackslash graphicspath\{\{path\}\} et \textbackslash includegraphics\{nom de l'image\}
+\item Afficher deux images une à coté de l'autre : utiliser les packages \textbackslash usepackage\{subfig\} et \textbackslash usepackage\{float\}
+\newline Créer un environnement \textit{minipage} et un environnement \textit{figure}. Utiliser ensuite les fonction \textit{subfloat} et \textit{includegraphics}. Entre les images utiliser \textit{\textbackslash hfill} ou \textit{\textbackslash hspace\{1cm\}}.
+\end{enumerate}
+\begin{minipage}{\linewidth}
+  \begin{figure}[H]
+  \centering
+    \subfloat[Logo \LaTeX ]{\includegraphics[scale=0.4]{logoLatex}}\hspace{1cm}
+    \subfloat[Logo Texmaker]{\includegraphics[scale=0.4]{logoTexmaker}}
+  \end{figure}
+\end{minipage}
+
+\section{Raccourcis clavier}
+\begin{enumerate}
+\item Pour rechercher/remplacer : \textit{ctrl + R}
+\end{enumerate}
+
+\end{document}

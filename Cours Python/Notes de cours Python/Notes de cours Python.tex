@@ -1,0 +1,96 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\graphicspath{{../Images/}}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+\usepackage{subfig}
+\usepackage{float}
+
+\author{Thibaut Marmey}
+
+\title{Notes de cours Python}
+\begin{document}
+	\maketitle
+
+\begin{normalsize}
+\tableofcontents
+\end{normalsize}
+
+\section{Commandes générales}
+\subsection{Environnement}
+\begin{itemize}
+\item \href{https://docs.python.org/3/tutorial/index.html}{Tutorial 1 python}
+\item \href{https://docs.python.org/fr/3/tutorial/controlflow.html}{Suite du tutorial : page où on s'est arrêté}
+\item \href{run:../Test Python/}{Programmes python}
+\item Changer les permissions du programme .py : \textit{chmod -x nom.py}
+\item Exécuter le programme : \textit{python nom.py}
+\end{itemize}
+
+\subsection{Le langage}
+\subsubsection{Infos}
+\begin{itemize}
+\item La division renvoie toujours un \textit{double}
+\item Mettre un nombre au carré : utiliser \textit{**}
+\item Attendre une entrée clavier : \textit{x = int(input("Please enter an integer: "))}
+\item Pour commenter en multi lignes, il faut utiliser trois guillements : 
+\newline \textit{""" commentaires """}
+
+\subsubsection{Instructions utiles}
+\item Ajouter élément à la fin de la liste : \textit{liste.append[value]}
+\item Insérer élément dans une liste : \textit{liste.insert(indice, value)}
+\item Itérer sur une suite de nombre : \textit{range(nombre)} (utiliser dans boucle \textit{for})
+\newline C'est un objet dit \textit{itérable} c'est à dire qu'elle est utilisée par des \textit{itérateurs} comme \textit{for} ou \textit{list()}. Pour obtenir une liste de nombre successif on peut ainsi combiner \textit{range()} et \textit{list()} : \textit{list(rang(n))}
+\item L'instruction \textit{pass} ne fait rien, elle permet de de fournir une syntaxe correcte comme : \textit{while True: pass}
+
+\subsubsection{Les string}
+\item Dans un \textit{print()}, si l'on ne veut pas que les charactères qui précèdent le charactère \textit{\textbackslash} on peut utiliser le paramètre \textit{row : r}.
+\newline \textit{print(r"mot\textbackslash nom")} : ainsi la combinaison \textit{\textbackslash n} n'est pas considérée comme un saut de ligne
+\item Pour modifier le comportement de saut de lige par défaut de \textit{print}. Rajouter la valeur \textit{end} : \textit{print(a, end = ', ')}
+\item Opération sur les strings : possibilité des les additionner entre eux, de les multiplier par un entier : \textit{3 * 'un' + 'deux'}
+\item Accéder aux élements d'un tableau ou string etc... : \textit{tab[indice]}. L'indice commence à 0. On peut accéder au dernier élément par l'indice -1.
+\item Les strings sont immuables c'est à dire qu'on ne peut pas modifier d'élément. On peut seulement lire les éléments.
+\item Récupérer plusieurs éléments du tableau : \textit{tableau[n:m]}. Permet de récupérer l'élément n juqu'a m-1.
+\item Récupérer taille d'un tableau : \textit{len(tableau)}
+
+\subsubsection{Les listes}
+\item Déclaration : \textit{liste = [1, 2 ,3]}
+\item Concaténation : \textit{liste1 + liste2}
+\item Les listes sont muables (contrairement aux strings) : \textit{liste[1] = 20}
+\item Remplacer des valeurs : \textit{liste[0:3]=[10,20,30]}
+\item Effacer la liste ou certains éléments : \textit{liste[:] = []}
+\item Imbriquer des listres entre elles : \textit{liste3 = [liste1, liste2]}.  Les listes n'ont pas besoin de posséder le même type de valeur.
+\newline Accéder au premier élément de liste2 :\textit{liste3[1][0]}
+\item Affectation multiples de variables : \textit{a, b = b, a+b}. Cepdant lors du calcul de \textit{b}, \textit{a} a toujours la même valeur et n'est pas encore égale à \textit{b}.
+
+
+\subsubsection{Les boucles}
+\item Les boucles \textit{for, while} finissent par un \textit{" : "} et ne nécessitent pas de parenthèse.
+\item A l'intérieur de ces fonctions, l'indentation est primordial puisque c'est la méthode utilisée par python pour regrouper les instructions. 
+\item Pour signaler la fin d'une fonction un double saut de ligne est nécessaire.
+\item On peut combiner les boucles \textit{while} et \textit{for} avec des \textit{break}, \textit{continue} et \textit{else}. 
+\newline En combinant un \textit{for avec un break à la fin} suivi d'un \textit{else}. Ainsi on va d'abord aller dans la boucle \textit{for}, si une condition est bonne on break la boucle \textit{for} et donc on ne va pas dans le \textit{else}. Si au contraire à la fin de la boucle \textit{for} on n'a pas eu de \textit{break} on va alors passer dans la boucle \textit{else}.
+\item \textit{Continue} quant à lui fait passer directement la boucle à l'instruction suivante.
+
+\subsubsection{Boucle \textit{for}}
+\item L'instruction for itère sur les éléments d'une séquence : \textit{for w in words:}
+\item Si l'on veut modifier la séquence sur laquelle on itère, il faut créer une copie de cette séquence dans l'instruction du \textit{for}: \textit{for w in ranges words\textbf{[:]}}
+\item Itérer sur une suite de nombre : \textit{for i in range(5)} : génère 5 valeurs de 0 à 5 exclu (le dernier élement n'est jamais pris en compte)
+
+\subsubsection{Condition \textit{if}}
+\item Finir l'instruction par un deux-points \textit{:}
+\item Les autres instructions sont : \textit{elseif cd1:} et \textit{else:}
+\item Toujours sauter des lignes entre ces instructions et faire attention à l'indentation
+
+\subsubsection{Les fonctions}
+\item Définir une fonction par \textit{def}
+\item Faire attention à l'indentation
+\item Chaîne de documentation : explication succinte de la fonction dans les premières lignes de la fonction.
+
+\end{itemize}
+
+
+\end{document}

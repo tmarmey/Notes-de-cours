@@ -1,0 +1,87 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+\usepackage{xcolor}
+\author{Thibaut Marmey}
+
+\title{Notes de cours SQL}
+\begin{document}
+	\maketitle
+
+\section{Commandes SQL}
+\subsection{Utiliser une database déjà construite}
+\begin{itemize}
+\item \href{https://dev.mysql.com/doc/world-setup/en/world-setup-installation.html}{Lien du tutorial}
+\item Connecter à au serveur MySQL : \textit{mysql -u root *p}
+\item Pour Charger la base de données \textit{SOURCE world.sql;}
+\item Pour obtenir les informations de la BdD (nom des colonnes, type de données...) : \textit{DESCRIBE nom\textunderscore du\textunderscore tableau} ou \textit{SHOW COLUMNS FROM nom\textunderscore du\textunderscore tableau}
+\item Pour sélectionner une colonne du tableau : \textit{SELECT nom\textunderscore du\textunderscore champ FROM nom\textunderscore du\textunderscore tableau}
+\item Pour compter le nombre d'éléments dans une colonne : \textit{SELECT COUNT(*) FROM nom\textunderscore du\textunderscore champ}
+\item La commande \textit{SELECT} permet entre autres de joindre un autre tableau aux résultats, filtrer, classer, grouper les résultats. Une utilisation presque complète est de la forme : 
+\newline  \colorbox{blue!15}{\textit{SELECT a FROM table WHERE condition GROUP BY expression HAVING}} 
+\newline \colorbox{blue!15}{condition \{UNION | INTERSECT | EXCEPT\} ORDER BY expression LIMIT}
+\newline \colorbox{blue!15}{count OFFSET start}
+\item Pour sélectionner les éléments sans les doublons : \textit{SELECT DISTINCT}. Privilégier GROUP BY quand cela est possible pour optimiser les performances.
+\item Renommer une colonne lors d'une requête SQL : \textit{AS}.
+\newline Exemple d'utilisation seulement sur colonne 1: \textit{SELECT colonne1 AS c1, colonne2 FROM nom \textunderscore de \textunderscore la\textunderscore table}
+\item Récupérer une colonne d'une base de donnée : en mode orienté objet : \textit{tableau.colonne}
+\item Extraire des lignes de la base de données qui respectent une condition \textit{WHERE condition}
+\item Combiner plusieurs condition avec \textit{AND} \& \textit{OR} : \textit{WHERE cd1 AND cd2}
+\item Pour récupérer les éléments d'une colonne par leur nom utiliser la fonction \textit{LIKE} : WHERE colonne LIKE 'A\%'.
+\newline '\textit{A\%'} : mot commençant par A
+\newline \textit{'\%Z'} : mot finissant par Z
+\newline \textit{'A\%Z'}: mot commençant par A et finissant par Z et n'importe quelle chaîne de caractères entre
+\newline 'A\textunderscore Z' : unique caractère possible entre A et Z
+\item \textit{SELECT * FROM city AS c WHERE (c.CountryCode = 'FRA' AND c.population \textgreater 300000) OR (c.CountryCode = 'ESP' AND c.Name LIKE 'T\%')};
+\newline Permet d'afficher les villes françaises de plus de 300000 habitants et les villes espagnoles commençant par la lettre T via la fonction \textit{LIKE}. Tout en changeant l'appel de la table 'city' par 'c' via \textit{AS}.
+\item Simplifier l'utilisatin de \textit{OR}, utiliser la fonction \textit{IN} :
+\newline \textit{WHERE colonne1 IN (val1, val2, val3)} permet de renvoyer les éléments qui on les valeurs val1 ou val2 ou val3.
+\newline Il était possible d'utiliser la fonction OR mais la fonction IN rend la lecture plus facile.
+\item Obtenir un intervalle de données : \textit{WHERE col (NOT) BETWEEN start AND end}
+\item Filtrer les données de type NULL : \textit{WHERE col IS (NOT) NULL}
+\item Regrouper des données similaires et utiliser des fonctions pour les traiter : \textit{GROUP BY}.
+\newline \textit{SELECT Continent, COUNT(*)  FROM country GROUP BY Continent;} 
+\newline Permet de récupérer le nombre de pays dans chaque continent
+\newline Autres fonctions qui peuvent être utilisées : \textit{AVG(), MAX(), MIN(), SUM()}
+\item Filtrer ces fonctions avec la : \textit{HAVING}.
+\newline \textit{SELECT Continent, COUNT(*) AS Total  FROM country GROUP BY Continent HAVING Total BETWEEN 10 AND 50;}
+\item Trier les colonnes dans l'ordre ascendant ou descendant : 
+\newline \textit{ORDER BY col1 ASC, col2 DSC}
+\item Pour filtrer le nombre de résultat dans la table utiliser les fonctions \textit{LIMIT} et \textit{OFFSET}.
+\newline \textit{LIMIT 5 OFFSET 10} prendra les valeurs de la 11eme à la 15eme ligne.
+\newline MySQL accepte la syntaxe que nous venons de voir. Cependant pour une faciliter la migration vers un autre SGBD (système de gestion de bases de données) ex PostgreSQL privilégier la syntaxe suivante :
+\newline \textit{LIMIT 10, 5} Le premier est l'OFFSET le suivant la limite.
+\newline D'où \textit{LIMIT 5 OFFSET 10 == LIMIT 10, 5}
+\item Retourner un résultat entre plusieurs conditions : \textit{CASE ... END}
+\newline \textit{SELECT col, CASE 
+\newline WHEN cd1 THEN output
+\newline ELSE output2
+\newline END FROM table}
+\item Réunir deux tables en excluant les doublons : \textit{UNION}
+\newline \textit{SELECT table1 UNION SELECT table2}
+\item Réunir deux tables en incluant les doublons : \textit{UNION ALL}
+\item Appliquer condition sur une autre table : \textit{IN}
+\newline \textit{SELECT col1 FROM tab1 WHERE col2 IN (SELECT col3 FROM tab2 ...)}
+\item Modifier les données d'une BdD et la mettre à jour : \textit{UPDATE}
+\newline Attention faire un back-up de la BdD en cas de problème car ce n'est pas possible de revenir en arrière. \newline Sinon utiliser les commandes \textit{TRANSACTION} pour utiliser \textit{BEGIN TRANSACTION, ROLLBACK TRANSACTION, COMMIT TRANSACTION}
+
+\end{itemize}
+
+\subsection{MySQL Workbench}
+\begin{itemize}
+\item Importer BdD avec \textit{Data Import/Restore} et double cliquer sur la BdD dans la section \textit{SCHEMAS}
+\end{itemize}
+
+\subsection{Autres}
+\begin{itemize}
+\item Changer Mot de passe : \textit{sudo mysql \textunderscore secure\textunderscore installation}
+\item \href{https://archive.org/download/stackexchange}{Lien pour listes de base de données}
+\item sudo mysql
+\newline ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql\textunderscore native\textunderscore password BY 'root';
+\end{itemize}
+
+\end{document}
