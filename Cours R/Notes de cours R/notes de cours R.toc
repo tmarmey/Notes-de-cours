@@ -1,2 +1,3 @@
 \contentsline {section}{\numberline {1}Programmation R}{1}{section.1}
 \contentsline {subsection}{\numberline {1.1}G\IeC {\'e}n\IeC {\'e}ralit\IeC {\'e}}{1}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Fonctions}{1}{subsection.1.2}
