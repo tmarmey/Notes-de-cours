@@ -1,2 +1,2 @@
 # Notes-de-cours
-Notes de cours - C - C++ - Python - Latex - SQL - Git/GitHub 
+Notes de cours - C - C++ - Git/GitHub - Latex - Python - R - SQL
