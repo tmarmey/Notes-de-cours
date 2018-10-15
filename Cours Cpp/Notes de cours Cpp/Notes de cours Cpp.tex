@@ -30,6 +30,9 @@
 \item La classe fille possède les attributs et les méthodes de la classe mère. Elle possède en plus de cela ses propres attributs et méthodes
 \item Possibilité de surcharger les méthodes de la classe mère dans la classe fille
 \item Surcharge du constructeur : on peut appeler le constructeur de la classe mère dans le constructeur de la classe fille.
+\newline Pour déclarer un constructeur dans le .h : il doit avoir le même nom que la calsse, et il ne doit rien renvoyer. \textit{maClasse()}
+\newline On écrira aussi le constructeur dans le .cpp de la manière suivante : 
+\newline \textit{maClasse::maClasse() : blaba, bla, bla \{ \}}
 \item Masquage de fonctions de la classe mère. On peut substituer le nom d'une fonction présente dans la classe mère et utiliser sous le même nom une méthode spécifique dans une classe fille. On peut toujours appeler la méthode de la classe mère dans la méthode de la classe fille en spécifiant l'appel à la classe mère grâce au double deux points "nomClasseMere::nomMéthode()".
 \item Dérivation de type : on peut substituer un objet de la classe fille à un pointeur ou une référence vers un objet de la classe mère. On peut affecter un élément enfant à un élément parent
 \newline Il est possible d'écrire \textit{monPersonnage = monGuerrier} car un guerrier est un personnage. L'inverse n'est pas possible \sout{\textit{monGuerrier = monPersonnage}}

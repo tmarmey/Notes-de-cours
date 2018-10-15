@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.12)  12 OCT 2018 16:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.12)  15 OCT 2018 13:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -748,15 +748,15 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <12> not available
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 63.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 66.
  [2]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 63.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 66.
  (./Notes de cours Cpp.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 63.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 63.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 66.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 66.
 Package rerunfilecheck Info: File `"Notes de cours Cpp".out' has not changed.
 (rerunfilecheck)             Checksum: BA712589B0965668F4A563E4A4A14689;230.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 63.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 66.
  ) 
 Here is how much of TeX's memory you used:
  7983 strings out of 494880
@@ -765,13 +765,13 @@ Here is how much of TeX's memory you used:
  11211 multiletter control sequences out of 15000+600000
  12856 words of font info for 50 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 44i,6n,42p,434b,397s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 44i,6n,42p,434b,399s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on "Notes de cours Cpp.pdf" (2 pages, 65762 bytes).
+Output written on "Notes de cours Cpp.pdf" (2 pages, 66399 bytes).
 PDF statistics:
  62 PDF objects out of 1000 (max. 8388607)
  52 compressed objects within 1 object stream
