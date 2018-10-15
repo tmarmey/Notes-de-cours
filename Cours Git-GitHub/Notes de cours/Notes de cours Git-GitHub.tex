@@ -1,0 +1,51 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\graphicspath{{../Images/}}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+\usepackage{subfig}
+\usepackage{float}
+
+\author{Thibaut Marmey}
+
+\title{Notes de cours Git/GitHub}
+\begin{document}
+	\maketitle
+
+\begin{normalsize}
+\tableofcontents
+\end{normalsize}
+
+\section{Git}
+\subsection{Les commandes de bases}
+\begin{itemize}
+\item Activer un repository Git, se placer dans le dossier que l’on veut et faire : 
+\newline \textit{git init }
+\item L’activation du repository Git génère un index. Lorsqu’on rajoute un nouveau fichier dans le repository il faut rajouter ce fichier à l’index par la commande :
+\newline \textit{git add nomDuFichier.extension}
+\item Ajouter tous les fichiers du dossier courant :
+\newline \textit{git add .}
+\item Enregistrement des modifications dans le rep :
+\newline \textit{git commit -m "ajout de fichier"} (le -m permet de rajouter un message au commit)
+\item Pour se positionner sur un commit de l'historique :
+\newline \textit{git checkout SHADuCommit}
+\item Revenir au commit le plus récent : 
+\newline \textit{git checkout master}
+\item Créer un nouveau commit qui fait l'inverse du commit précédent :
+\newline \textit{git revert SHADuCommit}
+\item Modifier le message du dernier commit
+\newline \textit{git commit --amend -m "votre message"}
+\item Annuler tous les changements qui ne sont pas encore commités :
+\newline \textit{git reset --hard}
+\item Pour créer une nouvelle branche, se placer au commit avec un checkout et faire :
+\newline \textit{git checkout -b nouvelle-branche}
+\item Pour supprimer une branche, se placer à l'extérieur de celle-ci et fait :
+\textit{git branch -d nom-de-la-branche}
+\item Copier un repo
+\end{itemize}
+
+\end{document}
