@@ -26,6 +26,18 @@
 \item \href{https://linuxconfig.org/rstudio-on-ubuntu-18-04-bionic-beaver-linux}{\textit{lien internet : }doc d'installation de R et Rstudio}
 \item Utilisation de la documentation "aide" : \textit{help()} ou \textit{help("nom de la fonction")} ou  \textit{?log}
 \item Documentation plus détaillée sur internet : \textit{help.start()}
+\item Interaction avec l'environnement R :
+\begin{itemize}
+\item liste toutes les variables crées : \textit{ls()}
+\item liste des variables avec une succession de lettre particulière : \textit{ls(pattern="mot")}
+\item supprimer des variables : \textit{rm(var)}\\
+\item quitter le travail : \textit{q()} ou \textit{quit()}
+\end{itemize}
+\item Ecrire des commentaires avec "\#"
+\item Utiliser la fonction \textit{print()} pour afficher les informations, textes sur la console
+\item Enregistrer les variables que l'on veut : \textit{save(var1, var2, ..., file = "nameFile.extension")}.
+\newline Enregistrement de ces fichiers dans le répertoires associés \textit{Tools/Global Options}, ici c'est Documents/Notes-de-cours/Cours R/Test
+\item 
 \end{itemize}
 
 \subsection{Fonctions}
@@ -46,6 +58,17 @@
 \item Renvoyer l'entier supérieur : \textit{ceiling(nb)}
 \item Arrondir à l'entier le plus proche : \textit{round(nb)}
 \item fonction trigo : \textit{cos(angleRad), sin, ...}
+\end{itemize}
+
+\subsection{Manipulation de chaînes de caractères}
+\begin{itemize}
+\item Saisir des données depuis le clavier : \textit{scan()}. Pour valider l'input appuyer sur \textit{entrée}, et un nouvel input appararaîtra. Pour arrêter la prise d'input appuyer directement sur \textit{entrée}.
+\item Rentrer le nombre d'input avec l'appel de \textit{scan(nmax=n)}
+\item La concaténation de texte et nombre avec \textit{paste(texte, nombres, ...)}
+\item Combinaison de \textit{scan()} et \textit{paste()} : \textit{paste('Bonjour j'ai ', scan(nmax=1), ' ans')}
+\item Permet de compter le nombre de lettres présentes dans la chaîne de caractères : \textit{nchar("chaîne")}
+\item Mettre les caractères en majuscules ou minuscules : \textit{toupper(), tolower()}
+\item Extraire une sous chaîne de caractères avec point de départ et d'arrivée inclus : \textit{substr("chaine", start, stop)}. La chaîne de caractères commence à 1.
 \end{itemize}
 
 \end{document}

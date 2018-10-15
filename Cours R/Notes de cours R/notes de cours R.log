@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.12)  12 OCT 2018 20:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.12)  15 OCT 2018 16:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -731,35 +731,48 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 26.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 51.
- [1
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
+
+ []
+
+
+Overfull \hbox (22.13403pt too wide) in paragraph at lines 38--39
+[]\OT1/cmr/m/n/12 Enregistrer les vari-ables que l'on veut : \OT1/cmr/m/it/12 s
+ave(var1, var2, ..., file = "name-File.extension") 
+ []
+
+[1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 51.
- (./notes de cours R.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 51.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 51.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 72.
+ [2]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 72.
+
+(./notes de cours R.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 72.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 72.
 Package rerunfilecheck Info: File `"notes de cours R".out' has not changed.
-(rerunfilecheck)             Checksum: 22E105F061E895CF60BEB9E0BF334E37;176.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 51.
+(rerunfilecheck)             Checksum: 7C05F0BDB4BF2B2FAEE94FB88DD031A6;268.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 72.
  ) 
 Here is how much of TeX's memory you used:
- 7893 strings out of 494880
- 115725 string characters out of 6179600
+ 7899 strings out of 494880
+ 115786 string characters out of 6179600
  205925 words of memory out of 5000000
- 11128 multiletter control sequences out of 15000+600000
+ 11132 multiletter control sequences out of 15000+600000
  12750 words of font info for 49 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 44i,6n,42p,239b,322s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 44i,6n,42p,261b,443s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on "notes de cours R.pdf" (1 page, 56621 bytes).
+Output written on "notes de cours R.pdf" (2 pages, 65303 bytes).
 PDF statistics:
- 51 PDF objects out of 1000 (max. 8388607)
- 42 compressed objects within 1 object stream
- 6 named destinations out of 1000 (max. 500000)
- 25 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 62 PDF objects out of 1000 (max. 8388607)
+ 52 compressed objects within 1 object stream
+ 8 named destinations out of 1000 (max. 500000)
+ 33 words of extra memory for PDF output out of 10000 (max. 10000000)
 
