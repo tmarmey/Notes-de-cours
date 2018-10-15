@@ -45,7 +45,64 @@
 \newline \textit{git checkout -b nouvelle-branche}
 \item Pour supprimer une branche, se placer à l'extérieur de celle-ci et fait :
 \textit{git branch -d nom-de-la-branche}
-\item Copier un repo
+\item Copier un repository depuis GitHub
+\newline \textit{git clone adresseDuRepository}
+\item Utilisation de \textit{Rebase} :
+\begin{itemize}
+\item \textit{git rebase master bug} : transplante bug sur l'actuelle branche master. Si on est déjà en train de bosser sur bug1 on peut se contenter de taper \textit{git rebase master}
+\item \textit{git checkout master} : switche sur master
+\item \textit{git merge bug1} : fusionne bug1 dans master
+\item \textit{git branch -d bug1} : fusionne bug1 dans master
+\end{itemize}
+\item Savoir qui a modifé un fichier :
+\newline \textit{git blame nomDuFichier.extension}
+\item Voir les détails du commit :
+\newline \textit{git show numSHA}
+\item Ignorer des fichier dans Git telles que des variables de configuration, des mots de passe, etc : 
+\newline utiliser un fichier \textit{.gitignore}. Dans ce fichier, indiquer leur chemin complet et sauter une ligne entre chaque fichier.
+\item Eviter les conflits superflus. 
+\begin{itemize} 
+\item En cas “d’urgence”, si la tâche actuelle n’est pas finie et donc ne nécessite pas de commit, mais qu’une autre tâche doit être faite, il faut mettre de côté ce qui est entrain d’être fait, pour pouvoir y revenir après. Utiliser :
+\newline \textit{git stash} : permet de mettre en pause les modifications pour travailler sur un autre endroit du projet
+\item Pour revenir à l'endroit où vous vous étiez arrétés, ici \textit{pop} va effacer le stash donc si l'on veut refaire une pause, il faut refaire un \textit{git stash}
+\newline \textit{git stash pop}
+\item Pour garder les modifications dans le stash, utiliser :
+\newline \textit{git stash apply}
+\end{itemize}
 \end{itemize}
 
+\section{GitHub}
+\subsection{Les commandes de bases}
+\begin{itemize}
+\item GitHub est aussi appelé un remote, il permet de sauvegarder ses fichiers sur un espace distant.
+\item Configurer compte avec GitHub :
+\newline \textit{git config --global user.name "tmarmey"}
+\newline \textit{git config --global user.email "tmarmey@mail.com}
+\item Envoyer ses modifications sur GitHub faire :
+\newline \textit{git push origin master}
+\item Ajouter clef SSH pour push sans identifiant et mot de passe :
+\begin{itemize}
+\item \textit{\$ ssh-keygen -t rsa -b 4096 -C "yourEmail@example.com"}
+\item Enter a file in which to save the key (/home/you/.ssh/id\textunderscore rsa): [Press enter]
+\item Start the ssh-agent : \$ eval "\$(ssh-agent -s)"
+\item \$ ssh-add ~/.ssh/id\textunderscore rsa
+\item Ajouter la clef au compte GitHub
+\item copier la clef avec xclip : \$ sudo apt-get install xclip
+\item \$ xclip -sel clip < \textasciitilde /.ssh/id \textunderscore rsa.pub
+\item Settings/SSH and GPG keys
+\item New SSH key et Add SSH key
+\item \$ ssh -T git@github.com
+\end{itemize}
+\item Récupérer les dernier modifications :
+\newline \textit{git pull origin master}
+\item Contribuer à un projet :
+\begin{itemize}
+\item Fork le repo de l'auteur (c'est à dire copier le repo sur votre compte GitHub)
+\item cloner le fork sur votre machine
+\item Créer une nouvelle branche
+\item Faire des modifs sur cette nouvelle branche
+\item Envoyer les modifs sur GitHub sur votre propre branche
+\item Proposer votre contribution au projet par "pull request"
+\end{itemize}
+\end{itemize}
 \end{document}
