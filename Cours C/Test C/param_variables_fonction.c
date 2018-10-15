@@ -24,7 +24,8 @@ bool somme(int n,...){
 
 	int a = va_arg(va, int);
 	int b = va_arg(va, int);
-
+	va_end(va);
+	
 	if ((a+b) == 1)
 		return true;
 	else
