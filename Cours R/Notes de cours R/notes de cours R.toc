@@ -2,4 +2,6 @@
 \contentsline {subsection}{\numberline {1.1}G\IeC {\'e}n\IeC {\'e}ralit\IeC {\'e}}{1}{subsection.1.1}
 \contentsline {subsection}{\numberline {1.2}Fonctions}{2}{subsection.1.2}
 \contentsline {subsection}{\numberline {1.3}Manipulation de cha\IeC {\^\i }nes de caract\IeC {\`e}res}{2}{subsection.1.3}
-\contentsline {subsection}{\numberline {1.4}Gestion de donn\IeC {\'e}es complexes}{2}{subsection.1.4}
+\contentsline {subsection}{\numberline {1.4}Gestion de donn\IeC {\'e}es complexes}{3}{subsection.1.4}
+\contentsline {subsection}{\numberline {1.5}Op\IeC {\'e}rations sur des vecteurs}{3}{subsection.1.5}
+\contentsline {subsection}{\numberline {1.6}Analyses statistiques sur des vecteurs}{4}{subsection.1.6}

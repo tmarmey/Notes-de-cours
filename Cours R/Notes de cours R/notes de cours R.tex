@@ -37,7 +37,6 @@
 \item Utiliser la fonction \textit{print()} pour afficher les informations, textes sur la console
 \item Enregistrer les variables que l'on veut : \textit{save(var1, var2, ..., file = "nameFile.extension")}.
 \newline Enregistrement de ces fichiers dans le répertoires associés \textit{Tools/Global Options}, ici c'est Documents/Notes-de-cours/Cours R/Test
-\item 
 \end{itemize}
 
 \subsection{Fonctions}
@@ -57,7 +56,10 @@
 \item Renvoyer l'entier inférieur : \textit{floor(nb)}
 \item Renvoyer l'entier supérieur : \textit{ceiling(nb)}
 \item Arrondir à l'entier le plus proche : \textit{round(nb)}
-\item fonction trigo : \textit{cos(angleRad), sin, ...}
+\item Racine carré : \textit{sqrt()}
+\item Fonction trigo : \textit{cos(angleRad), sin, ...}
+\item Fonction somme : \textit{sum(vect)}
+\item Longueur vecteur : \textit{length(vect)}
 \end{itemize}
 
 \subsection{Manipulation de chaînes de caractères}
@@ -88,17 +90,75 @@
 \begin{itemize}
 \item Suite d'un nombre à un autre : \textit{nb1:nb2}
 \item Suite d'un nombre répété : \textit{rep(element, length)}
-\item Séquence de nombres : \textit{seq(start, step, stop)}
+\item Séquence de nombres : \textit{seq(start, stop, step)}
 \end{itemize}
-\item 
 \end{itemize}
 \item Concaténer plusieurs vecteurs (ils doivent contenir les mêmes types de variables) : 
-\newline \textit{c(vect1, vect2, ...)} (bonne méthode pour créer rapidement un vecteur avec des valeurs directement attribuées ex: c(70, 50, 10, 0, 5))
+\newline \textit{c(vect1, vect2, ...)} (bonne méthode pour créer rapidement un vecteur avec des valeurs directement attribuées ex: \textit{c(70, 50, 10, 0, 5)})
 \item Nommer les éléments du vecteur : 
 \newline \textit{names("nom1", "nom2", rep(NA,2), "nom3", ...)} (ici permet de nommer des éléments et d'en laisser 2 sans nom)
 \item Indexation numériques : travailler seulement sur une sous partie d'un vecteur. Les éléments des vecteurs sont indéxés de 1 jusqu'au dernier.
-\newline Accéder à un élément du vecteur via son index : \textit{vect1[index]}
+\begin{itemize}
+\item Accéder à un élément du vecteur via son index : \textit{vect1[index]}
+\item Accéder à plusieurs éléments du vecteur : 
+\newline \textit{vect1[nb1:nb2], vect1[c(index1, index2, ...)]} il est en fait possible d'utiliser toutes les fonctions de séquences ou listes de nombres comme index.
+\item Utiliser des booléens pour sélectionner les éléments à récupérer :
+\newline \textit{vect1[vect1 $\rangle$ 7]} (on récupère ici tous les éléments de vect1 qui sont supérieur à 7).
+\item Utiliser les noms des éléments : \textit{vect1[c("nom1", "nom2")]}
 \end{itemize}
+\item Modifier un élément du vecteur : \textit{vect1[index] = valeur} (sachant que index peut être des fonctions telles que \textit{c()}, \textit{nb1:nb2}, etc...
+\end{itemize}
+
+\subsection{Opérations sur des vecteurs}
+\begin{itemize}
+\item Addition sur vecteur : \textit{vect1 = vect1 + 1} (+1 à tous les éléments)
+\newline Dans ce cas là, R prend le plus grand vecteur pour y effectuer l'opération à partir du vecteur plus court.
+\newline \textit{vect1 = vect1 + c(nb1, nb2,...)} (revoie d'un avertissement si le grand vecteur n'est pas un multiple du petit vecteur)
+\item Connaître la longueur d'un objet : \textit{length()}
+\item Sélectionner seulement certains éléments :
+\begin{itemize}
+\item Les premiers éléments : \textit{head(nb d'éléments)}
+\item Les derniers éléments : \textit{tail(nb d'éléments)}
+\end{itemize}
+\item Triez les vecteurs :
+\begin{itemize}
+\item \textit{sort()} renvoie un nouveau vecteur contenant les mêmes éléments mais triés dans l'ordre.
+\newline Dans l'ordre croissant : \textit{sort(vect1)}
+\newline Dans l'ordre décroissant : \textit{sort(vect1, decreasing=True)}
+\newline Dans le cas des caractères, la priorité est donnée aux majuscules, ainsi un "a" sera placé après un "Z". Pour contourner ce problème, utiliser les fonctions \textit{toupper()} ou \textit{tolower()}.
+\item \textit{order()} renvoie l'ordre des éléments via leur indice.
+\item \textit{rank()} renvoie le rang de l'élément au sein de la distribution. Par défaut le \textit{ties.method} est \textit{average} ce qui implique que si plusieurs éléments sont de même rang la fonction attribuera ainsi la moyenne de ses rangs.
+\end{itemize}
+\end{itemize}
+
+\subsection{Analyses statistiques sur des vecteurs}
+\begin{itemize}
+\item Analyser la distribution d'un vecteur consiste à calculer diférentes valeur sur celui ci : la moyenne, la médiane ou la variance par exemple.
+\item Calculer la moyenne : \textit{mean(vect1)}
+\item Calculer la médiane : \textit{median(vect1}
+\newline La médiane permet de répartir deux parties en un même nombre d'élément. C'est en fait la valeur centrale de la distribution.
+\item En présence de valeurs NA dans la distribution, utiliser l'argument facultatif : \textit{na.rm = TRUE}.
+\item Mesurer la dispersion d'une distribution : 
+\begin{itemize}
+\item les fonctions \textit{min()} et \textit{max()}. Utiliser \textit{na.rm} si présence de NA.
+\item Les quantiles sont les valeurs permettant de séparer une distribution ordonnée de valeurs en q sous-distributions.
+\newline Généralement on calcule les quartiles c'est à dire on sépare la distribution en 4-quantiles.
+\newline Utiliser la fonction \textit{quantile(vect1)}
+\item La fonction tout en un : \textit{summary(vect1)} renvoie :
+\begin{itemize}
+\item la valeur min
+\item le premier quartile (25\%)
+\item la médiane (ou second quartile (50\%)
+\item la moyenne
+\item le troisième quartile (75\%)
+\item la valeur max
+\end{itemize}
+\item La variance mesure la dispersion par rapport à la moyenne. Elle prend une valeur grande si les éléments de la distribution sont généréralement éloignés de la moyenne ou une valeur petite si ces éléments sont au contraire resserrés près de la moyenne.
+\newline Calcul de la variance : \textit{var(vect1)}
+\newline Calcul de l'écart-type : \textit{sd(vect1)}
+\end{itemize}
+\end{itemize}
+
 \end{document}
 
 
