@@ -71,4 +71,40 @@
 \item Extraire une sous chaîne de caractères avec point de départ et d'arrivée inclus : \textit{substr("chaine", start, stop)}. La chaîne de caractères commence à 1.
 \end{itemize}
 
+\subsection{Gestion de données complexes}
+\begin{itemize}
+\item Le vecteur : élément de base du langage, c'est une liste d'éléments étant tous du même type.
+\begin{itemize}
+\item Spécifier deux attributs : le type de ces éléments et la longueur du vecteur (nb d'éléments)
+\item Les fonctions prennent toutes des vecteurs en paramètre. Elles renverrons le résultat sous la forme d'un vecteur de longueur (généralement) égale à la longueur du vecteur d'entrée.
+\item Différentes méthodes pour créer un vecteur :
+\begin{itemize}
+\item la fonction \textit{vector(type, length)} 
+\newline \textit{ex : vector("numeric", 10)} crée un vecteur de 10 éléments tous égaux à 0.
+\newline Les valeurs par défaut sont 0 (numeric), "" (character), FALSE (logical).
+\item les fonctions \textit{numeric(length), character(length), logical(length)}
+\end{itemize}
+\item Générer des séries de nombres
+\begin{itemize}
+\item Suite d'un nombre à un autre : \textit{nb1:nb2}
+\item Suite d'un nombre répété : \textit{rep(element, length)}
+\item Séquence de nombres : \textit{seq(start, step, stop)}
+\end{itemize}
+\item 
+\end{itemize}
+\item Concaténer plusieurs vecteurs (ils doivent contenir les mêmes types de variables) : 
+\newline \textit{c(vect1, vect2, ...)} (bonne méthode pour créer rapidement un vecteur avec des valeurs directement attribuées ex: c(70, 50, 10, 0, 5))
+\item Nommer les éléments du vecteur : 
+\newline \textit{names("nom1", "nom2", rep(NA,2), "nom3", ...)} (ici permet de nommer des éléments et d'en laisser 2 sans nom)
+\item Indexation numériques : travailler seulement sur une sous partie d'un vecteur. Les éléments des vecteurs sont indéxés de 1 jusqu'au dernier.
+\newline Accéder à un élément du vecteur via son index : \textit{vect1[index]}
+\end{itemize}
 \end{document}
+
+
+
+
+
+
+
+
