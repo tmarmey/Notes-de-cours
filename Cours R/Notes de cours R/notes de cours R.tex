@@ -23,7 +23,7 @@
 \section{Programmation R}
 \subsection{Généralité}
 \begin{itemize}
-\item \href{https://openclassrooms.com/fr/courses/1393696-effectuez-vos-etudes-statistiques-avec-r/1394497-manipuler-et-comparer-plusieurs-vecteurs#/id/r-1394430}{\textit{lien internet : }reprise cours OCR}
+\item \href{https://openclassrooms.com/fr/courses/1393696-effectuez-vos-etudes-statistiques-avec-r/1394570-les-facteurs#/id/r-1395598}{\textit{lien internet : }reprise cours OCR}
 \item \href{https://linuxconfig.org/rstudio-on-ubuntu-18-04-bionic-beaver-linux}{\textit{lien internet : }doc d'installation de R et Rstudio}
 \item Utilisation de la documentation "aide" : \textit{help()} ou \textit{help("nom de la fonction")} ou  \textit{?log}
 \item Documentation plus détaillée sur internet : \textit{help.start()}
@@ -203,6 +203,20 @@
 \item Calcul des coefficients de la \textbf{régrétion linéaire} \textit{y = a*x + b}
 \newline Utiliser la fonction : \textit{lm()}
 \newline Cette fonction prend comme premier argument une formule : \textit{formula = y ~ x} (étudier le comportement de y en fonction de x)
+\newline Le premier nombre obtenu est b (\textit{Intersect}), le second est a.
+\item Les tests statistiques ont pour but d'infirmer ou confirmer une hypothèse de départ aussi appelé hypothèse nulle (H0). L'hypothèse nulle consiste généralement à postuler une égalité entre les variables comparées.
+\item Le test statistique renverra une p-value, probabilité que la différence observée entre les deux obstervations soit due au hasard. Seuil pour que la différence observée n'est pas du au hasard : généralement 5\%.
+\newline Si la p-value est inférieure à 0.05, rejet de l'hypothèse nulle pour accepter hypothèse alternative : la différence entre les deux variables est significative.
+\item Test de corrélation : \textit{cor.text(vect1, vect2)}
+\begin{itemize}
+\item Lire les résultats de bas en haut
+\item Calcul du coefficient de corélation \textit{cor}
+\item \textit{95 percent confidence interval} : intervalle de confiance de ce coefficient de corrélation.
+\item Calcul de la p-value
+\item On accepte ou non l'hypothèse nulle
+\end{itemize}
+\item Test de médianes avec le test de Wilcoxon-Mann-Whitney : \textit{wilcox.test(vect1, vect2)}
+\newline Connaître s'il y a une différence significative en comparant les médianes puisque la médiane est une mesure qui est moins affectés par d'éventuelles valeurs abbérantes.
 \end{itemize}
 
 \end{document}
