@@ -61,6 +61,14 @@ Il faut placer un pointeur ou une référence comme argument dans la fonction \t
 \item Utilisation de \textit{auto} (C++11) : cet outil permet de spécifier automatiquement le type de la variable en jeu. 
 \newline \textit{ex : auto x = 1; auto y = 3.1; auto z = 'a';}
 \newline \textit{output : x est int, y est double, z est char}
+\item \textit{Lambda} function : \textit{ex : auto allowed = [\&](int x, const std::vector$\langle$int$\rangle$\&vect)\{...\}}
+\begin{itemize}
+\item a. [=] capture all variables within scope by value
+\item b. [\&] capture all variables within scope by reference
+\item c. [\& var] capture var by reference
+\item d. [\&, var] specify that the default way of capturing is by reference and we want to capture var
+\item e. [=, \& var] capture the variables in scope by value by default, but capture var using reference instead
+\end{itemize}
 \end{itemize}
 
 \end{document}
