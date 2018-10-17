@@ -5,3 +5,5 @@
 \contentsline {subsection}{\numberline {1.4}Gestion de donn\IeC {\'e}es complexes}{3}{subsection.1.4}
 \contentsline {subsection}{\numberline {1.5}Op\IeC {\'e}rations sur des vecteurs}{3}{subsection.1.5}
 \contentsline {subsection}{\numberline {1.6}Analyses statistiques sur des vecteurs}{4}{subsection.1.6}
+\contentsline {subsection}{\numberline {1.7}Manipuler et comparer plusieurs vecteurs}{5}{subsection.1.7}
+\contentsline {subsection}{\numberline {1.8}Corr\IeC {\'e}lations et r\IeC {\'e}gression lin\IeC {\'e}aire}{6}{subsection.1.8}

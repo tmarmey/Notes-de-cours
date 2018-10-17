@@ -23,6 +23,7 @@
 \section{Programmation R}
 \subsection{Généralité}
 \begin{itemize}
+\item \href{https://openclassrooms.com/fr/courses/1393696-effectuez-vos-etudes-statistiques-avec-r/1394497-manipuler-et-comparer-plusieurs-vecteurs#/id/r-1394430}{\textit{lien internet : }reprise cours OCR}
 \item \href{https://linuxconfig.org/rstudio-on-ubuntu-18-04-bionic-beaver-linux}{\textit{lien internet : }doc d'installation de R et Rstudio}
 \item Utilisation de la documentation "aide" : \textit{help()} ou \textit{help("nom de la fonction")} ou  \textit{?log}
 \item Documentation plus détaillée sur internet : \textit{help.start()}
@@ -30,12 +31,13 @@
 \begin{itemize}
 \item liste toutes les variables crées : \textit{ls()}
 \item liste des variables avec une succession de lettre particulière : \textit{ls(pattern="mot")}
-\item supprimer des variables : \textit{rm(var)}\\
+\item supprimer des variables : \textit{rm(var)}
 \item quitter le travail : \textit{q()} ou \textit{quit()}
 \end{itemize}
 \item Ecrire des commentaires avec "\#"
 \item Utiliser la fonction \textit{print()} pour afficher les informations, textes sur la console
-\item Enregistrer les variables que l'on veut : \textit{save(var1, var2, ..., file = "nameFile.extension")}.
+\item Enregistrer les variables que l'on veut : 
+\newline \textit{save(var1, var2, ..., file = "nameFile.extension")}.
 \newline Enregistrement de ces fichiers dans le répertoires associés \textit{Tools/Global Options}, ici c'est Documents/Notes-de-cours/Cours R/Test
 \end{itemize}
 
@@ -127,6 +129,7 @@
 \newline Dans l'ordre décroissant : \textit{sort(vect1, decreasing=True)}
 \newline Dans le cas des caractères, la priorité est donnée aux majuscules, ainsi un "a" sera placé après un "Z". Pour contourner ce problème, utiliser les fonctions \textit{toupper()} ou \textit{tolower()}.
 \item \textit{order()} renvoie l'ordre des éléments via leur indice.
+\newline $\rangle$ [1] 2 5 4 1 3 (ce résultat indique que l'élément d'index 2 est le plus petit, suivi de l'index 5, 4, 1 et 3)
 \item \textit{rank()} renvoie le rang de l'élément au sein de la distribution. Par défaut le \textit{ties.method} est \textit{average} ce qui implique que si plusieurs éléments sont de même rang la fonction attribuera ainsi la moyenne de ses rangs.
 \end{itemize}
 \end{itemize}
@@ -157,6 +160,49 @@
 \newline Calcul de la variance : \textit{var(vect1)}
 \newline Calcul de l'écart-type : \textit{sd(vect1)}
 \end{itemize}
+\end{itemize}
+
+\subsection{Manipuler et comparer plusieurs vecteurs}
+\begin{itemize}
+\item Faire l'union de deux deux ensembles : \textit{union(vect1, vect2)} 
+\newline \textit{union(names(vect1), names(vect2))} (cette fonction retourne l'ensemble des éléments se trouvant dans au moins un de ces vecteurs)
+\item Faire l'intersection des ensmbles pour savoir quels sont les éléments présents dans les tous les vecteurs en argument : \textit{intersect(vect1, vect2)}
+\item Isoler les éléments qui ne sont pas commun aux vecteurs placés en argument : \textit{setdiff(x, y)} (renvoie les éléments de x qui ne sont pas dans y)
+\newline Cette fonction est asymétrique c'est à dire que l'ordre des arguments modifie le résultat en sortie.
+\item L'opérateur \textit{\%in\%} renvoie un vecteur d'éléments logiques de la même taille que le premier vecteur référencé à son appel : \textit{x \%in\% y}
+\newline Utilisation : \textit{vect1[names(vect1) \%in\% vect2]}
+\item Ordonner les vecteurs de manière réciproque : certaines fonctions ont besoin de vecteurs qui sont ordonnées dans le même ordre.
+\begin{itemize}
+\item Commencer par avoir un vecteur de nom obtenu par : 
+\newline \textit{commun = intersect(names(vect1), names(vect2))}
+\item Utiliser ce vecteur de nom commun pour récupérer dans le même ordre les éléments de vect1 et vect2
+\newline \textit{vect1-2 = vect1[commun]}
+\newline \textit{vect2-2 = vect2[commun]}
+\newline Ainsi les deux vecteurs \textit{vect1-2} et \textit{vect2-2} sont ordonnés de la même manière avec le même nombre d'éléments.
+\end{itemize}
+\item Trier ses données. Lorsque l'on veut trier un des vecteurs, on veut garder la réciprocité de l'ordre des éléments avec l'autre vecteur. Pour cela on veut récupérer les indices des éléments qui sont triés.
+\begin{itemize}
+\item Utiliser la fonction \textit{order()}. Utiliser le même vecteur avec order :
+\newline \textit{vect1-tri = vect1-2[order(vect1-2)]}
+\newline \textit{vect2-tri = vect2-2[order(vect1-2)]}
+\newline On obtient alors deux vecteur dont les éléments sont classés et dans même ordre.
+\end{itemize}
+\end{itemize}
+
+\subsection{Corrélations et régression linéaire}
+\begin{itemize}
+\item Calculer la corrélation entre deux variables revient à calculer l'intensité de leur liaison. Ce coefficient est compris entre -1 et 1. Plus le coefficient est proche de ces valeurs extrèmes, plus la liaison est forte. Si à l'inverse le coefficient est proche de 0, la liaison est faible ce qui veut aussi dire que les données sont linéairement indépendantes.
+\item Il est possible que ces données soient corrélées de manière non linéaire. 
+\begin{itemize}
+\item Un coefficient entre 0 et 1 indique que les deux séries de données évoluent dans le même sens.
+\item Inversement, si le coefficient est compris entre -1 et 0.
+\end{itemize}
+\item Calculer un \textbf{coefficient de corrélation linéaire} : \textit{cor(x,y)}
+\newline Attention : x et y doivent être de la même taille et contenir des éléments numériques
+\newline Les deux données doivent être réciproques (premier élément de x correspond au premier élément de y et ainsi de suite)
+\item Calcul des coefficients de la \textbf{régrétion linéaire} \textit{y = a*x + b}
+\newline Utiliser la fonction : \textit{lm()}
+\newline Cette fonction prend comme premier argument une formule : \textit{formula = y ~ x} (étudier le comportement de y en fonction de x)
 \end{itemize}
 
 \end{document}
