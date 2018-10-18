@@ -261,6 +261,22 @@
 \item Toutes les colonnes doivent avoir la même taille
 \item Toutes les lignes doivent avoir la même taille
 \end{itemize}
+\item Créer la matrice :
+\newline \textit{matrix(nrow=nr, ncol=nc, data=vect1, byrow=TRUE/FALSE)}
+\newline \textit{matrix(c(vect1, vect2), nrow=nr, ncol=nc, byrow=T)} (pas besoin de spécifier \textit{data} si c'est le premier argument, raccourcir \textit{TRUE} en \textit{T})
+\begin{itemize}
+\item \textit{nrow : } nombre de lignes
+\item \textit{ncol : } nombre de colonnes
+\item \textit{data : } vecteur des données de la matrice
+\item \textit{byrow : } méthode de remplissage de la matrice par data
+\end{itemize}
+\item Il est préférable que le nombre d'éléments dans \textit{data} soit égal à la capacité de la matrice (\textit{nrow*ncol)}.
+\begin{itemize}
+\item Si \textit{data} possède moins d'éléments que la capacité de la matrice, les éléments sont répétés pour la compléter.
+\item Si \textit{data} possède plus d'éléments, les éléments en trop sont tronqués.
+\end{itemize}
+\item Nommer les lignes : \textit{rownames(mat1)}
+\item Nommer les colonnes : \textit{colnames(mat1)}
 \end{itemize}
 
 
