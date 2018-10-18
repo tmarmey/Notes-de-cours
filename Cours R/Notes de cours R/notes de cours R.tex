@@ -9,6 +9,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{subfig}
 \usepackage{float}
+\usepackage{xcolor}
 
 \author{Thibaut Marmey}
 
@@ -77,7 +78,12 @@
 
 \subsection{Gestion de données complexes}
 \begin{itemize}
-\item Le vecteur : élément de base du langage, c'est une liste d'éléments étant tous du même type.
+\item Le vecteur : élément de base du langage, c'est une liste d'éléments étant tous du même type. Il possède 3 attributs : 
+\begin{itemize}
+\item son type des éléments
+\item sa longueur
+\item les noms associés aux différents éléments
+\end{itemize}
 \begin{itemize}
 \item Spécifier deux attributs : le type de ces éléments et la longueur du vecteur (nb d'éléments)
 \item Les fonctions prennent toutes des vecteurs en paramètre. Elles renverrons le résultat sous la forme d'un vecteur de longueur (généralement) égale à la longueur du vecteur d'entrée.
@@ -218,6 +224,35 @@
 \item Test de médianes avec le test de Wilcoxon-Mann-Whitney : \textit{wilcox.test(vect1, vect2)}
 \newline Connaître s'il y a une différence significative en comparant les médianes puisque la médiane est une mesure qui est moins affectés par d'éventuelles valeurs abbérantes.
 \end{itemize}
+
+\subsection{Gestion de données avec les facteurs}
+\begin{itemize}
+\item Les facteurs permettent de stocker une série d'éléments comme les vecteurs mais possèdent leurs propres attributs et propriétés.
+\item Ils sont généralement utilisés pour stocker des variables qualitatives (valeur descriptive et non numérique)
+\item Ils peuvent stocker des éléments de types différents
+\item Ils possèdent un attribut dit \textit{levels} : vecteur qui contient l'univers des données (l'ensemble des valeurs que peut prendre les éléments)
+\item Créer un facteur : \textit{factor()} :
+\newline \textit{fact1 = factor(c("A","B","A","C"))}
+\newline Affichage : \textit{[1] A B A C}, \textit{Levels : A B C}  (création automatique de l'attribut \textit{levels})
+\item Pour spécifier les valeurs de \textit{levels} : \textit{factor(c(...), levels=c("A","B",...,"F"))}
+\item Utilisation des facteurs (liste des manip identiques aux vecteurs) :
+\begin{itemize}
+\item Nommer les éléments : \textit{names()}
+\item Obtenir la longueur du facteur : \textit{length(fact1)}
+\item Accéder ç un élément par l'index : \textit{fact1[index]}
+\end{itemize}
+\item Obtenir l'attribut \textit{levels} d'un facteur : \textit{levels(fact1)}
+\item Rajouter un élément dans \textit{levels} : \textit{levels(fact1) = c(levels, "G")}
+\item Pas possible de faire d'opérations arithmétiques sur les facteurs puisqu'ils contiennent des données de types qualitatives.
+\item Accéder à des éléments particuliers : \textit{head()}, \textit{tail()}
+\item Si le facteur ne possède que des valeurs numériques il est interessant de travailler sur un vecteur. 
+\newline Convertir un facteur en vecteur : \textit{vect1 = as.vector(fact1)}
+\item Convertir un vecteur en facteur : \textit{fact1 = as.factor(vect1)}
+\item \textcolor{red}{Attention } à la convertion d'un facteur d'éléments numériques en vecteur en utilisant la fonction \textit{as.numeric()}.
+\newline En utilisant \textit{as.numeric()} renvoie alors la version numérique de l'identifiant interne des éléments du facteur.
+\newline Utiliser : \textit{vect1 = as.numeric(as.character(fact1))}
+\end{itemize}
+
 
 \end{document}
 
