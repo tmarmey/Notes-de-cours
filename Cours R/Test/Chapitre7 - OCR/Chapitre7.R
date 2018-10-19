@@ -1,4 +1,4 @@
-load("Chapitre7 - OCR/Chapitre7.RData")
+load("Chapitre7.RData")
 
 # Les vecteurs
 vect_num = vector("numeric", 10)
@@ -109,6 +109,7 @@ vecteur_a_facteur = as.factor(vecteur)
 
 ## Les matrices
 mat = matrix(nrow = 3, ncol = 5)
+mat2_3 = mat[2,3]
 Pierre <- c(8,9,15)
 Nathalie <- c(17,12,13)
 Jacques <- c(11,15,7)
@@ -116,3 +117,20 @@ Julie <- c(5,12,19)
 matrice = matrix(c(Pierre, Nathalie, Jacques, Julie), nrow = 4, ncol = 3, byrow=T)
 rownames(matrice) = c("Pierre", "Nathalie", "Jacques", "Julie")
 colnames(matrice) = c("Histoire", "Biologie", "Sport")
+matrice_pierre_Jacques = matrice[c("Pierre","Jacques"),1:2]
+matrice_names = matrice[sort(rownames(matrice))[1:3], colnames(matrice)[c(1,3)]]
+matrice_allLigne_histoire = matrice[,"Histoire"]
+
+  #Statistiques sur matrice
+matrice_moyenne_Nath = mean(matrice["Nathalie",])
+matrice_moyenne = mean(matrice)
+
+## Les dataframes
+data_taille = c(185, 178, 165, 171, 172)
+data_poids = c(82, 81, 55, 65, 68)
+data_QI = c(110, 108, 125, 99, 124)
+data_sexe = c("M","M","F","F","F")
+dataframe = data.frame(dataframe_taille = data_taille, dataframe_poids = data_poids, dataframe_QI = data_QI, dataframe_sexe = data_sexe)
+rownames(dataframe) = c("Paul", "Matthieu", "Camille", "Mireille", "Capucine")
+dataframe_col_poids = dataframe$poids
+#attach(dataframe) erreur non résolue

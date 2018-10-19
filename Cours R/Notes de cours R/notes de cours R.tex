@@ -286,9 +286,35 @@
 \item Sélectionner toutes les lignes : \textit{matrice[,y]}
 \newline Sélectionner toutes les colonnes : \textit{matrice[x,]}
 \newline Sélectionner toutes les lignes et colonnes : \textit{matrice[,]}
-\item
 \end{itemize}
 
+\subsubsection{Les tableaux de données (dataframes)}
+\begin{itemize}
+\item Les tableaux de données (dataframes en anglais) ressemblent beaucoup aux matrices. Ils ont pour vocation initiale de stocker différentes variables pour différents individus ou observations d'une population ou expérience.
+\item Les éléments d'une ligne ou d'une colonne peuvent être de types différents.
+\begin{flushleft}
+\includegraphics[scale=0.5]{dataframes}
+\end{flushleft}
+\item Créer des tableaux de données : \textit{data.frame()}, les arguments : 
+\begin{itemize}
+\item autant de vecteurs que de colonnes (le remplissage des dataframes se fait en colonne).
+\item (optionnel) \textit{row.names} pour spécifier le nom des lignes
+\item (optionnel) \textit{stringsAsFactors = TRUE/FASLE}, compostement à utiliser avec les vecteurs contenant des chaînes de caractères
+\begin{itemize}
+\item \textit{TRUE : } convertion auto de vecteurs en facteurs
+\item \textit{FALSE : } ces vecteurs restent des vecteurs
+\end{itemize}
+\end{itemize}
+\item Autre déclaration : 
+\newline \textit{data.fram(taille=vect1, poids=vect2, ..., row.names = c("A","B",...))}
+\item Comme les éléments d'une même colonne peuvent avoir des types différents il faudra parfois utiliser des facteurs et non des vecteurs pour spécifier le contenu d'une colonne.
+\item Accéder aux éléments des dataframe : mêmes méthodes que les matrices
+\item Méthodes spécifiques aux dataframes : 
+\begin{itemize}
+\item Extraire une colonne : \textit{dataframe\$colonne}
+\end{itemize}
+
+\end{itemize}
 
 \end{document}
 
