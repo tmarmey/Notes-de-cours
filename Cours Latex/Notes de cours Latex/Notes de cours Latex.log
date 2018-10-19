@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.17)  18 OCT 2018 11:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.17)  19 OCT 2018 11:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -717,36 +717,36 @@ File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 106.
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 115.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 120.
 <../Images/logoLatex.png, id=77, 341.02406pt x 263.48438pt>
 File: ../Images/logoLatex.png Graphic file (type png)
 <use ../Images/logoLatex.png>
-Package pdftex.def Info: ../Images/logoLatex.png  used on input line 120.
+Package pdftex.def Info: ../Images/logoLatex.png  used on input line 125.
 (pdftex.def)             Requested size: 136.4072pt x 105.39188pt.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 120.
+(Font)              <5> on input line 125.
 <../Images/logoTexmaker.png, id=78, 256.96pt x 256.96pt>
 File: ../Images/logoTexmaker.png Graphic file (type png)
 <use ../Images/logoTexmaker.png>
-Package pdftex.def Info: ../Images/logoTexmaker.png  used on input line 121.
+Package pdftex.def Info: ../Images/logoTexmaker.png  used on input line 126.
 (pdftex.def)             Requested size: 102.78217pt x 102.78217pt.
  [3]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 130.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 135.
  [4 <../Images/logoLatex.png> <../Images/logoTexmaker.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 130.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 135.
  (./Notes de cours Latex.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 130.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 130.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 135.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 135.
 Package rerunfilecheck Info: File `"Notes de cours Latex".out' has not changed.
 
 (rerunfilecheck)             Checksum: 9294A8134775A61E1CCE7F27CC26F32B;271.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 130.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 135.
  ) 
 Here is how much of TeX's memory you used:
- 7640 strings out of 494880
- 113125 string characters out of 6179600
+ 7644 strings out of 494880
+ 113154 string characters out of 6179600
  207959 words of memory out of 5000000
- 10844 multiletter control sequences out of 15000+600000
+ 10845 multiletter control sequences out of 15000+600000
  10793 words of font info for 38 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  44i,14n,49p,310b,485s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -760,10 +760,10 @@ type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmti12.pfb>
-Output written on "Notes de cours Latex.pdf" (4 pages, 351068 bytes).
+Output written on "Notes de cours Latex.pdf" (4 pages, 351571 bytes).
 PDF statistics:
- 157 PDF objects out of 1000 (max. 8388607)
- 134 compressed objects within 2 object streams
- 52 named destinations out of 1000 (max. 500000)
+ 161 PDF objects out of 1000 (max. 8388607)
+ 138 compressed objects within 2 object streams
+ 55 named destinations out of 1000 (max. 500000)
  56 words of extra memory for PDF output out of 10000 (max. 10000000)
 
