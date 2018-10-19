@@ -134,3 +134,17 @@ dataframe = data.frame(dataframe_taille = data_taille, dataframe_poids = data_po
 rownames(dataframe) = c("Paul", "Matthieu", "Camille", "Mireille", "Capucine")
 dataframe_col_poids = dataframe$poids
 #attach(dataframe) erreur non résolue
+
+## Les liste
+liste = list(Thib=c(1,2,3), Nico=10:6, Marou=seq(2,20,3))
+liste_names = names(liste)
+liste_longueur = length(liste)
+liste_thib = liste[["Thib"]]
+liste_thib2 = liste[["Thib"]][2] # 2ème élément car liste[["Thib]] est un vecteur
+liste_23 = liste[[2:3]]
+liste_lapply_min = lapply(liste,min, na.rm=T)
+liste_sapply_min = sort(sapply(liste, min, na.rm=T))
+liste_summary = sapply(liste, summary)
+
+  # Corrélation sur liste
+#liste_cor_thib_marou = cor.test(liste$Thib, liste$Nico) il faut que les éléments aient le même nombre de valeurs

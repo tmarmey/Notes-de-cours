@@ -49,6 +49,9 @@
 \item \textit{is.character(var)}
 \item \textit{is.numeric(var)}
 \item \textit{is.logical(var)}
+\item \textit{is.vector(var)}
+\item \textit{is.factor(var)}
+\item \textit{is.list(var)}
 \end{itemize}
 \item Spécifier le typage de la variable :
 \begin{itemize}
@@ -288,7 +291,7 @@
 \newline Sélectionner toutes les lignes et colonnes : \textit{matrice[,]}
 \end{itemize}
 
-\subsubsection{Les tableaux de données (dataframes)}
+\subsection{Les tableaux de données (dataframes)}
 \begin{itemize}
 \item Les tableaux de données (dataframes en anglais) ressemblent beaucoup aux matrices. Ils ont pour vocation initiale de stocker différentes variables pour différents individus ou observations d'une population ou expérience.
 \item Les éléments d'une ligne ou d'une colonne peuvent être de types différents.
@@ -313,7 +316,34 @@
 \begin{itemize}
 \item Extraire une colonne : \textit{dataframe\$colonne}
 \end{itemize}
+\end{itemize}
 
+\subsection{Les listes}
+\begin{itemize}
+\item Une liste est un ensemble d'éléments ordonnés les uns à la suite des autres dans une même structure indexée. Ces éléments peuvent être de types différents.
+\item Leur utilité est de regrouper dans un même objet une série d'autres objets appartenant par exemple à une même expérience ou observation. Il est aussi possible de traiter tous les éléments d'une même liste en une seule fois grâce à des fonctions adaptées.
+\item Les lignes ne sont pas nécessairement de la même longueur
+\item Traiter des jeux de données différents (nombre, type, etc) sans avoir à répéter la même procédure à chaque fois.
+\item Représentation d'une liste sous R (\textit{ex : }Présence de vecteurs de type numérique qui sont associés à un index dont le nom commence par un dollar (\$))
+\begin{flushleft}
+\includegraphics[scale=0.5]{liste}
+\end{flushleft}
+\item Créer une liste : \textit{list(nom1=vect1, nom2=vect2,...)}
+\item Longueur de la liste (nombre de lignes) : \textit{length(liste)}
+\item Noms de la liste (nom des lignes) : \textit{names(liste)}
+\item Indexation particulière puisque présence de double crochet : \textit{liste[[index/nom]]}
+\newline Les index peuvent être les indice des éléments ou les noms associés aux éléments. 
+\item Accéder à une ligne : \textit{liste\$nomLigne}
+\item Appliquer une même fonction aux différents éléments de la liste : 
+\newline \textit{lapply(x, FUN, ...)} (renvoie une liste)
+\begin{itemize}
+\item \textit{x : } nom de la liste à traiter
+\item \textit{FUN : } le nom de la fonction à appliquer à tous les éléments de \textit{x}
+\item \textit{... : } arguements optionnels seront les arguments additionnels que peut prendre \textit{FUN}, par exemple \textit{na.rm}
+\end{itemize}
+\item Même utilisation que \textit{lapply()} mais qui renvoie les résultats sous la forme d'objet plus utilisable comme vecteurs, matrices ou dataframes : \textit{sapply()}\\
+\item Grâce à \textit{sapply()} il est alors possible d'utiliser des fonctions telles que \textit{summary} : \textit{sapply(liste, summary)}
+\newline (possible avec \textit{lapply()} mais les résultats ne sont pas bien visibles
 \end{itemize}
 
 \end{document}
