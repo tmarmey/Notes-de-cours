@@ -21,7 +21,47 @@
 \tableofcontents
 \end{normalsize}
 
-\section{Initiation au Deep-Learning}
+\section{Initiation à Jupyter Notebook}
+
+\subsection{Importer des bibliothèques au kernel}
+\begin{itemize}
+\item \textit{import libraryName}
+\item S'il y a un problème de librairie : \textit{pip install libraryName}
+\begin{itemize}
+\item \textit{matplotlib}
+\item \textit{image}
+\end{itemize}
+\item \textit{os} : lire, écrire, ouvrir, manipuler des fichiers
+\begin{itemize}
+\item \textit{os.mkdir()}
+\item \textit{os.listdir()}
+\item \textit{[a for a in os.listdir('nameFolder') if '.jpg' in a or '.jpeg' in a]} (spécifier des fichiers)
+\item var.endswith('.extension/smth') (renvoie True/False)
+\item \textit{os.path.join(path,*paths)} : Join one or more path components intelligently. The return value is the concatenation of \textit{path} and any members of \textit{*paths}.
+\end{itemize}
+\item \textit{urlib.request} : intéragir avec les URLs
+\item \textit{ssl} (Secure Sockets Layer) : créer une connection sécurisé (crypté) entre un client et un serveur.
+\item \textit{matplotlib.pyplot as plt} : visualisation and chargement d'images
+\newline On peut ainsi faire référence à \textit{matplotlib.pyplot} seulement avec \textit{plt}. C'est une pratique courante.
+\begin{itemize}
+\item \textit{\%matplotlib inline} : la visualisation se fera dans notebook et non pas avec une fenêtre pop-up (méthode par défaut)
+\end{itemize}
+\item \textit{numpy as np} : permet de travailler sur des variables numériques plus facilement (images par exemple)
+\item 
+\end{itemize}
+
+\subsection{Généralité}
+\subsubsection{RGB Image Representation}
+\begin{itemize}
+\item \textit{plt.imshow(img)}
+\item \textit{img.shape} (lignes, colonnes, couleurs): dimension de la donnée (image)
+\item \textit{img.dtype} : donne le nombre de bits utilisé pour coder l'image
+\begin{itemize}
+\item \textit{uint8 : unsigned, int, 8} : pas de signe (toutes les valeurs seront positives), seulement des entiers, codés sur 8 bits (de 0 à 255)
+\end{itemize}
+\end{itemize}
+
+\section{Initiation au Deep-learning}
 \subsection{Général}
 \begin{itemize}
 \item \href{https://github.com/pkmital/CADL}{Cours GitHub Kadenze}
@@ -30,10 +70,17 @@
 \item Créer un environnement virtuel via anaconda : \textit{conda create -n nomFile anaconda}
 \item Installer TF dans cet env. : \textit{conda install -c conda-forge tensorflow}
 \item \textit{conda install jupyter notebook}
-\item Lancer env. virtuel : \textit{source activate jupyter}
+\item Lancer env. virtuel : \textit{source activate tensorflow} (\textit{tensorflow} est le nom donné à l'env. virtuel)
 \item Lancer Jupyter : \textit{jupyter notebook}
 \item Tester Tensorflow : \textit{python -c "import tensorflow as tf; print(tf.\textunderscore \textunderscore version\textunderscore \textunderscore)"}
-
+\item Quitter l'env. virtuel : \textit{source deactivate}
 \end{itemize}
+
+\subsection{CADL session}
+\subsubsection{Session-0}
+\begin{itemize}
+\item Dataset \href{http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html}{\textit{Celeb Net}}, à peu près 200 000 images de célébrités. 
+\end{itemize}
+
 
 \end{document}
