@@ -1,2 +1,2 @@
 \contentsline {section}{\numberline {1}Initiation au Deep-Learning}{1}{section.1}
-\contentsline {subsection}{\numberline {1.1}Subsection}{1}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.1}G\IeC {\'e}n\IeC {\'e}ral}{1}{subsection.1.1}
