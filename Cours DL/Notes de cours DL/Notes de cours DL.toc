@@ -1,8 +1,0 @@
-\contentsline {section}{\numberline {1}Initiation \IeC {\`a} Jupyter Notebook}{1}{section.1}
-\contentsline {subsection}{\numberline {1.1}Importer des biblioth\IeC {\`e}ques au kernel}{1}{subsection.1.1}
-\contentsline {subsection}{\numberline {1.2}G\IeC {\'e}n\IeC {\'e}ralit\IeC {\'e}}{2}{subsection.1.2}
-\contentsline {subsubsection}{\numberline {1.2.1}RGB Image Representation}{2}{subsubsection.1.2.1}
-\contentsline {section}{\numberline {2}Initiation au Deep-learning}{2}{section.2}
-\contentsline {subsection}{\numberline {2.1}G\IeC {\'e}n\IeC {\'e}ral}{2}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}CADL session}{2}{subsection.2.2}
-\contentsline {subsubsection}{\numberline {2.2.1}Session-0}{2}{subsubsection.2.2.1}
