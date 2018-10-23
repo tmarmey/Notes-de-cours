@@ -12,6 +12,30 @@
 \usepackage{subfig}
 \usepackage{float}
 \usepackage{ulem}
+
+\usepackage{listings}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+
 \title{Notes de cours : \LaTeX}
 \author{Thibaut Marmey}
 \date{Août 2018}
@@ -110,6 +134,19 @@ Ce document présente les commandes utiles pour créer un document \LaTeX.
 \item À droite : \textbackslash begin\{flushright\} ... \textbackslash end\{flushright\}
 \item À gauche : \textbackslash begin\{flushleft\} ... \textbackslash end\{flushleft\}
 \end{enumerate}
+\item Format code de langage de programmation : \href{https://ctan.org/tex-archive/macros/latex/contrib/listings/}{lien internet}\\
+Utiliser le package \textit{listings}
+\begin{lstlisting}
+// Hello.java
+import javax.swing.JApplet;
+import java.awt.Graphics;
+
+public class Hello extends JApplet {
+    public void paintComponent(Graphics g) {
+        g.drawString("Hello, world!", 65, 95);
+    }    
+}
+\end{lstlisting}
 \end{enumerate}
 
 \section{Basic Image management}
