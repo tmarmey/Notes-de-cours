@@ -16,6 +16,7 @@
 \definecolor{mauve}{rgb}{0.58,0,0.82}
 
 \lstset{frame=tb,
+  backgroundcolor=\color[rgb]{0.9,0.9,0.9},
   language=Python,
   aboveskip=3mm,
   belowskip=3mm,
@@ -148,5 +149,122 @@ The data is concentrated between two values. The effect of normalizing : most of
 \end{itemize}
 \end{itemize}
 
+\section{Tensorflow Basics}
+\subsection{Basics}
+\begin{itemize}
+\item Working with Google's Library for Numerical Computation, TensorFlow
+\item Different approach for doing the things above.
+\item Instead of computing things immediately, we first define things that we want to compute later using what's called a \textit{Graph}.
+\item Import the tensorflow library
+\begin{lstlisting}
+import tensorflow as tf
+\end{lstlisting}
+\item Range of numbers 
+\begin{itemize}
+\item with \textit{numpy} :
+\begin{lstlisting}
+np.linspace(-n, n, nbSubIntervals) #return list of 100 float64
+\end{lstlisting}
+\item with \textit{Tensorflow} :
+\begin{lstlisting}
+x = tf.linspace(-n,n,nbSubIntervals)
+#return Tensor("LinSpace:0", shape=(100,), dtype=float32)
+\end{lstlisting}
+\begin{itemize}
+\item \textit{LinSpace} : name
+\item \textit{shape} : dimension and the number of values
+\item \textit{dtype} : type of the values
+\end{itemize}
+\end{itemize}
+\item \textit{tf.Tensor} and \textit{numpy.array} return different type of values.\\
+No values printed because it actually hasn't computed its values yet. It just refers to the output of a \textit{tf.Operation}, already added to TF's default computational \textbf{graph}.\\
+The result is the returned \textbf{Tensor object}.
+\item Inspect "default" graph where all the operation have been added :
+\begin{lstlisting}
+tf.get_default_graph()
+\end{lstlisting}
+\begin{itemize}
+\item Get the list of all added operation.
+\begin{lstlisting}
+[op.name for op in g.get_operations]
+\end{lstlisting}
+\end{itemize}
+\item The result of a \textit{tf.Operation} is a \textit{tf.Tensor}
+\item Create a \textit{tf.Session} to actually compute anything. It is responsible for evaluating the \textit{tf.Graph}.
+\begin{lstlisting}
+sess = tf.Session()	#create session
+#compute anything created in the tensorflow graph
+commputed_x = sees.run()
+sess.close()	#close session
+\end{lstlisting}
+\item In iPython's interactive console, create an \textit{tf.InteractiveSession}
+\begin{lstlisting}
+sess = tf.InteractiveSession()
+#The session is open for the rest of the lecture in Jupyter
+x.eval()
+\end{lstlisting}
+\item Access to the shape : \textit{x.get\_shape()}
+\item Create Gaussian curve (also refered by \textit{bell curve} or \textit{normal curve}. It should resemble a normalized histogram. It needs two variables \textit{the mean value} (the curve is centred on it) and \textit{the standard deviation}.
+\begin{lstlisting}
+mean = 0.0
+sigma = 1.0
+z = (tf.exp(tf.negative(tf.pow(x - mean, 2.0) / (2.0 * tf.pow(sigma, 2.0)))) * (1.0 / (sigma * tf.sqrt(2.0 * 3.1415))))
+\end{lstlisting}
+Nothing has been computed. Just added operations to TF's graph. If we want the value or output, we have to ask the part of the graph we are interested. 
+\item Interactive session is already created, call the \textit{eval()} function on the name of the  interested Tensor.
+\end{itemize}
+
+\subsection{Convolution}
+\begin{itemize}
+\item Creating a 2-D Gaussian Kernel. Can be done by multiplying a vector by its transpose.\\
+\textit{tf.reshape(tensor, list)}
+\begin{lstlisting}
+# Let's store the number of values in our Gaussian curve.
+ksize = z.get_shape().as_list()[0]
+# Let's multiply the two to get a 2d Gaussian
+z_2d = tf.matmul(tf.reshape(z, [ksize, 1]), tf.reshape(z, [1, ksize]))
+# Execute the graph
+plt.imshow(z_2d.eval())
+\end{lstlisting}
+\item Common operation in DL : \textbf{convolution}\\
+A way of filtering information. \href{http://setosa.io/ev/image-kernels/}{Here a link to visualize gaussian filters.}
+\item Import a RGB image and convert it in a grayscale image with \textit{scikit-image} library.
+\begin{lstlisting}
+from skimage import color
+from skimage import io
+img = color.rgb2gray(io.imread('file')).astype(np.float32)
+# Think to convert in np.float32 !
+plt.imshow(img, cmap='gray')
+\end{lstlisting}
+The shape of \textit{img} is 2D. For image convultion with TF we need the batch dimension (N*H*W*C). With one grayscale image the shape is 1*H*W*1 (1 image, 1 channel) .\\
+Let's use the TF reshape function :
+\begin{lstlisting}
+img_4d = tf.reshape(img, [1, img.shape[0], img.shape[1], 1])
+#Tensor("Reshape_50:0", shape=(1, 1920, 1920, 1), dtype=float32)
+# float32 ok !
+\end{lstlisting}
+\item Reshape Gaussian Kernel to 4d (batch dimension) but the kernel dimension is different : \\
+\textit{Kernel Height * K\_W * Number of Input Channels * Num of Output Channels}
+\begin{lstlisting}
+z_4d = tf.reshape(z_2d, [ksize, ksize, 1, 1])
+\end{lstlisting}
+\item Convolve image with Gaussian Kernel
+\begin{lstlisting}
+convolfed = tf.nn.conv2D(img_4D, strides=[1,1,1,1], pading='SAME')
+\end{lstlisting}
+\begin{itemize}
+\item \textit{strides} : how to move our kernel across the image. Basically, two sets of parameters :
+\begin{itemize}
+\item \textbf{}[1, 1, 1, 1], which means, we are going to convolve every single image, every pixel, and every color channel by whatever the kernel is.
+\item \textbf{}[1, 2, 2, 1], which means, we are going to convolve every single image, but every other pixel, in every single color channel.
+\end{itemize}
+\item \textit{padding} : what to do at the borders :
+\begin{itemize}
+\item \textit{'SAME'}, same dimensions as the original image (same dimensions going in and going out)
+\item \textit{'VALID'}, the dimensions going out will change
+\end{itemize}
+\end{itemize}
+\item Stopped at \textbf{Modulating the Gaussian with a Sine Wave to create Gabor Kernel}
+\end{itemize}
 
 \end{document}
