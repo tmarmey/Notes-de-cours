@@ -116,11 +116,36 @@ Subsctracting the mean and dividing by the standard deviation.
 \begin{lstlisting}
 flattened = data.ravel()
 \end{lstlisting}
-\item Visualize the \textbf{"distribution"}, or range and frequence of possible values. This tell us if \textbf{the data is predictable or not}
+\item Visualize the \textbf{"distribution"}, or range and frequence of possible values. This tell us if \textbf{the data is predictable or not}.\\
+\textit{plt.hist(data.ravel(), n} takes the min and max values of the \textit{data} array, and divide this interval in \textit{n} subintervals.
 \begin{lstlisting}
 plt.hist(flattened.ravel(), 255) #values are grouping in 255 bins
 \end{lstlisting}
 It tells us if something seems to happen more than anything else. If it does, the neural network will take advantage of that.
+\item Normalization :
+\begin{lstlisting}
+plt.hist(((data[0] - mean_img) / std_img).ravel(), bins)
+\end{lstlisting}
+The data has been squished into a peak. Change the scale of the hist.\\
+The data is concentrated between two values. The effect of normalizing : most of the data will be around 0, where some deviations of it will follow between the two values.\\
+\begin{minipage}{\linewidth}
+  \begin{figure}[H]
+  \centering
+    \subfloat[]{\includegraphics[scale=0.4]{normalizationPeak}}\hspace{1cm}
+    \subfloat[]{\includegraphics[scale=0.4]{normalizationPeakScaled}}
+  \end{figure}
+\end{minipage}
+\item If the normalization doesn't look like this :
+\begin{itemize}
+\item get more data to calculate our mean/std deviation
+\item try another method of normalization
+\item not bother with normalization at all
+\end{itemize}
+\item Other options of normalization :
+\begin{itemize}
+\item local contrast normalization for images
+\item PCA based normalization
+\end{itemize}
 \end{itemize}
 
 
