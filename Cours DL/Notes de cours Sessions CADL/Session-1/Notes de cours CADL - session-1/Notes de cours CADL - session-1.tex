@@ -204,7 +204,7 @@ sess = tf.InteractiveSession()
 x.eval()
 \end{lstlisting}
 \item Access to the shape : \textit{x.get\_shape()}
-\item Create Gaussian curve (also refered by \textit{bell curve} or \textit{normal curve}. It should resemble a normalized histogram. It needs two variables \textit{the mean value} (the curve is centred on it) and \textit{the standard deviation}.
+\item Create Gaussian curve (also refered by \textit{bell curve} or \textit{normal curve)}. It should resemble a normalized histogram. It needs two variables \textit{the mean value} (the curve is centred on it) and \textit{the standard deviation}.
 \begin{lstlisting}
 mean = 0.0
 sigma = 1.0
@@ -226,6 +226,7 @@ z_2d = tf.matmul(tf.reshape(z, [ksize, 1]), tf.reshape(z, [1, ksize]))
 # Execute the graph
 plt.imshow(z_2d.eval())
 \end{lstlisting}
+\includegraphics[scale=0.5]{gaussianKernel}
 \item Common operation in DL : \textbf{convolution}\\
 A way of filtering information. \href{http://setosa.io/ev/image-kernels/}{Here a link to visualize gaussian filters.}
 \item Import a RGB image and convert it in a grayscale image with \textit{scikit-image} library.
@@ -236,7 +237,7 @@ img = color.rgb2gray(io.imread('file')).astype(np.float32)
 # Think to convert in np.float32 !
 plt.imshow(img, cmap='gray')
 \end{lstlisting}
-The shape of \textit{img} is 2D. For image convultion with TF we need the batch dimension (N*H*W*C). With one grayscale image the shape is 1*H*W*1 (1 image, 1 channel) .\\
+The shape of \textit{img} is 2D. For image convultion with TF we need the batch dimension (N*H*W*C). With one grayscale image the shape is 1*H*W*1 (1 image, 1 channel).\\
 Let's use the TF reshape function :
 \begin{lstlisting}
 img_4d = tf.reshape(img, [1, img.shape[0], img.shape[1], 1])
@@ -264,7 +265,85 @@ convolfed = tf.nn.conv2D(img_4D, strides=[1,1,1,1], pading='SAME')
 \item \textit{'VALID'}, the dimensions going out will change
 \end{itemize}
 \end{itemize}
-\item Stopped at \textbf{Modulating the Gaussian with a Sine Wave to create Gabor Kernel}
+\item Modulating the Gaussian with a Sine wave to create Gabor Kernel\\
+Convolution kernel called a Gabor : like the Gaussian Kernel but using a sine wave to modulate.
+\item Create an interval from -n to +n standard deviations with nb subintervals and the sin wave.
+\begin{lstlisting}
+xs = tf.linspace(-n, +n, nb)
+ys = tf.sin(xs)
+ys = tf.reshape(ys, [ksize, 1])
+ones = tf.ones((1, ksize))
+wave = tf.matmul(ys, ones)
+\end{lstlisting}
+\item Create the Gabor Kernel with the sin wave created before
+\begin{lstlisting}
+gabor = tf.multiply(wave, z_2d) #z_2d 2d-Gaussian
+# tf.multiply() does element-wise multiplication
+# tf.matmul() does matrix multiplication
+\end{lstlisting}
+\includegraphics[scale=0.5]{gaborKernel}
+\item Placeholders \textit{tf.placeholder(type, shape= , name=)} : specifying in our graph which elements we wanted to be specified later. Not sure what these are yet but we know they will fit in the graph (generally the input and output of the network).
+\item Rewrite convolution using placeholder for the image and the kernel and setting image dimensions to \textit{None*None} (special for placeholders).
+\begin{lstlisting}
+# This is a placeholder which will become part of the tensorflow graph, but which we have to later explicitly define whenever we run/evaluate the graph.
+img = tf.placeholder(tf.float32, shape=[None, None], name='img')
+\end{lstlisting}
+\item Reshape 2d image to a 3d tensor and again to batch dimension using \\
+\textit{tf.expand\_dims(img, axis)}.\\
+At the axis the channel dimension of 1 is added.
+\begin{lstlisting}
+# before dim : H * W
+img_3d = tf.expand_dims(img, 2)
+# img_3d.get_shape() = H * W * 1
+img_4d = tf.expand_dims(img_4d, 0)
+# img_4d.get_shape() = 1 * H * W * 1
+\end{lstlisting}
+\item Create another set of placeholders for Gabor's parameters
+\begin{lstlisting}
+mean = tf.placeholder(tf.float32, name='mean')
+sigma = tf.placeholder(tf.float32, name='sigma')
+ksize = tf.placeholder(tf.float32, name='ksize')
+\end{lstlisting}
+\item Redo the commands to build 2d gaussian kernel, sin wave, and finally \textit{gabor\_4d} :
+\begin{lstlisting}
+gabord_4d = tf.reshape(gabor, [ksize, ksize, 1,1])
+\end{lstlisting}
+\item At the end, do the convolution :
+\begin{lstlisting}
+convolved = tf.nn.conv2d(img_4d, gabor_4d, strides=[1, 1, 1, 1], padding='SAME', name='convolved')
+convolved_img = convolved[0, :, :, 0]
+\end{lstlisting}
+\item At this point, not able to compute the convolution \textit{convolved\_img.eval()} because we have to specify all the placeholders required for the computation.\\
+Get the error : "feed value for placeholder tensor".
+\item Feed a value :
+\begin{lstlisting}
+res = convolved_img.eval(feed_dict={
+		img: data.camera(), 
+		mean:0.0, sigma:1.0, 
+		ksize:100
+		})
+\end{lstlisting}
+\end{itemize}
+
+\section{Homework}
+\subsection{Create a small dataset}
+\begin{itemize}
+\item Use extension of chrome web store : \href{https://chrome.google.com/webstore/detail/download-all-images/ifipmflagepipjokmbdecpmjbibjnakm?hl=en}{link}
+\item Dataset download : images with cats
+\item Load the dataset and create a 4d array (batch dimension):
+\begin{lstlisting}
+# load image from directory
+filenames = [os.path.join('dirname', fname) for fname in os.listdir(dirname)]
+# In filenames, we have the link of each pictures
+# Read every filename as an RGB image
+imgs = [plt.imread(fname)[:,:,:3] for fname in filenames]
+# Crop the picture to square and the same size (size, size)
+------
+# Create the 4-D array like (number of images * H * W * color)
+# And convert in np.float32
+imgs = np.array(imgs).astype(np.float32)
+\end{lstlisting}
+
 \end{itemize}
 
 \end{document}
