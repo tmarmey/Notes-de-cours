@@ -1,0 +1,60 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\graphicspath{{../Images/}}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{listings}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  backgroundcolor=\color[rgb]{0.93,0.93,0.93},
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\author{Thibaut Marmey}
+
+\title{Notes de cours CADL - session-2}
+
+\begin{document}
+	\maketitle
+
+\begin{scriptsize} \begin{itemize}
+\item The basic components of a neural network
+\item How to use gradient descent to optimize parameters of a neural network
+\item How to create a neural network for performing regression
+\end{itemize}\end{scriptsize}
+
+\begin{normalsize}
+\tableofcontents
+\end{normalsize}
+
+\section{Introduction}
+\subsection{Generalities}
+\begin{itemize}
+\item Use data and gradient descent to teach the network what the values of the parameters of the network should be.
+\item Idea of machine learning : letting the machine learn from the data.
+\item We are interested in letting the computer figure out what representations it needs in order to better describe the data and some objective we've defined.
+\end{itemize}
+\end{document}
