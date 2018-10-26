@@ -57,4 +57,55 @@
 \item Idea of machine learning : letting the machine learn from the data.
 \item We are interested in letting the computer figure out what representations it needs in order to better describe the data and some objective we've defined.
 \end{itemize}
+\subsection{Gradient Descent}
+\begin{itemize}
+\item Operation of the network are meant to transform the input data into something meaningful that we want the network to learn about.
+\item Parameters of the NW are random so output is random as well.
+\item If we need specific output, we can use "Gradient Descent" : way to optimize set of parameters.
+\end{itemize}
+\subsection{Defining Cost}
+\begin{itemize}
+\item Mesure of the "error"
+\item Exemple : recognize apple or orange. Random network spit ou random 0s or 1s for apples and oranges. We can define :
+\begin{itemize}
+\item if the network predicts a 0 for an orange, then the error is 0. If the network predicts a 1 for an orange, then the error is 1. 
+\item And vice-versa for apples. If it spits out a 1 for an apple, then the error is 0. If it spits out a 0 for an apple, then the error is 1. 
+\end{itemize}
+\item Defining error in terms of our parameters :
+\begin{equation} error = network(image) - true\_label 
+\end{equation}
+\begin{equation} network(image) = predicted\_label
+\end{equation}
+\begin{equation} E = f(X) - y
+\end{equation}
+\end{itemize}
+\subsection{Minimizing Error}
+\begin{itemize}
+\item Feed the network many images (100 for e.g) to see what the network is doing on average.
+\item Changing network's parameters can have effect on the error.
+\item The error provides a "training signal" or a measure of the "loss" or our network.
+\item Assumptions in assuming our funtion is continuous and differentiable. 
+\item Gradiant descent in a nutshell : "Error", "Cost", "Loss", or "Training Signal"
+\end{itemize}
+\subsection{Backpropagation}
+\begin{itemize}
+\item  The gradient is just saying, how does the error change at the current set of parameters.
+\item To figure out what is the gradiet we use backpropagation. Whatever differences that output has with the output we wanted it to have, gets \textit{backpropagated} to every single param in our network.
+\item Backprop is an effective way to find the gradient. Uses the \textit{chain rule} to find the gradian of the error.
+\item \textit{y = mx + b} linear function. The slope or gradian is \textit{m}.
+\item The process described : 
+\begin{equation} \theta = \theta - \eta * \nabla_\theta * J(\theta)
+\end{equation}
+\begin{itemize}
+\item $\theta$ : parameters
+\item $\eta$ : gradient, with repect to parameters $\theta$, $\nabla_\theta$
+\item J : error
+\item $\eta$ : learning rate describes how far along this gradient we should travel, typically value between 0.01 to 0.00001
+\end{itemize}
+\end{itemize}
+\subsection{Local Minima/Optima}
+\begin{itemize}
+\item 
+\end{itemize}
+
 \end{document}
