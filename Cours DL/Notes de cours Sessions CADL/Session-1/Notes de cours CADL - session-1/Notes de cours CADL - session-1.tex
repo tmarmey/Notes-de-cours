@@ -16,7 +16,7 @@
 \definecolor{mauve}{rgb}{0.58,0,0.82}
 
 \lstset{frame=tb,
-  backgroundcolor=\color[rgb]{0.9,0.9,0.9},
+  backgroundcolor=\color[rgb]{0.93,0.93,0.93},
   language=Python,
   aboveskip=3mm,
   belowskip=3mm,
@@ -343,7 +343,91 @@ imgs = [plt.imread(fname)[:,:,:3] for fname in filenames]
 # And convert in np.float32
 imgs = np.array(imgs).astype(np.float32)
 \end{lstlisting}
-
+\item Open the session for Jupyter Notebook
+\begin{lstlisting}
+sees = tf.InteractvieSession()
+\end{lstlisting}
+\end{itemize}
+\subsection{Compute the mean}
+\begin{itemize}
+\item Calculate the mean with \textit{tf.reduce\_mean(input\_tensor, axis, ...)} to get th emean color image (size,size,3). Get the mean of every pixel.
+\begin{lstlisting}
+mean_img_op = tf.mean_reduse(imgs, axis=0)
+\end{lstlisting}
+\item Run operation in the session
+\begin{lstlisting}
+mean_img = sess.run(mean_img_op)
+\end{lstlisting}
+\item Create \textit{assert} debuging error to be sure of what we have as input or output like the size of the image we are working on
+\begin{lstlisting}
+assert(mean_img_op == (size,size,3))
+\end{lstlisting}
+if plotting the \textit{mean\_img} we have :
+\begin{itemize}
+\item something "regular" and "predictable" means the dataset is good
+\item otherwise gray blob, not so much to see : not a lot in common un the dataset, or need to work deeper to find something else, or the dataset is too small to have something relevant.
+\end{itemize}
+\end{itemize}
+\subsection{Compute the Standard Deviation}
+\begin{itemize}
+\item Compute the standard deviation on each color channel. This means to keep the 4d dimensions of the \textit{imgs} data.\\
+std formula : $\sigma = \sqrt{\dfrac{1}{N}\sum_{i=1}^{N} (x_i - \mu)^2}$
+\begin{itemize}
+\item \textit{N} : number of image
+\item $x_i$ : image i
+\item $\mu$ : mean of the images of the dataset
+\end{itemize}
+\begin{lstlisting}
+# Calcul of mu
+mean_img_4d = tf.reduce_mean(imgs, axis=0, keepdims=True)
+# keep_dims = True ask the output to be to the same dimension of the input (so 3 color channels)
+# Do the substraction x_i - mu
+substraction = img - mean_img_4d
+# Application of the formula
+std_img_op = tf.sqrt(tf.reduce_mean((substraction * substraction), axis=0))
+# Computation of the std using the session
+std_img = sess.run(std_img_op)
+\end{lstlisting}
+\end{itemize}
+\subsection{Normalize the Dataset}
+\begin{itemize}
+\item Normalization formula : \textit{(imgs - mean\_img)/std\_img}
+\item Normalization is to center the data and make sure the range is similar in order to get stable gradients.
+\item Batch normalization : subtraction per channel uses to center the data around zero mean for each channel (R,G,B). Helps network to learn faster since gradients act uniformly for each channel.
+\end{itemize}
+\subsection{Convolve the Dataset}
+\begin{itemize}
+\item Build a "hand-crafted" feature detector : Gabor Kernel. The shape of a 4d kernel is : \textit{(K\_H, K\_W, Channel input, Channel output)}. With this tutorial we can use :
+\begin{lstlisting}
+ksize = 32
+# Channel input = 3 (R, G, B)
+kernel = np.concatenate([utils.gabor(ksize)[:,:,np.newaxis] for i in range(3)], axis=2)
+kernel_4d = np.reshape(kernel, [ksize, ksize, 3, 1])
+convolved = utils.convolve(imgs, kernel_4d)
+# function from tutorial using tf.nn.conv2d(img, kernel, strides, padding) 
+\end{lstlisting}
+\end{itemize}
+\subsection{Sort the Dataset}
+\begin{itemize}
+\item Use the mean value of each convolved image's output for sorting.
+\begin{itemize}
+\item Calculate the sum value : \textit{tf.reduce\_sum} of each image\\
+Calculate the mean value : \textit{tf.reduce\_mean} of each image
+\begin{lstlisting}
+# From 100 3d images (100*100*1C) we want to have 100 1d vectors
+flattened = tf.reshape(convolved, [100, 100*100])
+# 100 sum results of the 1d vetors
+values = tf.reduce_sum(flattened, axis=1)
+\end{lstlisting}
+\item Sort the images by the sum values with \textit{tf.nn.top\_k} (returns the values [0] and the indexes [1]).
+\begin{lstlisting}
+idxs_op = tf.nn.top_k(values, k=100)[1]
+idxs = sess.run(idxs_op)
+# without np.array sorted_imgs is a list and we want numpy.ndarray type
+sorted_imgs = np.array(imgs[idx_i] for idx_i in idxs])
+\end{lstlisting}
+\end{itemize}
+\item What we have : "low level" eges essentially in our case are not very good at describing the really interesting sapects of the dataset.
 \end{itemize}
 
 \end{document}
