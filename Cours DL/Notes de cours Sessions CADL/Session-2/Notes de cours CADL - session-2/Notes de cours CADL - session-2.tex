@@ -250,8 +250,41 @@ train(X, Y, Y_pred)
 \subsection{Over vs. Underfitting}
 \begin{itemize}
 \item To approximate curve function we use polynomial function. We will try to learn the influence of each degree of this function
+\begin{lstlisting}
+Y_pred = tf.Variable(tf.random_normal([1]), name='bias')
+for pow_i in range(1,4):
+   W = tf.Variable(
+       tf.random_normal([1], stddev=0.1, name='weight_%d' % pow_i)
+   Y_pred = tf.add(tf.multiply(tf.pow(X, pow_i), W, Y_pred)
+\end{lstlisting}
+\end{itemize}
+\subsection{Introducing Nonlinearities / Activation Function}
+\begin{itemize}
+\item Use of non-linear functions also called activation functions. In every compex DL algorithm there are series of linear, followed by nonlinear operations.
+\item There are 3 functions used the most : \textit{tanh(), sigmoid(), relu()}\\
+\includegraphics[scale=0.5]{nonLinearities}
+\item We modify the matrix multiplication by adding the non-linearity
+\begin{lstlisting}
+h = tf.nn.tanh(tf.multiply(tf.expland_dims(X,1), W) + b, name='h')
+\end{lstlisting}
+\item \textbf{Fully-connected network} : every neuron is multiplied by every single input value. We multiply our input by a matrix, add a bias, and then apply a non-linearity.
+\end{itemize}
+\subsection{Going Deeper}
+\begin{itemize}
+\item Give useful name within \textit{scopes}. Otherwise the names of the operations are not helpful.
+\begin{lstlisting}
+W = tf.get_variable( name='W', xhape=[n_input, n_output],
+    initializer=tf.random_normal_initializer(mean=0.0, stddev=0.1))
+\end{lstlisting}
+\item This new initializer will create new random value when\\
+\textit{sess.run(tf.global\_variables\_initializer())} is called
+\item Possible to visualize the network using \textbf{Tensorboard}.
 \end{itemize}
 
-
+\section{Image Inpainting}
+\subsection{Description}
+\begin{itemize}
+\item 
+\end{itemize}
 
 \end{document}

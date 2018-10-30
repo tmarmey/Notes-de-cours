@@ -10,3 +10,8 @@
 \BOOKMARK [2][-]{subsection.2.2}{Defining cost}{section.2}% 10
 \BOOKMARK [2][-]{subsection.2.3}{Training Parameters}{section.2}% 11
 \BOOKMARK [2][-]{subsection.2.4}{Stochastic and Mini Batch Gradient Descent}{section.2}% 12
+\BOOKMARK [2][-]{subsection.2.5}{Over vs. Underfitting}{section.2}% 13
+\BOOKMARK [2][-]{subsection.2.6}{Introducing Nonlinearities / Activation Function}{section.2}% 14
+\BOOKMARK [2][-]{subsection.2.7}{Going Deeper}{section.2}% 15
+\BOOKMARK [1][-]{section.3}{Image Inpainting}{}% 16
+\BOOKMARK [2][-]{subsection.3.1}{Description}{section.3}% 17
