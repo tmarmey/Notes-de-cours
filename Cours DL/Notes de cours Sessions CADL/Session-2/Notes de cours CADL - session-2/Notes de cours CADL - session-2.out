@@ -4,4 +4,9 @@
 \BOOKMARK [2][-]{subsection.1.3}{Defining Cost}{section.1}% 4
 \BOOKMARK [2][-]{subsection.1.4}{Minimizing Error}{section.1}% 5
 \BOOKMARK [2][-]{subsection.1.5}{Backpropagation}{section.1}% 6
-\BOOKMARK [2][-]{subsection.1.6}{Local Minima/Optima}{section.1}% 7
+\BOOKMARK [2][-]{subsection.1.6}{Local Minima/Optima and learning Rate}{section.1}% 7
+\BOOKMARK [1][-]{section.2}{Creating a Neural Network}{}% 8
+\BOOKMARK [2][-]{subsection.2.1}{Exemple with sine wave}{section.2}% 9
+\BOOKMARK [2][-]{subsection.2.2}{Defining cost}{section.2}% 10
+\BOOKMARK [2][-]{subsection.2.3}{Training Parameters}{section.2}% 11
+\BOOKMARK [2][-]{subsection.2.4}{Stochastic and Mini Batch Gradient Descent}{section.2}% 12

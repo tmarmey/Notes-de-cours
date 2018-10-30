@@ -98,14 +98,160 @@
 \end{equation}
 \begin{itemize}
 \item $\theta$ : parameters
-\item $\eta$ : gradient, with repect to parameters $\theta$, $\nabla_\theta$
+\item $\nabla$ : gradient, with repect to parameters $\theta$, $\nabla_\theta$
 \item J : error
 \item $\eta$ : learning rate describes how far along this gradient we should travel, typically value between 0.01 to 0.00001
 \end{itemize}
 \end{itemize}
-\subsection{Local Minima/Optima}
+\subsection{Local Minima/Optima and learning Rate}
 \begin{itemize}
-\item 
+\item Dilemma : find a local or global minima.
+\item The NW may have million of parameters, so the problem becomes more and more difficult.
+\item Wize choice of the learning rate : 
+\begin{itemize}
+\item To small we dont get any better cost where we started
+\item To big the cost goes up and down
+\end{itemize} 
 \end{itemize}
+
+\section{Creating a Neural Network}
+\subsection{Exemple with sine wave}
+\begin{itemize}
+\item Input X output y
+\item Here te input is values in an interval instead of images like before.
+\item The exemple is to create sine wave with uniform noise and create a neural network that is able to discover the sine wave.
+\begin{lstlisting}
+# Create data : sine wave with random noise in the interval
+n_obs = 1000
+xs = np.linscape(-n, n, n_obs)
+ys = np.sin(xs) + np.random.uniform(-0.5,0.5,n_obs)
+plt.scatter(xs, ys)
+\end{lstlisting}
+\item Train the NW to ginve any value on the x axis and have the value it should be on the y axis. (fundamental idea of regression : predicting some continuous output value given some continuous input value)
+\end{itemize}
+\subsection{Defining cost}
+\begin{itemize}
+\item Use of placeholder to define input and output values. Those variables will filled at the computation of the graph.
+\begin{lstlisting}
+X = tf.placeholder(tf.float32, name='X')
+Y = tf.placeholder(tf.float32, name='Y')
+\end{lstlisting}
+\item Create session and define the parameters center and close to 0 with \\
+\textit{tf.random\_normal(nb\_values, stddev=).eval()}
+\begin{lstlisting}
+sess = tf.InteractiveSession()
+n = tf.random_normal([1000], stddev=0.1).eval()
+\end{lstlisting}
+\item Create \textbf{varaibles} using \textit{tf.Variable}, it does need an initial value or we can call an initializer.
+\item Define two \textit{tf.Variable} for weight and bias
+\begin{lstlisting}
+W = tf.Variable(tf.random_normal([1], dtype=tf.float32, stddev=0.1), name='weight')
+B = tf.Variable(tf.constant([0], dtype=tf.float32), name='bias')
+# Scale input placholder X
+Y_pred = X * W + B
+\end{lstlisting}
+\item Use gradient descent to lean what the best value of \textit{W} and \textit{b}.
+\item Before that we have to know how to measure what the \textit{best} mean for what we try to do.
+\item Let's define the absolute \textit{distance(val1, val2)} from the predicted value to the assumed sine wave value.
+\begin{lstlisting}
+cost = distance(Y_pred, tf.sin(X))
+\end{lstlisting}
+\item We calculate the mean of the cost we have for every observation
+\begin{lstlisting}
+cost = tf.reduce_mean(distance(Y_pred, tf.sin(X))
+\end{lstlisting}
+\end{itemize}
+\subsection{Training Parameters}
+\begin{itemize}
+\item Use tensorflow optimizer 
+\begin{lstlisting}
+optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.01).minimize(cost)
+\end{lstlisting}
+\item Run the optimizer
+\begin{lstlisting}
+with tf.Session() as sess:
+   #initilization of all the tf.Variable
+   sess.run(tf.global_varables_initializer())
+   prev_training_cost = 0.0
+   for it_i in range(n_iterations):
+      sess.run(optimizer, feed_dict={X:xs, Y:ys})
+      training_cost = sess.run(cost, feed_dict={X:xs}) #...,session=sess)
+      
+      # each 10 iterations
+      if it_i % 10 == 0:
+         ys_pred = Y_pred.eval(feed_dict={X:xs})
+         # print stuff like training_cost and plots
+      
+      if np.abs(prev_training_cost - training_cost < 0.000001:
+         break # if local minima found
+        
+      prev_trianing_cost = training_cost
+\end{lstlisting}
+\item The output doesn't look like a sine wave at all. Actually it's only a line.
+\item Training vs Testing : Have to learn more about the different between training and testing networks.
+\end{itemize}
+\subsection{Stochastic and Mini Batch Gradient Descent}
+\begin{itemize}
+\item Tricks to find the best local minima : using \textit{mini-batches} of size \textit{batch\_size}.
+\begin{lstlisting}
+idxs = np.arrange(100) # it will be changed to make it random
+batch_size = 10
+n_batches = idxs // batch_size
+\end{lstlisting}
+\item Look some random subset of the datase because neural networks love order and would use it to its advantage. But order is irrelevant to our problem.
+\begin{lstlisting}
+idxs = np.random.permutation(idxs)
+\end{lstlisting}
+\item Generalise the entire dataset. We modify the code which runs the optomizer to include the mini-batches program.
+\begin{lstlisting}
+idxs = np.random.permutation(range(len(xs)))
+n_batches = len(idxs) // batch_size
+for batch_i in range(n_batches):
+   idxs_i = idxs[batch_i * batch_size: (batch_i+1) * batch_size]
+   sess.run(optimizer, feed_dict={X:xs[idxs_i], Y:ys[idxs_i]})
+training_cost = sess.run(cost, feed_dict={X:xs, Y:ys})
+\end{lstlisting}
+We get a better result : the line has a curve but it doesn't look like a sine wave.
+\item This method is :
+\begin{itemize}
+\item Mini-batches : small pieces of data where we perform gradient descent
+\item Stochastic : the order of the data is dandomized
+\end{itemize}
+\item Use a function of training
+\begin{lstlisting}
+def train(X, Y, Y_pred, n_iterations=100, batch_size=200, learning_rate=0.02):
+\end{lstlisting}
+\item To get better result we can have a bigger set of parameters.
+\item We are going to multiply our input by 100 values, creating an "inner layer" of 100 neurons.
+\begin{itemize}
+\item Define \textit{tf.Variables} : Weights (multiplication) and biais (addition)
+\begin{lstlisting}
+n_neurons = 100
+W = tf.Variable(tf.random_normal([1,n_neurons], stddev=0.1))
+b = tf.Variable(tf.constant(0, dtype=tf.float32, shape=[n_neurons])
+\end{lstlisting}
+\item Operation with matrix and add every neuron's output
+\begin{lstlisting}
+h = tf.matmul(tf.expand_dims(X, 1), W) + b)
+Y_pred = tf.reduce_sum(h, 1)
+\end{lstlisting}
+\item Retrain with new Y\_pred
+\begin{lstlisting}
+train(X, Y, Y_pred)
+\end{lstlisting}
+\end{itemize}
+\item It takes longer to compute and the result is not better. Our function is still linear but the cost is going up and down : good signe = we can reduce the learning rate
+\item Input's Representation : important to consider the kind of input we are working on. We don't treate the types of data in the same way like :
+\begin{itemize}
+\item sound using discrete fourier transform
+\item text using word histograms
+\end{itemize}
+\end{itemize}
+\subsection{Over vs. Underfitting}
+\begin{itemize}
+\item To approximate curve function we use polynomial function. We will try to learn the influence of each degree of this function
+\end{itemize}
+
+
 
 \end{document}
