@@ -59,7 +59,7 @@
 \end{itemize}
 \subsection{Gradient Descent}
 \begin{itemize}
-\item Operation of the network are meant to transform the input data into something meaningful that we want the network to learn about.
+\item Operations of the network are meant to transform the input data into something meaningful that we want the network to learn about.
 \item Parameters of the NW are random so output is random as well.
 \item If we need specific output, we can use "Gradient Descent" : way to optimize set of parameters.
 \end{itemize}
@@ -89,8 +89,8 @@
 \end{itemize}
 \subsection{Backpropagation}
 \begin{itemize}
-\item  The gradient is just saying, how does the error change at the current set of parameters.
-\item To figure out what is the gradiet we use backpropagation. Whatever differences that output has with the output we wanted it to have, gets \textit{backpropagated} to every single param in our network.
+\item  The gradient is just saying, how does the error changes at the current set of parameters.
+\item To figure out what is the gradian we use backpropagation. Whatever differences that output has with the output we wanted it to have, gets \textit{backpropagated} to every single param in our network.
 \item Backprop is an effective way to find the gradient. Uses the \textit{chain rule} to find the gradian of the error.
 \item \textit{y = mx + b} linear function. The slope or gradian is \textit{m}.
 \item The process described : 
@@ -118,7 +118,7 @@
 \subsection{Exemple with sine wave}
 \begin{itemize}
 \item Input X output y
-\item Here te input is values in an interval instead of images like before.
+\item Here the input is values in an interval instead of images like before.
 \item The exemple is to create sine wave with uniform noise and create a neural network that is able to discover the sine wave.
 \begin{lstlisting}
 # Create data : sine wave with random noise in the interval
@@ -127,7 +127,7 @@ xs = np.linscape(-n, n, n_obs)
 ys = np.sin(xs) + np.random.uniform(-0.5,0.5,n_obs)
 plt.scatter(xs, ys)
 \end{lstlisting}
-\item Train the NW to ginve any value on the x axis and have the value it should be on the y axis. (fundamental idea of regression : predicting some continuous output value given some continuous input value)
+\item Train the NW to give any value on the x axis and have the value it should be on the y axis. (fundamental idea of regression : predicting some continuous output value given some continuous input value)
 \end{itemize}
 \subsection{Defining cost}
 \begin{itemize}
@@ -142,7 +142,7 @@ Y = tf.placeholder(tf.float32, name='Y')
 sess = tf.InteractiveSession()
 n = tf.random_normal([1000], stddev=0.1).eval()
 \end{lstlisting}
-\item Create \textbf{varaibles} using \textit{tf.Variable}, it does need an initial value or we can call an initializer.
+\item Create \textbf{variables} using \textit{tf.Variable}, it does need an initial value or we can call an initializer.
 \item Define two \textit{tf.Variable} for weight and bias
 \begin{lstlisting}
 W = tf.Variable(tf.random_normal([1], dtype=tf.float32, stddev=0.1), name='weight')
@@ -150,7 +150,7 @@ B = tf.Variable(tf.constant([0], dtype=tf.float32), name='bias')
 # Scale input placholder X
 Y_pred = X * W + B
 \end{lstlisting}
-\item Use gradient descent to lean what the best value of \textit{W} and \textit{b}.
+\item Use gradient descent to learn what the best value of \textit{W} and \textit{b}.
 \item Before that we have to know how to measure what the \textit{best} mean for what we try to do.
 \item Let's define the absolute \textit{distance(val1, val2)} from the predicted value to the assumed sine wave value.
 \begin{lstlisting}
@@ -182,7 +182,7 @@ with tf.Session() as sess:
          ys_pred = Y_pred.eval(feed_dict={X:xs})
          # print stuff like training_cost and plots
       
-      if np.abs(prev_training_cost - training_cost < 0.000001:
+      if np.abs(prev_training_cost - training_cost < 0.000001):
          break # if local minima found
         
       prev_trianing_cost = training_cost
@@ -228,7 +228,7 @@ def train(X, Y, Y_pred, n_iterations=100, batch_size=200, learning_rate=0.02):
 \begin{lstlisting}
 n_neurons = 100
 W = tf.Variable(tf.random_normal([1,n_neurons], stddev=0.1))
-b = tf.Variable(tf.constant(0, dtype=tf.float32, shape=[n_neurons])
+b = tf.Variable(tf.constant(0), dtype=tf.float32, shape=[n_neurons])
 \end{lstlisting}
 \item Operation with matrix and add every neuron's output
 \begin{lstlisting}
@@ -240,8 +240,8 @@ Y_pred = tf.reduce_sum(h, 1)
 train(X, Y, Y_pred)
 \end{lstlisting}
 \end{itemize}
-\item It takes longer to compute and the result is not better. Our function is still linear but the cost is going up and down : good signe = we can reduce the learning rate
-\item Input's Representation : important to consider the kind of input we are working on. We don't treate the types of data in the same way like :
+\item It takes longer to compute and the result is not better. Our function is still linear but the cost is going up and down : good sign = we can reduce the learning rate
+\item Input's Representation : important to consider the kind of input we are working on. We don't treat the types of data in the same way like :
 \begin{itemize}
 \item sound using discrete fourier transform
 \item text using word histograms
@@ -254,13 +254,13 @@ train(X, Y, Y_pred)
 Y_pred = tf.Variable(tf.random_normal([1]), name='bias')
 for pow_i in range(1,4):
    W = tf.Variable(
-       tf.random_normal([1], stddev=0.1, name='weight_%d' % pow_i)
-   Y_pred = tf.add(tf.multiply(tf.pow(X, pow_i), W, Y_pred)
+       tf.random_normal([1], stddev=0.1), name='weight_%d' % pow_i)
+   Y_pred = tf.add(tf.multiply(tf.pow(X, pow_i), W), Y_pred)
 \end{lstlisting}
 \end{itemize}
 \subsection{Introducing Nonlinearities / Activation Function}
 \begin{itemize}
-\item Use of non-linear functions also called activation functions. In every compex DL algorithm there are series of linear, followed by nonlinear operations.
+\item Use of non-linear functions also called activation functions. In every complex DL algorithm there are series of linear, followed by nonlinear operations.
 \item There are 3 functions used the most : \textit{tanh(), sigmoid(), relu()}\\
 \includegraphics[scale=0.5]{nonLinearities}
 \item We modify the matrix multiplication by adding the non-linearity
@@ -273,7 +273,7 @@ h = tf.nn.tanh(tf.multiply(tf.expland_dims(X,1), W) + b, name='h')
 \begin{itemize}
 \item Give useful name within \textit{scopes}. Otherwise the names of the operations are not helpful.
 \begin{lstlisting}
-W = tf.get_variable( name='W', xhape=[n_input, n_output],
+W = tf.get_variable( name='W', shape=[n_input, n_output],
     initializer=tf.random_normal_initializer(mean=0.0, stddev=0.1))
 \end{lstlisting}
 \item This new initializer will create new random value when\\
@@ -284,7 +284,162 @@ W = tf.get_variable( name='W', xhape=[n_input, n_output],
 \section{Image Inpainting}
 \subsection{Description}
 \begin{itemize}
-\item 
+\item This NW will try to demonstrate how the NW we've created bedfore can realize more complicated tasks on the following image :\\
+\includegraphics[scale=0.3]{inPainting}
+\item We will teach the NW to go from the location on an image frame to a particular color.
+\item Given any position in an image, the NW will need to learn what color to paint.
+\item Start
+\begin{itemize}
+\item Declare input and output
+\begin{lstlisting}
+# positions in the image
+xs = []
+# coresponding colors
+ys = []
+\end{lstlisting}
+\item Storage
+\begin{lstlisting}
+# for loop on the image
+xs.append([row_i, col_i])
+ys.append(img[row_i,col_i])
+xs = np.array(xs)
+ys = np.array(ys)
+\end{lstlisting}
+\item Normalization
+\begin{lstlisting}
+xs = (xs - np.mean(xs)) / np.std(xs)
+\end{lstlisting}
+\end{itemize}
+\item Goint to use regression to predict the value of a pixel biven its (row, col) position.
+\item Place input and output in placeholder in which we specify the partially their shape
+\begin{lstlisting}
+X = tf.placeholder(tf.float32, shape=[None,2], name='X')
+Y = tf.placeholder(tf.float32, shape=[None,3], name='Y')
+\end{lstlisting}
+\end{itemize}
+\subsection{Building the Network}
+\begin{itemize}
+\item We are going to create a multi-layers NW.
+\item We take the \textit{linear()} function created previously.
+\begin{lstlisting}
+def linear(X, n_input, n_output, activation=None, scope=None):
+    with tf.variable_scope(scope or "linear"):
+        W = tf.get_variable(
+            name='W',
+            shape=[n_input, n_output],
+            initializer=tf.random_normal_initializer(mean=0.0, stddev=0.1))
+        b = tf.get_variable(
+            name='b',
+            shape=[n_output],
+            initializer=tf.constant_initializer())
+        h = tf.matmul(X, W) + b
+        if activation is not None:
+            h = activation(h)
+        return h
+\end{lstlisting}
+\item We use for loop to create the NW
+\begin{lstlisting}
+n_neurons = [2, 64, 64, 64, 64, 64, 64, 3]
+current_input =X
+for layer_i in range(1, len(n_neurons)):
+   current_input = linear(
+      X = current_input, # returned value of the function
+      n_input = n_neurons[layer_i - 1],
+      n_output = n_neurons[layer_i],
+      activation = tf.nn.relu if (layer_i+1) < len(n_neurons) else None,
+      scope = 'layer_'+str(layer_i))
+Y_pred = current_input
+\end{lstlisting}
+\end{itemize}
+\subsection{Training}
+\begin{itemize}
+\item Define the cost
+\begin{lstlisting}
+cost = tf.reduce_mean(tf.reduce_sum(distance(Y_pred, Y), 1))
+\end{lstlisting}
+\item Use another opitmizer \textit{AdamOptimizer} (in general better than \textit{GradientDescentOptimizer}). 
+\begin{lstlisting}
+optimizer = tf.train.AdamOpitmizer(0.001).minimize(cost)
+\end{lstlisting}
+\item Ready to launch the process
+\begin{itemize}
+\item Start the session
+\begin{lstlisting}
+with tf.Session() as sess:
+\end{lstlisting}
+\item Initialize variables (W and  b) in the graph so we can use them
+\begin{lstlisting}
+sess.run(tf.global_variables_initializer())
+prev_training_cost = 0.0
+\end{lstlisting}
+\item Loop for over number of iterations :
+\begin{lstlisting}
+for it_i in range(n_iterations):
+\end{lstlisting}
+\begin{itemize}
+\item Permutation of the input (randomness used for the optimizer)
+\begin{lstlisting}
+idxs = np.random.permutation(range(len(xs)))
+\end{lstlisting}
+\item Computation of the number of mini-batches
+\begin{lstlisting}
+n_batches = len(idxs) // batch_size
+\end{lstlisting}
+\item Loop for over the number of mini-batches
+\begin{lstlisting}
+for batch_i in range(n_batches):
+\end{lstlisting}
+\begin{itemize}
+\item Take the subinterval of input of the current mini-batch
+\begin{lstlisting}
+idxs_i = idxs[batch_i*batch_size: (batch_i+1)*batch_size]
+\end{lstlisting}
+\item Run the optimizer by feeding input X and output Y to calculate the parameters W and b
+\begin{lstlisting}
+sess.run(optimizer, feed_dict={X:xs, Y:ys})
+\end{lstlisting}
+\end{itemize}
+\item Compute the cost to visualize the progression
+\begin{lstlisting}
+training_cost = sess.run(cost, feed_dict={X:xs, Y:ys})
+print(it_i, training_cost)
+\end{lstlisting}
+\end{itemize}
+\item Visualize the result by plotting
+\begin{lstlisting}
+ys_pred = Y_pred.eval(feed_dict={X:xs}, session=sess)
+img = np.clip(ys_pred.reshape(img.shape), 0, 255).astype(np.uint8)
+\end{lstlisting}
+\end{itemize}
+\item The entire code
+\begin{lstlisting}
+n_iterations = 500
+batch_size = 50
+with tf.Session() as sess:
+    # Here we tell tensorflow that we want to initialize all
+    # the variables in the graph so we can use them
+    # This will set W and b to their initial random normal value.
+    sess.run(tf.global_variables_initializer())
+
+    # We now run a loop over epochs
+    prev_training_cost = 0.0
+    for it_i in range(n_iterations):
+        idxs = np.random.permutation(range(len(xs)))
+        n_batches = len(idxs) // batch_size
+        for batch_i in range(n_batches):
+            idxs_i = idxs[batch_i * batch_size: (batch_i + 1) * batch_size]
+            sess.run(optimizer, feed_dict={X: xs, Y: ys})
+
+        training_cost = sess.run(cost, feed_dict={X: xs, Y: ys})
+        print(it_i, training_cost)
+
+        if (it_i + 1) % 20 == 0:
+            ys_pred = Y_pred.eval(feed_dict={X: xs}, session=sess)
+            fig, ax = plt.subplots(1, 1)
+            img = np.clip(ys_pred.reshape(img.shape), 0, 255).astype(np.uint8)
+            plt.imshow(img)
+            plt.show()
+\end{lstlisting}
 \end{itemize}
 
 \end{document}
