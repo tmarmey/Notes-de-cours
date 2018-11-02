@@ -442,4 +442,107 @@ with tf.Session() as sess:
 \end{lstlisting}
 \end{itemize}
 
+\section{Homework}
+\subsection{Goals}
+\begin{itemize}
+\item Learn how to create Neural Network
+\item Learn to use a NN to paint a image
+\item Apply creative thinking to the inputs, outputs and definition of a NW
+\end{itemize}
+\subsection{Part One : Fully Connected Network}
+\begin{itemize}
+\item Create the operations for connecting an input to a NW, defined by a \textit{tf.placeholder}, to a series of fully connected, or linear, layers using the formula :
+\begin{equation}
+\textbf{H} = \phi(\textbf{XW + b})
+\end{equation}
+\begin{itemize}
+\item \textbf{H} : output layer representing the "hidden" activations of a network
+\item $\phi$ : linearity
+\item \textbf{X} : input to that layer
+\item \textbf{W} : layer's weight matirx
+\item \textbf{b} : layer's bias
+\end{itemize}
+\item The part \textbf{XW} is the most compicated part of the equation scaling and rotating our input.
+\item By stacking a lot of "linear" + "nonlinear" operations in a series, we can create a \textbf{deep neural network}.
+\item Choising nonlinearities : trial and error. Depends on the normalization scheme : the expected output.
+\item Keep in mind the functions \textit{relu}, \textit{sigmoïd} and \textit{tanh} for their properties expecially for the final output layer of the NW
+\subsubsection{Code}
+\begin{itemize}
+\item Create a placeholder for the input \textbf{X}
+\begin{lstlisting}
+X = tf.placeholder(dtype=tf.float32, shape=[None, 2], name='X')
+\end{lstlisting}
+\item Create the paramaters \textbf{W} and \textbf{b}
+\begin{lstlisting}
+W = tf.get_variable(dtype=tf.float32, shape=[2,20], intializer=tf.random_normal_initializer, name='W')
+b = tf.get_variable(dtype=tf.float32, shape=[20], intializer=tf.constant_initializer, name='b')
+\end{lstlisting}
+\item Matrix multiplication \textbf{XW} and addition with \textbf{b} : XW + b
+\begin{lstlisting}
+h = tf.matmul(X, W)
+h = tf.nn.bias_add(h,b)
+\end{lstlisting}
+\item Nonlinearity \textit{relu}
+\begin{lstlisting}
+h = tf.nn.relu(h, name='relu')
+\end{lstlisting}
+\item New "linear" function using \textit{tf.get\_scope}. If there is already a variable created with the same name, TF will raise an exception. Consider 3 solutions :
+\begin{itemize}
+\item In an interactive console
+\begin{lstlisting}
+tf.reset_default_graphe()
+\end{lstlisting}
+\item Typo error creating another layer with the same name
+\item Should use context manager when creating graphs and running sessions
+\begin{lstlisting}
+g = tf.Graph()
+with tf.Session(graph=g) as sess:
+   Y_pred, W = linerar(X, 2, 3, activation=tf.nn.relu)
+\end{lstlisting}
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\subsection{Part Two : Image Painting Network}
+\begin{itemize}
+\item Load an image
+\begin{lstlisting}
+img = plt.imshow(dirname)
+\end{lstlisting}
+\item Collect location of pixel and the related (R,G,B) colors using for loops. Convert the lists of input and output to arrays \textit{np.array()}
+\item Normalize the input \textit{xs}
+\begin{lstlisting}
+xs = (xs - np.mean(xs)) / np.std(xs)
+\end{lstlisting}
+\item Create \textit{placeholder} for the input and the true output
+\begin{lstlisting}
+# first reset the graph
+tf.reset_default_graph()
+X = tf.placeholder(dtype=tf.float32, shape=[None,2], name='X')
+Y = tf.placeholder(dtype=tf.float32, shape=[None,3], name='Y')
+\end{lstlisting}
+\item Create 8 layers of neurons : \{2, 20, 20, 20, 20, 20, 20, 3\}
+\begin{itemize}
+\item 2 is the input layer
+\begin{equation}
+H_1 = \phi(XW_1 + b_1)
+\end{equation}
+\item All the 20 are the hidden layers
+\begin{equation}
+H_{i} = \phi(H_{i-1}W_i + b_i)
+\end{equation}
+\item 3 is the output layer
+\begin{equation}
+Y_{pred} = \phi(H_6W_7 + b_7)
+\end{equation}
+\end{itemize}
+\subsubsection{Cost function}
+\begin{itemize}
+\item 
+\end{itemize}
+\end{itemize}
+
+
+
+
 \end{document}

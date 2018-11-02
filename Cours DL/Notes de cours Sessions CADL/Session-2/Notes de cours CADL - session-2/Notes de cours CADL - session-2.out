@@ -17,3 +17,9 @@
 \BOOKMARK [2][-]{subsection.3.1}{Description}{section.3}% 17
 \BOOKMARK [2][-]{subsection.3.2}{Building the Network}{section.3}% 18
 \BOOKMARK [2][-]{subsection.3.3}{Training}{section.3}% 19
+\BOOKMARK [1][-]{section.4}{Homework}{}% 20
+\BOOKMARK [2][-]{subsection.4.1}{Goals}{section.4}% 21
+\BOOKMARK [2][-]{subsection.4.2}{Part One : Fully Connected Network}{section.4}% 22
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Code}{subsection.4.2}% 23
+\BOOKMARK [2][-]{subsection.4.3}{Part Two : Image Painting Network}{section.4}% 24
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Cost function}{subsection.4.3}% 25
