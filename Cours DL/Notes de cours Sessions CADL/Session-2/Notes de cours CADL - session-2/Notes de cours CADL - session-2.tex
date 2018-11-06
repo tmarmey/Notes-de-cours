@@ -538,7 +538,14 @@ Y_{pred} = \phi(H_6W_7 + b_7)
 \end{itemize}
 \subsubsection{Cost function}
 \begin{itemize}
-\item 
+\item Represente how much error there is with our NW and we will use gradient descent and backpropagation.
+\item Definition of the error
+\begin{equation}
+cost(Y, \hat{Y}) = \dfrac{1}{B}\sum_{b=0}^{B}E_b \quad with, E =\sum_{c=0}^{C}(Y_b - \hat{Y_b})^2
+\end{equation}
+With C color channels, B total of mini-batches.
+\item To see on average the error in a mini-batches
+\item By squaring we penalize large distances but not the small ones.
 \end{itemize}
 \end{itemize}
 
