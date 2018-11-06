@@ -14,7 +14,29 @@
     linktoc=all,     %set to all if you want both sections and subsections linked
     linkcolor=blue,  %choose some color if you want links to stand out
 }
+\usepackage{listings}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
 
+\lstset{frame=tb,
+  backgroundcolor=\color[rgb]{0.9,0.9,0.9},
+  language=C,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+  }
+  
 \author{Thibaut Marmey}
 
 \title{Notes de cours C}
@@ -69,9 +91,20 @@
 \item \href{http://www.cplusplus.com/doc/tutorial/pointers/}{\textbf{\textit{lien internet : }doc cplusplus.com sur les pointeurs}}
 \item \textbf{Déclaration d'un pointeur} : la valeur d'un pointeur est une adresse. 
 Initialisation à NULL.
-Où s'il pointe sur une variable : int *ptr = \&var
-ou int var = 1; int *ptr = NULL; ptr = \&var;
-\item \textbf{Changer valeur d'une variable via pointeur : } int a = 1; int *ptr = \&var; *ptr = 2; La variable a est alors égale à 2;
+Où s'il pointe sur une variable : 
+\begin{lstlisting}
+int *ptr = &var
+//ou int var = 1; 
+int *ptr = NULL; 
+ptr = &var;
+\end{lstlisting}
+\item \textbf{Changer valeur d'une variable via pointeur : } 
+\begin{lstlisting}
+int a = 1; 
+int *ptr = &var;
+*ptr = 2;
+\end{lstlisting}
+La variable a est alors égale à 2;
 \item Si ptr est un pointeur pointant sur a = 1. *ptr est la valeur de a.
 \item \begin{tabular}{|l|c|r|}
   \hline
@@ -86,36 +119,53 @@ ou int var = 1; int *ptr = NULL; ptr = \&var;
 \end{tabular}
 \item Créer un pointeur et lui donner seulement la possibilité de lire une variable et non la modifier : \textit{const} int *p = \&a
 \item void pointers est un pointeur qui n'a pas de type associé. Il peut prendre tout type de variable (le cas de malloc() ou calloc()). Dans un printf par exemple, le void pointer ptr doit être caster \textit{ex : printf("\%d", *ptr)} ne marche pas. L'expression \textit{printf("\%d", *(int *)ptr)} quant à elle marche.
-\item Pointeur d'une fonction généralement pour passer une fonction en argument d'une autre fonction. \textit{ex : }
-\newline int operation (int x, int y, int (*functocall)(int,int)) \{
-\newline int g;
-\newline g = (*functocall)(x,y);
-\newline return (g); \}
-\newline pour l'utiliser : m = operation (7, 5, addition);
-\newline int (*minus)(int,int) = subtraction; \textit{permet de créer un pointeur de fonction qui prend deux int en argument}
-\newline n = operation (20, m, minus);
+\item Pointeur d'une fonction généralement pour passer une fonction en argument d'une autre fonction.
+\begin{lstlisting}
+int operation (int x, int y, int (*functocall)(int,int)) {
+	int g;
+	g = (*functocall)(x,y);
+	return (g); 
+	}
+// pour l'utiliser
+m = operation (7, 5, addition);
+int (*minus)(int,int) = subtraction; // Pointeur de fonction 
+n = operation (20, m, minus);
+\end{lstlisting}
 \end{itemize}
 
 \subsection{Fonctions}
 \begin{itemize}
-\item \href{https://www.codingunit.com/c-tutorial-the-functions-malloc-and-free}{\textit{lien internet : }utilisation de malloc}
-\newline Utiliser \textit{int *ptr = (int *)malloc(sizeof(int))}; *ptr = une var
-\newline Sinon int *ptr; ptr = malloc(sizeof(int));
+\item \href{https://www.codingunit.com/c-tutorial-the-functions-malloc-and-free}{\textit{lien internet : }Utilisation de malloc}
+\begin{lstlisting}
+int *ptr = (int *)malloc(sizeof(int)); 
+*ptr = var
+// Ou bien
+int *ptr; 
+ptr = malloc(sizeof(int))
+\end{lstlisting}
 \item \textit{free(ptr)} si on ne se sert plus du pointeur
 \item Si p pointe sur a[0] alors *(p+1) = a[1]
 \item Utiliser \textit{calloc(nElements, nBytes)} pour les tableaux. Cette fonction initialise toutes les cellules du tableau à zero
 \item Fonction permettant de commuter deux nombres (int).
-\newline void commuterNombre(int *a, int *b) \{
-\newline int temp = *a;
-\newline *a = *b;
-\newline *b = temp; \}
-\newline On appelle alors la fonction comme ceci : commuterNombre(\&var1, \&var2);
+\begin{lstlisting}
+void commuterNombre(int *a, int *b) {
+	int temp = *a;
+	*a = *b;
+	*b = temp; 
+	}
+// Appel de la fonciton
+commuterNombre(&var1, &var2);
+\end{lstlisting}
 \item Fonction permettant de commuter deux pointeurs (on change seulement les adresses sur lesquelles ils pointent et on ne change pas les valeurs des variables pointées).
-\newline void commuterPointeur(int **a, int **b) \{
-\newline int temp = *a;
-\newline *a = *b;
-\newline *b = temp; \}
-\newline On appelle alors la fonction comme ceci : commuterPointeur(\&ptr1, \&ptr2);
+\begin{lstlisting}
+void commuterPointeur(int **a, int **b) {
+	int temp = *a;
+	*a = *b;
+	*b = temp; 
+	}
+// Appel de la fonction
+commuterPointeur(&ptr1, &ptr2);
+\end{lstlisting}
 \item Méthode pour qu'une fonction renvoie un tableau de int. Tout d'abord il faut savoir que le type de valeur dans le return doit être static c'est pourquoi le tableau déclaré sera de type \textit{int static tableau}. La fonction s'écrit : \textit{int *fonction()}
 \item Utilisation de \textit{static} data dans une fonction : la \textit{static} data présente dans une fonction a la capacité de garder sa valeur (persistence) même après la sortie de la fonction. Ainsi, s’il y a un \textit{static} compteur dans une fonction, à chaque appel sa valeur va s’incrémenter.
 \item Fonction à paramètres variables. Ce n’est pas très recommendé car le compilateur n’a pas de contrôle et les erreurs ne sont pas anticipées par celui-ci. Un exemple connu de fonction à paramètres variables est \textit{printf()}.
@@ -131,7 +181,8 @@ Le rôle du dernier paramètre fixe est de fournir un moyen de déterminer le no
 \item Inclure \textit{stdarg.h} pour accéder aux fonctions et macros de manipulation des paramètres variables. 
 \item Définir une variable de traitement des variadics de type va\textunderscore list = va
 \item Initialiser cette variable correctement avec va\textunderscore start(va, compteurDeParamVar) et le nom du dernier paramètre fixe 
-\item Récupérer et traiter les paramètres selon la spécification de la fonction va\textunderscore arg(va, \textit{type})
+\item Récupérer et traiter les paramètres selon la spécification de la fonction \\
+va\textunderscore arg(va, \textit{type})
 \item Terminer l'analyse proprement avec va\textunderscore end().
 \end{itemize}
 Généralement on va utiliser une boucle \textit{for} relié à \textit{compteurDeParamVar} qui va permettre de récupérer tous les paramètres variables placés en argument de la fonction.
@@ -142,21 +193,34 @@ Généralement on va utiliser une boucle \textit{for} relié à \textit{compteur
 
 \subsection{Pointeur de pointeur}
 \begin{itemize}
-\item Pointeur de pointeur : int a = 1; int *ptr = \&a; int **pp = \&ptr;
+\item Pointeur de pointeur : 
+\begin{lstlisting}
+int a = 1; 
+int *ptr = &a; 
+int **pp = &ptr;
+\end{lstlisting}
 \item \href{https://stackoverflow.com/questions/5580761/why-use-double-pointer-or-why-use-pointers-to-pointers}{\textit{lien internet : }utilisation pointeur de pointeur}
 \item Si pp est un pointeur de pointeur pointant sur le pointeur ptr. On initialise cette variable : int **pp = \&ptr; Ainsi *pp correspond à la valeur de ptr qui est l'adresse de la variable pointée par celui-ci. Via pp, on accède à la valeur cette variable avec **pp.
 \end{itemize}
 
 \subsection{Pointeur de char}
 \begin{itemize}
-\item Pour déclarer un tableau de char modifiable : char tab[] = "abc"
+\item Pour déclarer un tableau de char modifiable : 
+\begin{lstlisting}
+char tab[] = "abc"
+\end{lstlisting}
 \item En déclarant le pointeur de char : char *p = "abc" il n'est plus possible de modifier le string "abc".
 \item Pour printf le pointeur p : \textit{printf("\%s",p);}
 \item Dans malloc il y a déjà un free(). Donc pour changer le mot contenu dans un char * via une fonction dans laquelle il est un argument on peut faire de la façon suivante:
-\newline void changerMot(char **pp, char *mot)\{
-\newline *p = malloc(sizeof(mot)) \textit{permet de free() le pointeur qui a la chaine de caractère}
-\newline *p = mot; \}
-\newline Pour utiliser cette fonction : \textit{changerMot(\&tableauDeChar, "unMot")}
+\begin{lstlisting}
+void changerMot(char **pp, char *mot){
+	// permet de free() le pointeur qui a la chaine de caractere
+	*p = malloc(sizeof(mot)) 
+	*p = mot; }	
+// Appel de la fonction
+changerMot(&tableauDeChar, "unMot")
+\end{lstlisting}
+
 \end{itemize}
 
 \subsection{Les listes chaînées}
@@ -170,13 +234,23 @@ Généralement on va utiliser une boucle \textit{for} relié à \textit{compteur
 \item A la différence des tableaux, les éléments dans cette liste chaînées ne se suivent pas dans la mémoire. Tous ces éléments sont donc stockés dans différents endroit de la mémoire d'où la nécessité des pointeurs.
 \item Comment construire une chaîne de caractère ? On va d'abord créer une structure qui va constituer le schéma de chaque maillon dans cette chaîne. Il faut donc initialiser une structure. Considérons une liste chaînée d'entiers.
 \item Initialisation de la structure Element : 
-\newline \textit{typedef struct Element Element;}
-\newline \textit{struct Element \{ int nombre; Element *suivant;\};}
-\newline Ce schéma de maillon constitue va permettre de créer une liste dite "simplement chaînée" puisqu'on ne peut connaître que le maillon suivant. Lorsqu'une structure prend en compte le maillon précédent on parle de liste "doublement chaînée". Cela dit, l'utilisation de ce type de chaîne devient alors plus complexe.
+\begin{lstlisting}
+typedef struct Element Element;
+struct Element { 
+	int nombre; 
+	Element *suivant;
+	};
+\end{lstlisting}
+Ce schéma de maillon constitue va permettre de créer une liste dite "simplement chaînée" puisqu'on ne peut connaître que le maillon suivant. Lorsqu'une structure prend en compte le maillon précédent on parle de liste "doublement chaînée". Cela dit, l'utilisation de ce type de chaîne devient alors plus complexe.
 \item Il faut en plus créer une structure qui va permettre de contrôler l'ensemble de la liste chaînée. Elle contient ainsi le premier élément de la liste chaînée. On peut aussi stocker la taille de la liste chaînée.
 \item Initialisation de la structure Liste :
-\newline \textit{typedef struct Liste Liste;}
-\newline \textit{struct Liste \{unsigned int taille; Element *premier;\};}
+\begin{lstlisting}
+typedef struct Liste Liste;
+struct Liste {
+	unsigned int taille; 
+	Element *premier;
+	};
+\end{lstlisting}
 \item Il faut aussi penser au dernier élément de la liste. Comment faire pour savoir que c'est le dernier ? La solution la plus efficace est de faire pointer le pointeur du dernier élément sur \textit{NULL}.
 \begin{center}
 \includegraphics[scale=2]{schema_liste_chainee}
@@ -211,19 +285,28 @@ Généralement on va utiliser une boucle \textit{for} relié à \textit{compteur
 \item \href{https://franckh.developpez.com/tutoriels/c-ansi/recursivite/}{Lien tutorial récursivité}
 \item \href{run:../Test C/}{fichier programme récursivité}
 \item Exemple de fonction récursive avec la fonction \textit{factorielle} :
-\item \textit{unsigned int factorielle(int n)\{ }
-\newline \textit{if (n == 1) return 1L;}
-\newline \textit{return n * factorielle(n-1)\}}
+\begin{lstlisting}
+unsigned int factorielle(int n){
+	if (n == 1) 
+		return 1L;
+	return n * factorielle(n-1)
+	}
+\end{lstlisting}
 \item Les appels des fonctions récursives sont ainsi empilés jusqu'à la condition de sortie ici \textit{n == 1}.
 \begin{center}
 \includegraphics[scale=0.5]{piles_de_recursivite}
 \end{center}
 \item Cette méthode est appelée \textit{récursivité normale}. Cette méthode est efficace mais peut poser problème si la récursivité est trop longue. En effet, il risque d'y avoir une explosition de lq pile ce qui entraînerait un plantage du programme. C'est pour cela que nous allons voir une autre méthode : \textit{la récursivité terminale}
 \item Les fonctions récursives normales ont un argument en plus. Il n'y a alors qu'une descente de la pile et donne le résultat final à la fin.
-\newline \textit{unsigned long factoriel \textunderscore terminal (int n, unsigned long result)\{}
-\newline \textit{   if (n == 1) return result;}
-\newline \textit{   else if (n == 0) return 1L;}
-\newline \textit{   return factoriel\textunderscore terminal (n - 1, n * result);\}}
+\begin{lstlisting}
+unsigned long factoriel_terminal (int n, unsigned long result){
+	if (n == 1) 
+		return result;
+	else if (n == 0) 
+		return 1L;
+	return factoriel\textunderscore terminal (n - 1, n * result);
+	}
+\end{lstlisting}
 
 \end{itemize}
 
