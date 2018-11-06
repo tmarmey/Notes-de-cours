@@ -1,0 +1,81 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\graphicspath{{../Images/}}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{listings}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  backgroundcolor=\color[rgb]{0.9,0.9,0.9},
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\author{Thibaut Marmey}
+
+\title{Notes de cours CADL - session-3}
+\begin{document}
+	\maketitle
+
+\begin{scriptsize} \begin{itemize}
+\item Build an autoencoder w/ linear and convolutional layers
+\item Understand how one hot encodings work
+\item Build a classification network w/ linear and convolutional layers
+\end{itemize}\end{scriptsize}
+
+\begin{normalsize}
+\tableofcontents
+\end{normalsize}
+
+\section{Introduction}
+\subsection{Generalities}
+\begin{itemize}
+\item Network with 3 or 4 layers capable of performing unsupervised and supervised learning
+\item Unsupervised vs. Supervised Learning
+\begin{itemize}
+\item Clustering data, reducing the dimensionality or the data, generating new data : \textbf{unsupervised learning}
+\item With the \textbf{supervised learning} you know what you want out of your data (class, label that paired with every single piece of data)
+\end{itemize}
+\subsection{Autoencoders}
+\begin{itemize}
+\item Type of NW which learns to encode its inputs.
+\item It does not require "labels"
+\item Gonna see how with handwritten numbers, we will be able to see how each number can be encoded in the autoencoder
+\end{itemize}
+\subsection{MNIST}
+\begin{itemize}
+\item Load handwritten numbers images
+\item Calculate mean and standar deviation and plot those images
+\item These images are saying whats more or less constant or changment over the images in the dataset. Here we try to use an autoencoder to try to encode everything that could possibily change in the image.
+\end{itemize}
+\subsection{Fully Connected Model}
+\begin{itemize}
+\item Build series of fully connected progressively smaller
+\item So in neural net speak, every pixel is going to become its own input neuron. And from the original 784 neurons, we're going to slowly reduce that information down to smaller and smaller numbers.
+\end{itemize}
+
+\end{itemize}
+
+\end{document}
