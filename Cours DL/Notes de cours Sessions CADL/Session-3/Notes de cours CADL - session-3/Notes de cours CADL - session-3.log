@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.17)  6 NOV 2018 14:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.17)  6 NOV 2018 15:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -783,44 +783,37 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 81.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 84.
  [2]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 81.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 84.
  (./Notes de cours CADL - session-3.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 81.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 81.
-
-
-Package rerunfilecheck Warning: File `"Notes de cours CADL - session-3".out' ha
-s changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `"Notes de cours CADL - session-3".o
-ut':
-(rerunfilecheck)             Before: C7AC296463D1F00E5664094943A5F28D;101
-(rerunfilecheck)             After:  2EC540BEFF814D5918B4B13FBCFF7AE4;293.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 81.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 84.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 84.
+Package rerunfilecheck Info: File `"Notes de cours CADL - session-3".out' has n
+ot changed.
+(rerunfilecheck)             Checksum: 2EC540BEFF814D5918B4B13FBCFF7AE4;293.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 84.
  ) 
 Here is how much of TeX's memory you used:
- 9702 strings out of 494880
- 140539 string characters out of 6179600
- 260164 words of memory out of 5000000
- 12913 multiletter control sequences out of 15000+600000
- 12403 words of font info for 48 fonts, out of 8000000 for 9000
+ 10105 strings out of 494880
+ 143937 string characters out of 6179600
+ 261164 words of memory out of 5000000
+ 13313 multiletter control sequences out of 15000+600000
+ 12871 words of font info for 50 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 44i,6n,42p,262b,475s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 44i,6n,42p,277b,1405s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on "Notes de cours CADL - session-3.pdf" (2 pages, 68899 bytes).
+onts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmtt10.pfb>
+Output written on "Notes de cours CADL - session-3.pdf" (2 pages, 82164 bytes).
 
 PDF statistics:
- 58 PDF objects out of 1000 (max. 8388607)
- 47 compressed objects within 1 object stream
- 9 named destinations out of 1000 (max. 500000)
- 17 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 76 PDF objects out of 1000 (max. 8388607)
+ 64 compressed objects within 1 object stream
+ 11 named destinations out of 1000 (max. 500000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
