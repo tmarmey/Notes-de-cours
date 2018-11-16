@@ -51,7 +51,7 @@
 \subsection{Général}
 \begin{itemize}
 \item \textbf{int main(int argc, char **argv)} : \textit{argc} représente le nombre d'arguments lors de l'exécution du programmes. Sans aucun argument \textit{argc = 1}.
-\textit{**argv} représente quand à lui la liste des arguments déclarés lors de l'exécution du programme.
+\textit{**argv} représente quant à lui la liste des arguments déclarés lors de l'exécution du programme.
 \item Si l'on veut passer un int en paramètre du programme, utliser : \textit{atoi(argv[indice])}
 \newline Cela permet de convertir le \textit{char} récupéré comme paramètre en \textit{int}.
 \item Taille des différents types de données
@@ -74,17 +74,93 @@
 \item La condition \textit{if} est \textit{True} si la condition est différente de 0. 
 \newline Ainsi si l'on a \textit{if(1/10)} la condition est \textit{False}. \textit{Explication : }1 et 10 sont deux int, le résultat est de 1/10 est 0.1 mais le résultat est aussi un int donc la troncature du int donne 0.
 \newline \textit{if(-1)} est quant à lui \textit{True} car -1 est différent de 0.
+\item L'opérateur ternaire \textbf{?} qui permet de compresser les conditions \textit{if}.
+\begin{lstlisting}
+// Exp1 ? Exp2 : Exp3;
+// Si Exp1 est vrai Exp2 est evalue, sinon Exp3 est evalue
+return (a > b) ? a : b;
+\end{lstlisting}
+\item \textbf{Scope rules} : 3 places différentes où les variables peuvent être déclarées : local, global, formal.
+\newline
+\begin{tabular}{|l|c|}
+  \hline
+  data type & initial default value \\
+  \hline \hline
+  int & 1 byte \\ \hline
+  char & '$\backslash0$'  \\ \hline
+  float & 0 \\ \hline
+  double & 0 bytes \\ \hline
+  pointer & NULL \\ \hline
+\end{tabular}
+\item \textbf{Unions} : type de données qui permet de stocker différents types de variables dans la même zone mémoire.
+\begin{lstlisting}
+union Data {
+	int i;
+	float f;
+	char str[20]
+} data;
+\end{lstlisting}
+La taille mémoire de l'union est la taille de la variable la plus grande (ici 20 bytes par le char).\\
+Dans une union un seul membre peut être utilisé à la fois. On accède à un élément à la fois sinon l'élément le plus ancien est corrompu. \\
+On accède aux éléments comme dans une structure
+\begin{lstlisting}
+data.i = 1;
+// On utilise la variable tout de suite pour ne pas la corrompre
+data.f = 20.2;
+\end{lstlisting}
+\item \textbf{C header files} and \textbf{once-only headers}
+\begin{lstlisting}
+#ifndef HEADER_FILE
+#define HEADER_FILE
+	blabla function
+#endif
+\end{lstlisting}
+\item Use of macros : 
+\begin{itemize}
+\item inline small function, work like template
+\begin{lstlisting}
+#define MAX(x,y) ((x) > (y) ? (x) : (y))
+\end{lstlisting}
+\item token expansion, to name multiple variables adding prefixes
+\begin{lstlisting}
+#include <stdio.h>
+#define tokenpaster(n) printf ("token" #n " = %d", token##n)
+int main(void) {
+   int token34 = 40;
+   tokenpaster(34);
+   return 0;
+}
+
+#define DEF_PAIR_OF(dtype) \
+  typedef struct pair_of_##dtype { \
+       dtype first; \
+       dtype second; \
+  } pair_of_##dtype##_t 
+
+ DEF_PAIR_OF(int);
+ DEF_PAIR_OF(double);
+ DEF_PAIR_OF(MyStruct);
+ /* etc */
+\end{lstlisting}
+\end{itemize}
 \end{itemize}
 
 
 \subsection{Les structures}
 \begin{itemize}
-\item typedef struct à expliquer
+\item \textit{typedef} permet d'assigner des nouveaux noms aux types de données. C'est le plus souvent utilisé quand l'utilisateur créé lui-même un nouveau type. 
+\begin{lstlisting}
+// typedef <data_type> <alias_name>
+struct Foo { ... }
+typedef struct Foo Foo;
+//or with the abbrevation
+typedef struct Foo { ... } Foo 
+\end{lstlisting}
+Ici le \textit{data\_type} serait \textit{struct Foo}. Il n'y a donc plus besoin d'appeler \textit{struct Foo} à chaque fois mais seulement \textit{Foo}.
 \item Calculer la taille d'une structure : sizeof(structure) \textbf{!=} sum sizeof(elements)
 \newline Il y a un allignement de mémoire c'est à dire que comme le processeur lit des mots de 4 octets il rajoute des bits dits de "bourrage". Ainsi il faut calculer la taille d'une structure en multiple de 4.
 \newline Il faut donc calculer la somme des sizeof(elements) et arrondir le résultat au multiple de 4 supérieur. \textit{ex : si la somme des sizeof est égal à 14 la taille de la structure est : sizeof(structure) = 16 octets}
 \end{itemize}
-
 
 \subsection{Pointeur}
 \begin{itemize}
