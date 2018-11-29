@@ -43,17 +43,18 @@
 
 \subsection{Polymorphisme}
 \begin{itemize}
-\item Résolution statique des liens. \textit{Ex pratique : } 
+\item \textbf{Résolution statique des liens.} La fonction reçoit un type de data, c'est donc toujours les méthodes de ce type qui sera utilisée. C'est donc le type de la variable qui détermine quelle fonction membre appeler et non sa vraie nature.\\
+\textit{Ex pratique : } 
 \newline void presenter(Vehicule v)  //Présente le véhicule passé en argument
 \newline \{  v.affiche(); \}
 \newline La fonction reçoit un véhicule (classe mère) c’est donc les méthodes de véhicule qui sont appelées même si une surcharge de méthode est présente dans la classe fille.
-Pour régler ce problème il faut deux choses :
+\item \textbf{Réolution dynamique des liens.} Lors de l'exécution le programme utilise la bonne version des méthodes car il sait si l'objet est de type mère ou type fille.
 \begin{itemize}
 \item utiliser un pointeur ou une référence
 \item utiliser des méthodes virtuelles
 \end{itemize}
-Il faut placer un pointeur ou une référence comme argument dans la fonction \textit{void presenter(Vehicule const\& v)}
-\newline Rajouter \textit{virtual} devant la méthode dans la classe mère et c’est optionnel dans les classes filles.
+\item Il faut placer un pointeur ou une référence comme argument dans la fonction \textit{void presenter(Vehicule const\& v)}
+\item Rajouter \textit{virtual} devant la méthode dans la classe mère (seulement dans le .h) et c’est optionnel dans les classes filles.
 \end{itemize}
 
 \subsection{Autre}
