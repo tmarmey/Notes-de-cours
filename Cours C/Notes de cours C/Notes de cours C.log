@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.17)  16 NOV 2018 15:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.17)  29 NOV 2018 15:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -784,78 +784,79 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5]
-<../Images/fonctionParamVar.png, id=177, 521.95pt x 231.86626pt>
+<../Images/fonctionParamVar.png, id=189, 521.95pt x 231.86626pt>
 File: ../Images/fonctionParamVar.png Graphic file (type png)
 <use ../Images/fonctionParamVar.png>
-Package pdftex.def Info: ../Images/fonctionParamVar.png  used on input line 266
+Package pdftex.def Info: ../Images/fonctionParamVar.png  used on input line 281
 .
 (pdftex.def)             Requested size: 313.17241pt x 139.12082pt.
  [6 <../Images/fonctionParamVar.png>] [7]
-<../Images/schema_liste_chainee.png, id=211, 168.3891pt x 65.7657pt>
+<../Images/schema_liste_chainee.png, id=217, 168.3891pt x 65.7657pt>
 File: ../Images/schema_liste_chainee.png Graphic file (type png)
 <use ../Images/schema_liste_chainee.png>
 Package pdftex.def Info: ../Images/schema_liste_chainee.png  used on input line
- 332.
+ 347.
 (pdftex.def)             Requested size: 336.77734pt x 131.53107pt.
-<../Images/initialisation.png, id=212, 395.4775pt x 280.04625pt>
+ [8 <../Images/schema_liste_chainee.png>]
+<../Images/initialisation.png, id=236, 395.4775pt x 280.04625pt>
 File: ../Images/initialisation.png Graphic file (type png)
 <use ../Images/initialisation.png>
-Package pdftex.def Info: ../Images/initialisation.png  used on input line 345.
+Package pdftex.def Info: ../Images/initialisation.png  used on input line 360.
 (pdftex.def)             Requested size: 158.18819pt x 112.0165pt.
-<../Images/insertion.png, id=213, 394.47375pt x 246.9225pt>
+<../Images/insertion.png, id=237, 394.47375pt x 246.9225pt>
 File: ../Images/insertion.png Graphic file (type png)
 <use ../Images/insertion.png>
-Package pdftex.def Info: ../Images/insertion.png  used on input line 346.
+Package pdftex.def Info: ../Images/insertion.png  used on input line 361.
 (pdftex.def)             Requested size: 157.7867pt x 98.76724pt.
-<../Images/suppression.png, id=214, 405.515pt x 251.94125pt>
+<../Images/suppression.png, id=238, 405.515pt x 251.94125pt>
 File: ../Images/suppression.png Graphic file (type png)
 <use ../Images/suppression.png>
-Package pdftex.def Info: ../Images/suppression.png  used on input line 350.
+Package pdftex.def Info: ../Images/suppression.png  used on input line 365.
 (pdftex.def)             Requested size: 162.20311pt x 100.7747pt.
-<../Images/afficherListe.png, id=215, 346.29375pt x 301.125pt>
+<../Images/afficherListe.png, id=239, 346.29375pt x 301.125pt>
 File: ../Images/afficherListe.png Graphic file (type png)
 <use ../Images/afficherListe.png>
-Package pdftex.def Info: ../Images/afficherListe.png  used on input line 351.
+Package pdftex.def Info: ../Images/afficherListe.png  used on input line 366.
 (pdftex.def)             Requested size: 138.51503pt x 120.44786pt.
- [8 <../Images/schema_liste_chainee.png>]
-<../Images/piles_de_recursivite.jpg, id=234, 302.88438pt x 319.12483pt>
+<../Images/piles_de_recursivite.jpg, id=242, 302.88438pt x 319.12483pt>
 File: ../Images/piles_de_recursivite.jpg Graphic file (type jpg)
 <use ../Images/piles_de_recursivite.jpg>
 Package pdftex.def Info: ../Images/piles_de_recursivite.jpg  used on input line
- 373.
+ 388.
 (pdftex.def)             Requested size: 151.44182pt x 159.56201pt.
  [9 <../Images/initialisation.png> <../Images/insertion.png> <../Images/suppres
 sion.png> <../Images/afficherListe.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 390.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 405.
  [10 <../Images/piles_de_recursivite.jpg>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 390.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 405.
  (./Notes de cours C.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 390.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 390.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 405.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 405.
 Package rerunfilecheck Info: File `"Notes de cours C".out' has not changed.
-(rerunfilecheck)             Checksum: BC5BE1ABEFC116AA091C539C2EFCA747;554.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 390.
+(rerunfilecheck)             Checksum: 60DEA877C435A0C16E1192BDC2DE3E16;630.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 405.
  ) 
 Here is how much of TeX's memory you used:
- 10397 strings out of 494880
- 148275 string characters out of 6179600
- 282520 words of memory out of 5000000
- 13444 multiletter control sequences out of 15000+600000
+ 10406 strings out of 494880
+ 148410 string characters out of 6179600
+ 290520 words of memory out of 5000000
+ 13447 multiletter control sequences out of 15000+600000
  13577 words of font info for 52 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  44i,12n,49p,395b,1947s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmtt10.pfb>
-Output written on "Notes de cours C.pdf" (10 pages, 235446 bytes).
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmtt10.pfb>
+Output written on "Notes de cours C.pdf" (10 pages, 244516 bytes).
 PDF statistics:
- 331 PDF objects out of 1000 (max. 8388607)
- 295 compressed objects within 3 object streams
- 158 named destinations out of 1000 (max. 500000)
- 108 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 348 PDF objects out of 1000 (max. 8388607)
+ 310 compressed objects within 4 object streams
+ 164 named destinations out of 1000 (max. 500000)
+ 116 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,9 +1,10 @@
 \contentsline {section}{\numberline {1}Bases}{1}{section.1}
 \contentsline {subsection}{\numberline {1.1}G\IeC {\'e}n\IeC {\'e}ral}{1}{subsection.1.1}
-\contentsline {subsection}{\numberline {1.2}Les structures}{3}{subsection.1.2}
-\contentsline {subsection}{\numberline {1.3}Pointeur}{3}{subsection.1.3}
-\contentsline {subsection}{\numberline {1.4}Fonctions}{4}{subsection.1.4}
-\contentsline {subsection}{\numberline {1.5}Pointeur de pointeur}{6}{subsection.1.5}
-\contentsline {subsection}{\numberline {1.6}Pointeur de char}{7}{subsection.1.6}
-\contentsline {subsection}{\numberline {1.7}Les listes cha\IeC {\^\i }n\IeC {\'e}es}{7}{subsection.1.7}
-\contentsline {subsection}{\numberline {1.8}R\IeC {\'e}cursivit\IeC {\'e}}{9}{subsection.1.8}
+\contentsline {subsection}{\numberline {1.2}Op\IeC {\'e}rateurs sur les bits}{3}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.3}Les structures}{3}{subsection.1.3}
+\contentsline {subsection}{\numberline {1.4}Pointeur}{4}{subsection.1.4}
+\contentsline {subsection}{\numberline {1.5}Fonctions}{5}{subsection.1.5}
+\contentsline {subsection}{\numberline {1.6}Pointeur de pointeur}{7}{subsection.1.6}
+\contentsline {subsection}{\numberline {1.7}Pointeur de char}{7}{subsection.1.7}
+\contentsline {subsection}{\numberline {1.8}Les listes cha\IeC {\^\i }n\IeC {\'e}es}{7}{subsection.1.8}
+\contentsline {subsection}{\numberline {1.9}R\IeC {\'e}cursivit\IeC {\'e}}{9}{subsection.1.9}

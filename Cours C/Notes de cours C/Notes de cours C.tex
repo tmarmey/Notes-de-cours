@@ -86,7 +86,7 @@ return (a > b) ? a : b;
   \hline
   data type & initial default value \\
   \hline \hline
-  int & 1 byte \\ \hline
+  int & 0 \\ \hline
   char & '$\backslash0$'  \\ \hline
   float & 0 \\ \hline
   double & 0 bytes \\ \hline
@@ -145,6 +145,21 @@ int main(void) {
 \end{itemize}
 \end{itemize}
 
+\subsection{Opérateurs sur les bits}
+\begin{itemize}
+\item l'opérateur \textbf{et} : \&
+\item l'opérateur \textbf{ou inclusif} : $|$
+\item l'opérateur \textbf{ou exclusif} : \^{}
+\item l'opérateur de \textbf{négation} ou de \textbf{complément} : \textasciitilde
+\item l'opérateur de \textbf{décalage à droite} : $>>$
+\item l'opérateur de \textbf{décalage à gauche} : $<<$
+\begin{lstlisting}
+/* 0000 0001 << 2 == 0000 0100 */
+int a = 1 << 2;
+/* 0010 1010 << 2 == 1010 1000 */
+int b = 42 << 2;
+\end{lstlisting}
+\end{itemize}
 
 \subsection{Les structures}
 \begin{itemize}
