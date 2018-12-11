@@ -9,7 +9,34 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{subfig}
 \usepackage{float}
+\usepackage{xcolor}
+\hypersetup{
+    linktoc=all,     %set to all if you want both sections and subsections linked
+    linkcolor=blue,  %choose some color if you want links to stand out
+}
+\usepackage{listings}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
 
+\lstset{frame=tb,
+  backgroundcolor=\color[rgb]{0.9,0.9,0.9},
+  language=C,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+  }
+  
 \author{Thibaut Marmey}
 
 \title{Notes de cours Git/GitHub}
@@ -24,52 +51,111 @@
 \subsection{Les commandes de bases}
 \begin{itemize}
 \item Activer un repository Git, se placer dans le dossier que l’on veut et faire : 
-\newline \textit{git init }
+\begin{lstlisting}
+git init
+\end{lstlisting}
 \item L’activation du repository Git génère un index. Lorsqu’on rajoute un nouveau fichier dans le repository il faut rajouter ce fichier à l’index par la commande :
-\newline \textit{git add nomDuFichier.extension}
+\begin{lstlisting}
+git add nomDuFichier.extension
+\end{lstlisting}
 \item Ajouter tous les fichiers du dossier courant :
-\newline \textit{git add .}
-\item Revenir sur un \textit{git add }, faire : \textit{git reset}
-\item Enregistrement des modifications dans le rep :
-\item Revenir en arrière après \textit{git add }, faire : \textit{git add --remove}
-\newline \textit{git commit -m "ajout de fichier"} (le -m permet de rajouter un message au commit)
+\begin{lstlisting}
+git add .
+\end{lstlisting}
+\item Revenir sur un \textit{git add }, faire :
+\begin{lstlisting}
+git reset
+\end{lstlisting}
+\item Revenir en arrière après \textit{git add }
+\begin{lstlisting}
+git add --remove
+\end{lstlisting}
+\item Pusher le commit
+\begin{lstlisting}
+git commit -m "ajout de fichier" 
+//le -m permet de rajouter un message au commit
+\end{lstlisting}
 \item Pour se positionner sur un commit de l'historique :
-\newline \textit{git checkout SHADuCommit}
+\begin{lstlisting}
+git checkout SHADuCommit
+\end{lstlisting}
 \item Revenir au commit le plus récent : 
-\newline \textit{git checkout master}
+\begin{lstlisting}
+git checkout master
+\end{lstlisting}
 \item Créer un nouveau commit qui fait l'inverse du commit précédent :
-\newline \textit{git revert SHADuCommit}
+\begin{lstlisting}
+git revert SHADuCommit
+\end{lstlisting}
 \item Modifier le message du dernier commit
-\newline \textit{git commit --amend -m "votre message"}
+\begin{lstlisting}
+git commit --amend -m "votre message"
+\end{lstlisting}
 \item Annuler tous les changements qui ne sont pas encore commités :
-\newline \textit{git reset --hard}
+\begin{lstlisting}
+git reset --hard
+\end{lstlisting}
 \item Pour créer une nouvelle branche, se placer au commit avec un checkout et faire :
-\newline \textit{git checkout -b nouvelle-branche}
+\begin{lstlisting}
+git checkout -b nouvelle-branche
+\end{lstlisting}
 \item Pour supprimer une branche, se placer à l'extérieur de celle-ci et fait :
-\textit{git branch -d nom-de-la-branche}
+\begin{lstlisting}
+git branch -d nom-de-la-branche
+\end{lstlisting}
 \item Copier un repository depuis GitHub
-\newline \textit{git clone adresseDuRepository}
+\begin{lstlisting}
+git clone adresseDuRepository
+\end{lstlisting}
 \item Utilisation de \textit{Rebase} :
+\begin{lstlisting}
+git rebase master bug
+\end{lstlisting}
 \begin{itemize}
-\item \textit{git rebase master bug} : transplante bug sur l'actuelle branche master. Si on est déjà en train de bosser sur bug1 on peut se contenter de taper \textit{git rebase master}
-\item \textit{git checkout master} : switche sur master
-\item \textit{git merge bug1} : fusionne bug1 dans master
-\item \textit{git branch -d bug1} : fusionne bug1 dans master
+\item Transplante bug sur l'actuelle branche master. Si on est déjà en train de bosser sur bug1 on peut se contenter de taper 
+\begin{lstlisting}
+git rebase master
+\end{lstlisting}
+\item Switch sur master
+\begin{lstlisting}
+git checkout master
+\end{lstlisting}S
+\item fusionne bug1 dans master
+\begin{lstlisting}
+git merge bug1
+\end{lstlisting}
+\item fusionne bug1 dans master
+\begin{lstlisting}
+git branch -d bug1
+\end{lstlisting}
 \end{itemize}
 \item Savoir qui a modifé un fichier :
-\newline \textit{git blame nomDuFichier.extension}
+\begin{lstlisting}
+git blame nomDuFichier.extension
+\end{lstlisting}
 \item Voir les détails du commit :
-\newline \textit{git show numSHA}
+\begin{lstlisting}
+git show numSHA
+\end{lstlisting}
 \item Ignorer des fichier dans Git telles que des variables de configuration, des mots de passe, etc : 
 \newline utiliser un fichier \textit{.gitignore}. Dans ce fichier, indiquer leur chemin complet et sauter une ligne entre chaque fichier.
 \item Eviter les conflits superflus. 
 \begin{itemize} 
 \item En cas “d’urgence”, si la tâche actuelle n’est pas finie et donc ne nécessite pas de commit, mais qu’une autre tâche doit être faite, il faut mettre de côté ce qui est entrain d’être fait, pour pouvoir y revenir après. Utiliser :
-\newline \textit{git stash} : permet de mettre en pause les modifications pour travailler sur un autre endroit du projet
-\item Pour revenir à l'endroit où vous vous étiez arrétés, ici \textit{pop} va effacer le stash donc si l'on veut refaire une pause, il faut refaire un \textit{git stash}
-\newline \textit{git stash pop}
+\begin{lstlisting}
+git stash //permet de mettre en pause les modifications pour travailler sur un autre endroit du projet
+\end{lstlisting}
+\item Pour revenir à l'endroit où vous vous étiez arrétés, ici \begin{lstlisting}
+pop
+\end{lstlisting}
+\item Va effacer le stash donc si l'on veut refaire une pause, il faut refaire
+\begin{lstlisting}
+git stash pop
+\end{lstlisting}
 \item Pour garder les modifications dans le stash, utiliser :
-\newline \textit{git stash apply}
+\begin{lstlisting}
+git stash apply
+\end{lstlisting}
 \end{itemize}
 \end{itemize}
 
@@ -78,10 +164,14 @@
 \begin{itemize}
 \item GitHub est aussi appelé un remote, il permet de sauvegarder ses fichiers sur un espace distant.
 \item Configurer compte avec GitHub :
-\newline \textit{git config --global user.name "tmarmey"}
-\newline \textit{git config --global user.email "tmarmey@mail.com}
+\begin{lstlisting}
+git config --global user.name "tmarmey"
+git config --global user.email "tmarmey@mail.com
+\end{lstlisting}
 \item Envoyer ses modifications sur GitHub faire :
-\newline \textit{git push origin master}
+\begin{lstlisting}
+git push origin master
+\end{lstlisting}
 \item Ajouter clef SSH pour push sans identifiant et mot de passe :
 \begin{itemize}
 \item \textit{\$ ssh-keygen -t rsa -b 4096 -C "yourEmail@example.com"}
@@ -96,7 +186,9 @@
 \item \$ ssh -T git@github.com
 \end{itemize}
 \item Récupérer les dernier modifications :
-\newline \textit{git pull origin master}
+\begin{lstlisting}
+git pull origin master
+\end{lstlisting}
 \item Contribuer à un projet :
 \begin{itemize}
 \item Fork le repo de l'auteur (c'est à dire copier le repo sur votre compte GitHub)
