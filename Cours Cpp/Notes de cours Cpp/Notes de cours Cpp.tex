@@ -10,6 +10,33 @@
 \usepackage{ulem}
 \usepackage{subfig}
 \usepackage{float}
+\usepackage{xcolor}
+\hypersetup{
+    linktoc=all,     %set to all if you want both sections and subsections linked
+    linkcolor=blue,  %choose some color if you want links to stand out
+}
+\usepackage{listings}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  backgroundcolor=\color[rgb]{0.9,0.9,0.9},
+  language=C++,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+  }
 
 \author{Thibaut Marmey}
 
@@ -25,8 +52,15 @@
 \subsection{L'héritage}
 \begin{itemize}
 \item \href{https://openclassrooms.com/fr/courses/1894236-programmez-avec-le-langage-c/1898475-lheritage}{Cours openclassroom : héritage}
-\item Déclaration d'une classe héréditaire : \textit{class Guerrier : public Personnage \{ ... \}}
-\newline La classe \textit{Guerrier} hérite de la classe \textit{Personnage}.
+\item Déclaration d'une classe héréditaire : 
+\begin{lstlisting}
+class Classe_fille : public|protected|private Classe_mere1
+[, public|protected|private Classe_mere2 [...]]
+{
+    /* Definition de la classe fille. */
+};
+\end{lstlisting}
+\item les données publiques d'une classe mère deviennent soit publiques, soit protégées, soit privées selon que la classe fille hérite en public, protégé ou en privé.
 \item La classe fille possède les attributs et les méthodes de la classe mère. Elle possède en plus de cela ses propres attributs et méthodes
 \item Possibilité de surcharger les méthodes de la classe mère dans la classe fille
 \item Surcharge du constructeur : on peut appeler le constructeur de la classe mère dans le constructeur de la classe fille.
@@ -43,6 +77,7 @@
 
 \subsection{Polymorphisme}
 \begin{itemize}
+\item  le polymorphisme est un mécanisme dynamique permettant, par voie d'héritage, de spécialiser dans des classes dérivées les comportements annoncés ou implémentés dans des classes de base, indirectes ou non.
 \item \textbf{Résolution statique des liens.} La fonction reçoit un type de data, c'est donc toujours les méthodes de ce type qui sera utilisée. C'est donc le type de la variable qui détermine quelle fonction membre appeler et non sa vraie nature.\\
 \textit{Ex pratique : } 
 \newline void presenter(Vehicule v)  //Présente le véhicule passé en argument
@@ -57,8 +92,63 @@
 \item Rajouter \textit{virtual} devant la méthode dans la classe mère (seulement dans le .h) et c’est optionnel dans les classes filles.
 \end{itemize}
 
+\subsection{Design Pattern}
+\begin{itemize}
+\item Ce sont des modèles théoriques adaptables qui résolvent un problème précis.
+\item \textbf{Un prototype :} un prototype est une classe dont le but est d'être clonée. 
+\item \textbf{Le singleton :} permet de s'assurer qu'il n'existe qu'une unique instance d'une classe donnée. \\
+Est une variable globale.
+\item \textbf{La fabrique :} classe dont le rôle est de créer d'autres objets.
+\item \textbf{Les décorateurs :} sont l'ensemble des classes permettant d'étendre dynamiquement le rôle d'une classe de base.
+\end{itemize}
+
+\subsection{Template}
+\begin{itemize}
+\item Les templates sont des fonctions spéciales qui peuvent être utilisées avec des types génériques. Cela nous permet de créer une fonction template dont l'utilisation n'est pas réstreinte à un seul type de données, sans répéter le code entier pour chaque type.
+\begin{lstlisting}
+template <class myType>
+myType GetMax (myType a, myType b) {
+ return (a>b?a:b); }
+\end{lstlisting}
+\item Pour utiliser les fonctions templates on utilise le schéma suivant :
+\begin{lstlisting}
+//function_name <type> (parameters);
+int x,y;
+GetMax <int> (x,y);
+\end{lstlisting}
+\item Utilisation des templates avec les classes :
+\begin{lstlisting}
+template <class T>
+class mypair {
+    T a, b;
+  public:
+    mypair (T first, T second)
+      {a=first; b=second;}
+    T getmax ();
+};
+
+template <class T> //T for template parameter
+T mypair<T>::getmax () //1st T for the type return by the function
+//2nd T for requirement to specify the function's template parameter
+{
+  T retval;
+  retval = a>b? a : b;
+  return retval;
+}
+\end{lstlisting}
+\end{itemize}
+
 \subsection{Autre}
 \begin{itemize}
+\item Utilisation de $=$ dans un \textit{if}.
+\begin{lstlisting}
+int a = 1
+int b = 2;
+if ((a=b)) {...} //is true
+blabla...
+int b = 0;
+if ((a=b)) {...} //is false
+\end{lstlisting}
 \item Utilisation de \textit{auto} (C++11) : cet outil permet de spécifier automatiquement le type de la variable en jeu. 
 \newline \textit{ex : auto x = 1; auto y = 3.1; auto z = 'a';}
 \newline \textit{output : x est int, y est double, z est char}
