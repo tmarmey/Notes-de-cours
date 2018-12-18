@@ -48,6 +48,330 @@
 \tableofcontents
 \end{normalsize}
 
+\section{Formation C++ - Décembre 2018}
+\subsection{Généralités}
+\begin{itemize}
+\item Conception de base : \textbf{TDR (test driven requirement)}
+\begin{itemize}
+\item On part de ce que l'on veut \textit{main()}
+\item\textbf{couverture fonctionnelle} : on crée juste les méthodes pour compiler le \textit{main()}
+\item On implémente les méthodes dans la classe
+\end{itemize}
+\item \textbf{La concaption est beaucoup plus importante que le developpement}
+\item \textit{Main()} est le client
+\begin{itemize}
+\item On ne doit y voir que des actions (via les méthodes des classes)
+\item C'est un test, un cas réel
+\item Il ne devrait donc pas y avoir de if, for etc
+\end{itemize}
+\item Les classes et les méthodes crées sont les services
+\item \textbf{La contrainte amène la qualité}
+\item Ne pas faire de \textbf{Smell Code}
+\begin{itemize}
+\item Duplication
+\item Appel méthodes d'autres classes
+\item BLOB : classe trop importante par rapport aux autres
+\item Surnombre d'arguments
+\end{itemize}
+\item Avant le code, grosse partie d'analyse pour : 
+\begin{itemize}
+\item comprendre le système
+\item concevoir le cahier des charges
+\item analyser les relations entre les différents éléments du projets
+\end{itemize}
+\item Concevoir c'est créer un système EVOLUTIF + ROBUSTE
+\begin{itemize}
+\item Maintenance (code à modifier)
+\item Robustesse (déterministe, si problème on trouve facilement, gestion des exception...)
+\end{itemize}
+\item \textbf{Clean Code} (qualité logicielle) :
+\begin{itemize}
+\item méthode courte
+\item nom clair
+\item économie des messages (méthodes)
+\end{itemize}
+\item Si méthode trop longue on extrait des lignes de codes pour créer une nouvelle fonction et ensuite placer ces nouvelles méthodes en "private" car ces méthodes ne sont pas utilisé par l'utilisateur !
+\item En C++ on est proche des objets réels, leur conception se fait en les conceptualisant
+\item Encapsulation : dans une même objet il y a des données et des fonctions qui peuvent ne pas être accessible depuis l'extérieur.
+\item La documentation doit être automatisé par un logiciel : les mises à jour se font au fur et à mesure de l'avancement du code (la doc ne devrait pas être une activité humaine)
+\item Représenter les choses dont on a besoin : \textbf{UML}
+\begin{itemize}
+\item Toutes les relations entre les classes "All" (pour celui qui développe le système)
+\item Seulement avec les choses "Public" (pour celui qui utilise)
+\item Il y a toujours un seul \textit{"system"}, c'est celui qui englobe tout le reste
+\end{itemize}
+\item Documentation CodeOrganization : permet de connaître, visualiser les dépendances entre les différents fichiers
+\item Raccourci Visual Studio
+\begin{lstlisting}
+// ctrl + k -> ctrl + c (comment)
+// ctrl + k -> ctrl + u (uncomment)
+\end{lstlisting}
+\end{itemize}
+
+\subsection{Première Partie}
+\begin{itemize}
+\item \textbf{C++11} - Initialisation uniforme, donne la valeur par défaut avec les accolades, peut importe le type donné
+\begin{lstlisting}
+int i {};
+float f{};
+char c{};
+class A a{};
+
+// Dans boucle for
+for(int index{};...)
+\end{lstlisting}
+\item La porté des variable est limitée dans le bloc
+\item Dans la fonction \textit{main()}, \textit{argc} est toujours supérieur ou égal à 1 car le premier argument est nécessairement le nom de l'application avec son chemin global.
+\begin{lstlisting}
+int main(int argc, char** argv){
+// argc = arg count >= 1
+// argv = arg values
+}
+\end{lstlisting}
+\item Enumeration fortement typée
+\begin{lstlisting}
+enum class A { }
+// Avant on ne pouvait pas avoir deux enum COLOR{VERT, blabla} et ETAT{VERT, blabla}. Il y avait un conflit entre les deux variable "VERT".
+\end{lstlisting}
+\item La boucle FOR EACH
+\begin{lstlisting}
+for (int n : tab) { }  // Par recopie
+for (int& n : tab) { } // Par reference (on modifie directement les elements)
+Dice tab[10] // Tableau de 10 objets Dice
+for (Dice& d : tab) // Parcour de tab par reference
+\end{lstlisting}
+\item La boucle DO-WHILE (passe au moins une fois dans la boucle, contrairement au \textit{while} simple)
+\begin{lstlisting}
+do{ blabla bla } while(condition)
+\end{lstlisting}
+Pour un tableau de taille fixe utiliser \textit{array}
+\begin{lstlisting}
+array<type, size> name{values...}
+\end{lstlisting}
+\item Listes d'initialisation génériques : fonctions à paramètres variables
+\begin{lstlisting}
+#include <initialiser_list>
+
+int somme (initializer_list<type> liste) {
+// bla bla
+}
+// appel de la fonction : somme( {a,b,c,d} );
+\end{lstlisting}
+\end{itemize}
+
+\subsection{Deuxième Partie}
+\begin{itemize}
+\item \textbf{C++11} - utiliser USING pour créer un nouveau nom de type de variable
+\begin{lstlisting}
+using Vitesse = int;
+\end{lstlisting}
+\item Utilisation de \textit{this} si conflit entre méthode de la fonction et attribut de la classe
+\begin{lstlisting}
+this->altitude = altitude;
+// this->altitude : pointeur sur l'objet de la classe
+// altitude : argument de la fonction
+\end{lstlisting}
+\item Les constructeurs (pas de type de fonction car ce n'est pas nous qui appelons le constructeur)
+\item Toujours initialiser les membres de la classe dans la \textbf{ZIM} : \textbf{zone d'initialisation des membres}.
+\item Self-delegation : la classe s'envoie un message à elle toute seule (permet d'éviter le smell code)\\
+Exemple : dans la classe Dice, on initialise la faceValue par la méthode roll().
+\item RAND \& SRAND pour créer des séquence aléatoire. Il faut utiliser \textit{srand} pour réarmer le seed de rand
+\begin{lstlisting}
+#include <ctime>
+srand(time(nullptr)); // Ne pas mettre dans le main
+\end{lstlisting}
+\item ".setup" : pour modifier l'objet qui a été créé. C'est une méthode très utilisée (ex interfaces graphiques ou jeu démineur).\\
+Le jeu (objet) est d'abord créé puis on modifie sa configuration (beginner, expert,...) et on actualise le jeu via la méthode de l'objet jeu ".setup".
+\end{itemize}
+
+\subsection{Troisième Partie}
+\subsubsection{Organisation du code}
+\begin{itemize}
+\item Importation des fichiers systèmes (librairies standard C++) avec les chevrons
+\item Importation des fichiers locaux (les .h) avec les guillemets
+\item Création de fichiers d'en tête : les fichiers ".h"
+\begin{itemize}
+\item On stipule que le fichier doit être inclu qu'une seule fois
+\begin{lstlisting}
+#pragma once
+\end{lstlisting}
+\end{itemize}
+\item Le pré-processeur fait la concaténation des fichiers avec le \textit{\#include}.\\
+Pas de ";" pour le pré-processeur.\\
+\#define est utilisé en C mais il faut arréter en C++.
+\item Séparer le contrat ".h" de l'implémentation ".cpp".
+\begin{itemize}
+\item Le contrat : décrit les fonctions mais pas de code (dit ce dont tu as besoin en entrée)
+\item l'implémentation : décrit le code des méthodes
+\end{itemize}
+\item Opérateur de résolution de porté "\textbf{::}"
+\item Bonne pratique : créer le fichier "util.h" pour inclure des librairies toujours utilisées, des \textit{using std::}, ou le petit matériel comme les \textit{using}. L'inclure dans le grain de classe le plus faible.
+\begin{lstlisting}
+#include <string>
+using std::string
+\end{lstlisting}
+\item Ne pas inclure de \textit{using namespace} dans un contrat (.h) car on donne l'accès à beaucoup trop de choses et donc risque de collision, etc...\\
+On peut donc inclure les \textit{using namespace} dans les .cpp
+\subsubsection{Inline}
+\item Fonction/Méthode \textbf{inline}, c'est une fonction implémentée directement dans le contrat ".h". Ce sont des méthodes accesseure de data, celle qui retourne directement une data.
+\begin{lstlisting}
+// Dans le .h
+int getData() {return data}
+
+// On ne fait pas de methode inline si la valeur retournee est une fonction mathematique complexe
+\end{lstlisting}
+\subsubsection{La constance}
+\item La constance : si on sait que la fonction ne doit pas avoir d'effet de bord on utilise \textit{const}
+\begin{lstlisting}
+type nomMethode(...) const {bla bla}
+\end{lstlisting}
+La constance est différente du const pour les variables.
+\end{itemize}
+
+\subsection{Quatrième Partie}
+\subsubsection{Données et méthodes statiques}
+\begin{itemize}
+\item Les données et méthodes statiques : ce sont des éléments partagés par toutes les instances de la classe.\\
+Ex avec la classe Voiture :
+\begin{itemize}
+\item attribut de classe : la vitesse max sur les routes en France
+\begin{lstlisting}
+static inline type nomData // C++17
+\end{lstlisting}
+\item attribut d'objet : la couleur d'une voiture
+\end{itemize}
+\item \textit{Static} n'a rien à voir avec "ne bouge pas". Ça veut dire que ça appartient à la classe.
+\item Une méthode statique peut seulement accéder aux attributs statiques
+\begin{lstlisting}
+static nomMethode() {return (data)} // Avec data un membre static inline
+\end{lstlisting}
+\item Utilisation dans le \textit{main()} (c'est un message envoyé à la classe et non à une instance de classe)
+\begin{lstlisting}
+nomClasse::nomMethode();
+\end{lstlisting}
+\item On ne peut donc pas utilisé de \textit{this} dans un méthode statique
+\item Exemple d'utilisation : connaitre le nombre d'instances existants d'une classe
+\begin{itemize}
+\item utiliser attribut de classe
+\item Incrémenter dans le constructeur
+\item décrémenter dans le destructeur
+\item Récupérer attribut de classe via une méthode de classe
+\end{itemize}
+\item \textbf{C++11} - On ne peut pas initialiser la variable statique directement dans le .h. Il faut passer par le .cpp
+\begin{lstlisting}
+type nomClasse::varStatique{value}
+\end{lstlisting}
+\item Dans la méthode statiques utiliser les "\textbf{::}" pour modifier l'attribut statique car c's
+\end{itemize}
+
+\subsection{Cinquième Partie}
+\subsubsection{Gestion des excpetions}
+\begin{itemize}
+\item Phase de développement \\\\
+\begin{tabular}{|c|c|c|}
+  \hline
+  1-Maquette & 2-Prototype & 3-Livrable \\ \hline
+  pas de code & code nominal & rajouter les cas d'erreurs\\ \hline
+\end{tabular}
+\item \textbf{Programmation défensive} : faute de programmation est différente de faute de l'utilisateur (situation métier qui doit être pris en compte)
+\item Faute de programmation : pour corriger un bug de conception on utilise des ASSERT.
+\begin{itemize}
+\item On peut mettre des assert de partout, ensuite régler les problèmes.
+\item Utiliser \textit{NDEBUG} pour ne plus exécuter les assertion
+\begin{lstlisting}
+#include <cassert>
+// #define NDEBUG
+assert(condition)
+\end{lstlisting}
+\end{itemize}
+\item Faute de l'utilisateur : pour gérer les exception \textbf{(pur C++)}
+\begin{lstlisting}
+// Dans util.h
+#include <exception>
+using std::exception
+
+// Dans methode
+throw exception
+
+// Dans main()
+try{}
+catch{}
+\end{lstlisting}
+\begin{itemize}
+\item Si l'exception est trouvé le programme stop. Le runtime tue le programme si on n'intercepte pas le problème.
+\item Il faut donc utiliser un gestionnaire d'exception (avec les blocs try et catch)
+\item On ne peut donc pas ignorer une exception: On doit la  \textit{catch{}}
+\end{itemize}
+\item Exemple de prise en compte d'une exception :
+\begin{lstlisting}
+doThis(){
+	throw exception{"erreur"}
+}
+
+// Dans main()
+//...
+try{ bla bla
+	doThis; }
+
+catch(const exception& e){
+	cerr << e.what() << endl; // cerr a la place de cout pour les messages d'erreur
+}
+\end{lstlisting}
+\end{itemize}
+
+\subsection{Sixième Partie}
+\subsubsection{Types de mémoire}
+\begin{itemize}
+\item 3 durées de vie
+\begin{itemize}
+\item Un objet global : c'est ok pour la durée de vie du programme (destruction à la fin)
+\item Un objet dans un bloc : mémoire automatique de bloc
+\item Un objet anonyme : est détruit après son utilisation
+\begin{lstlisting}
+//nomClass{}
+A{}.doIt() // Constructeur
+// Destructeur apres utilisation
+\end{lstlisting}
+\end{itemize}
+\end{itemize}
+\subsubsection{Mémoire dynamique}
+\begin{itemize}
+\item On parle de HEAP = TAS quand on est en dynamique
+\item On choisit la vie et la mort de l'objet avec \textit{new} et \textit{delete}.
+\begin{lstlisting}
+A* a{new A{}};
+delete a;
+\end{lstlisting}
+\item On utilise \textit{delete[]} pour les tableaux
+\begin{lstlisting}
+A* tab = new A[3];
+delete[] tab;
+// Si seulement delete tab on delete la premiere case, donc un seul appel du destructeur
+\end{lstlisting}
+\item Pour une gestion rigoureuse : $1 new = 1 delete$
+\item Quand on fait du temps réel : c'est interdit de gérer la mémoire dynamique par ce que ce n'est pas déterministe.
+\end{itemize}
+\subsubsection{Multiplicité optionnelle}
+\begin{itemize}
+\item Le pionteur \textit{nullptr} est pris en compte dans le C++, on peut donc delete un pointeur \textit{nullptr}. (enfait ça ne fera rien mais il n'y a pas d'erreur)
+\item Exemple avec la classe Voiture : Y a t-il une climatisation dans la voiture ?\\
+Si oui on crée la var pclim si non on ne l'a crée pas.
+\item On utilise donc un pointeur pour pclim pour pouvoir la créer ou la détruire quand on veut
+\begin{lstlisting}
+class Voiture {
+Climatisation* pclim{};
+...
+}
+\end{lstlisting}
+\item On peut ainsi créer la pclim dans le constructeur avec un new dans la ZIM (ne pas oublier de delete la pclim dans le destructeur s'il y a eu un new)
+\end{itemize}
+
+
+% PAge "Changer le projet Game" 
+
+
+
+\newpage
 \section{Programmation C++}
 \subsection{L'héritage}
 \begin{itemize}
