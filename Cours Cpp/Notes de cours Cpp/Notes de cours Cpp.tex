@@ -51,6 +51,7 @@
 \section{Formation C++ - Décembre 2018}
 \subsection{Généralités}
 \begin{itemize}
+\item En orienté objet : \textbf{Le passé à une influence sur le futur}
 \item Conception de base : \textbf{TDR (test driven requirement)}
 \begin{itemize}
 \item On part de ce que l'on veut \textit{main()}
@@ -261,7 +262,7 @@ nomClasse::nomMethode();
 \begin{lstlisting}
 type nomClasse::varStatique{value}
 \end{lstlisting}
-\item Dans la méthode statiques utiliser les "\textbf{::}" pour modifier l'attribut statique car c's
+\item Dans la méthode statiques utiliser les "\textbf{::}" pour modifier l'attribut statique
 \end{itemize}
 
 \subsection{Cinquième Partie}
@@ -271,12 +272,12 @@ type nomClasse::varStatique{value}
 \begin{tabular}{|c|c|c|}
   \hline
   1-Maquette & 2-Prototype & 3-Livrable \\ \hline
-  pas de code & code nominal & rajouter les cas d'erreurs\\ \hline
+  pas de code & code nominal & rajouter les cas d'erreurs\\\hline
 \end{tabular}
 \item \textbf{Programmation défensive} : faute de programmation est différente de faute de l'utilisateur (situation métier qui doit être pris en compte)
 \item Faute de programmation : pour corriger un bug de conception on utilise des ASSERT.
 \begin{itemize}
-\item On peut mettre des assert de partout, ensuite régler les problèmes.
+\item On peut mettre des assert de partout, ensuite régler les problèmes.q
 \item Utiliser \textit{NDEBUG} pour ne plus exécuter les assertion
 \begin{lstlisting}
 #include <cassert>
@@ -364,12 +365,211 @@ Climatisation* pclim{};
 }
 \end{lstlisting}
 \item On peut ainsi créer la pclim dans le constructeur avec un new dans la ZIM (ne pas oublier de delete la pclim dans le destructeur s'il y a eu un new)
+\item Autre exemple : avec le projet Game. On veut que l'utilisateur puisse choisir lui-même le nombre de dés.
+\begin{itemize}
+\item On va construire le gobelet dans avec la méthode "setup". (on ne peut pas créer un gobelet tant que je ne connais pas le nombre de dés qu'il y a dedans)
+\item Pour faire cela on va travailler avec un pointeur de Cup (gobelet).
+\end{itemize}
+\item Utilisation du HEAP = Je veux maîtriser la date de naissance de l'objet.
+\item Les changements :
+\begin{itemize}
+\item Dans "setup" de Game
+\begin{lstlisting}
+cup = new Cup{nbDices}; // Il faut donc un delete quelque part en plus
+\end{lstlisting}
+\item On détruit Cup dans le destructeur
+\begin{lstlisting}
+delete cup;
+\end{lstlisting}
+\item Créer un nouveau membre pointeur de Dice pour créer tablea de dés
+\begin{lstlisting}
+// Dans la classe Cup
+Dice* dices{nullptr};
+\end{lstlisting}
+\item Dans le constructeur on va vraiment créer le tableau de dés
+\begin{lstlisting}
+dices = new Dice[nbDices] // 1 delete[] dices dans le destructeur
+\end{lstlisting}
+\end{itemize}
+\item Le jeu (ici Game) ne connais pas "Dice" et ne sait pas que c'est un objet. Il sait seulement ce qu'est "Cup".\\
+Comme le conducteur d'une voiture : il sait ce qu'est une voiture mais n'a pas besoin de savoir comment marche le moteur ou le vilbrequin pour pouvoir l'utiliser.
 \end{itemize}
 
+\subsection{Septième Partie}
+\subsubsection{Constructeur par copie}
+\begin{itemize}
+\item Problème : Si on initialise un tableau, un objet par copie il vont partager les mêmes données.
+\begin{lstlisting}
+Cup cup1;
+Cup cup2{cup1};
+\end{lstlisting}
+Donc quand on fait un delete du premier élément ça marche bien, les données sont bien delete. Or il y a deux objets. Donc pour le deuxième delete il y a une erreur puisque les données n'existe déjà plus.
+\begin{lstlisting}
+delete cup1; //OK
+delete cup2; //ERREUR
+\end{lstlisting} \textbf{Double Délétion = BUG}
+\end{itemize}
+\begin{itemize}
+\item Bloquer l'utilisation du constructeur par copie 
+\begin{lstlisting}
+nomClasse(const nomClass& src) = delete; // Contrat du constructeur par copie 
+// Grace au delete, pas d'utilisation du clonage
+// Conseil : faire ca pour toutes les classes qui ont un/des pointeur.s
+\end{lstlisting}
+\end{itemize}
+\subsubsection{Polymorphisme \& Héritage}
+\begin{itemize}
+\item Hiérarchie de spécialisation ou de généralisation (même chose dans le sens opposé)
+\begin{tabular}{|c|c|c|}
+  \hline
+  Bibliothèque & Document & Video/Livre \\ \hline
+  \multicolumn{3}{|c|}{$-> ->$ spécialisation $-> ->$}\\\hline
+  \multicolumn{3}{|c|}{$<- <-$ généralisation $<- <-$}\\\hline
+\end{tabular}
+\item Les classes héritent des "dettes" des classes mères :les choses qu'il faut respecter pour que ça marche
+\begin{itemize}
+\item les arguments des constructeurs
+\item appeler le constructeur de la classe mère dans la classe fille
+\item rajouter dans la ZIM les attributs qu'il faut initialiser ensuite
+\end{itemize}
+\item On acquiert le "patrimoine" : pas besoin de self délégation (on hérite des méthodes de la classe mère)
+\item Si l'on fait une classe fille c'est pour acquerir 100\% du patrimoine de la classe mère.\\
+Ex : Classe Oiseau avec sous classe Autruche et Moineau. On ne peut pas mettre de méthode ".voler()" dans oiseau car une Autruche est un oiseau qui ne peut pas voler.\\
+On va donc créer une autre classe décendante qui sache voler. On obtient le schéma suivant :
+\begin{center}
+\includegraphics[scale=0.5]{sous-classe-oiseau}
+\end{center}
+\end{itemize}
+\subsubsection{Classe virtuelle}
+\begin{itemize}
+\item C'est lorsque l'on veut déléguer le traitement
+\item Je veux appeler la méthode de l'objet qui est en mémoire
+\item Je veux que le traitement appelé soit fait sur la classe concrète/tangible
+\end{itemize}
+\subsubsection{Classe abstraite}
+\begin{itemize}
+\item \textbf{Classe abstraite :} c'est une classe que l'on ne peut pas instancier. C'est donc pour les objets non tangibles.
+\item On peut créer une instance d'une classe abstraite seulement via un pointeur
+\item Un pointeur : 
+\begin{itemize}
+\item c'est une adresse (c'est pas nouveau)
+\item c'est aussi maintenant \textbf{un accés à une couverture fonctionnelle} (nouveau)
+\end{itemize}
+\item Ex : comme la classe mamifères\\
+Les objets tangibles seraient chien, chat, homme, etc...
+\item Si on crée un pointeur dans le \textit{main()}, on utilise la syntaxe
+copie 
+\begin{lstlisting}
+// Dans le main()
+Figure* c = new Cercle{0,0,100};
+// Instanciation d'un objet de la classe fille Cercle via un pointeur de la classe mere Figure
 
-% PAge "Changer le projet Game" 
+c->methode1();
+c->methode2();
+// Utilisation de -> pour utiliser les methodes avec un pointeur
+\end{lstlisting}
+\item On met le constructeur en protected : le \textit{main()} ne peut pas instancier d'objet de la classe abstraite
+\end{itemize}
+\subsubsection{Constructeurs et destructeurs}
+\begin{itemize}
+\item Schéma de pile : on parle de chaînage
+\item Par chaînage, les destructeurs des sous-classes sont appelés en premier suivi du destructeur de la classe mère
+\item Pour une classe concrète/tangible, le destructeur est public (on peut l'utiliser dans \textit{main()}.
+\item Le destructeur de la classe Figure est public sinon il faudrait avoir un desctructeur spécifique pour chaque classe fille : \textbf{destructeur virtuel}
+\item Pourquoi le destructeur de la super classe doit être virtuel ?
+\begin{itemize}
+\item Dans le cas d'une création d'un pointeur de la classe mère pour avoir une instance de la classe fille
+\begin{lstlisting}
+Figure* r = new Rectangle{...};
+\end{lstlisting}
+Si on fait un \textit{delete r} qui est appelé ?
+\item SANS VIRTUAL : c'est seulement le destructeur de Figure car \textit{r} est un pointeur de Figure\\
+DÉLÉTION INCOMPLÈTE
+\item AVEC VIRUTUAL : on va déléguer cette destruction au destructeur de la classe tangible (sous-classe)\\
+Les destructeurs sont chainés donc pas besoin d'appeler de destructeur dans le destructeur\\
+Au final : 1) le destructeur de Rectangle est appelé, 2) Par chaînage le destructeur de Figure est appelé\\
+DÉLÉTION COMPLÈTE
 
+\end{itemize}
+\end{itemize}
+\subsubsection{Pointeur de classe}
+\begin{itemize}
+\item Pourquoi utiliser un pointeur de Figure pour instancier un Rectangle ou un Cercle
+\begin{itemize}
+\item aspect \textbf{Evolutif} : si on rajoute une sous-classe on pourra la manipuler de la même façon 
+\begin{itemize}
+\item Exemple avec les classes Zoo, Animal, Gazelle, Lion
+\item La méthode "enfermer()" de Zoo permet d'enfermer \textbf{tous} les animaux donc on utilse la classe animal pour ne pas spécifier quel animal à enfermer
+\begin{lstlisting}
+zoo::enfermer(Animal& animal);
+\end{lstlisting}
+\item On veut avoir une liste d'animaux présents dans le zoo + cette liste peut changer
+\begin{lstlisting}
+// attribut dans Zoo.h
+vector<Animal*> animaux;
+\end{lstlisting}
+\item On peut utiliser un FOR EACH dans les méthodes pour traiter tout le monde
+\end{itemize}
+\item \textbf{Maintenance}
+\item Permet de ne pas spécifier quelle type de donnée on crée
+\item Permet d'avoir une fonction unique pour toutes les sous classes en utilisant un pointeur de la classe mère
+\begin{lstlisting}
+void destroy(Figure* f) // On peut appeler un Rectangle ou un Cercle
+\end{lstlisting}
+\end{itemize}
+\item \textbf{Polymorphisme :} on s'adresse à des gens différents de la même façon\\
+Ex: les feux tricolores veulent dire la même chose pour les automobilistes, les cyclistes, les routiers, etc...
+\end{itemize}
 
+\subsection{Huitième Partie}
+\subsubsection{Méthode abstraite}
+\begin{itemize}
+\item Un méthode abstraite est une méthode virtuelle \textit{(virtual)} pure \textit{(=0)}
+\begin{lstlisting}
+virtual type nomMethode() = 0; // methode abstraite
+\end{lstlisting}
+\item Une méthode abstraite doit obligatoirement être créée et implémentée dans les classes filles.
+\item MAIS une fonction abstraite peut être implémentée dans la classe mêre : elle sera générale pour toutes les sous-classes
+\item On fera le chaînage à la main pour appelé la méthode de la classe mère
+\end{itemize}
+\subsubsection{Override C++11}
+\begin{itemize}
+\item Aspect \textbf{Robustesse}
+\item C'est une sorte de détrompeur
+\item Override stipule que l'on est entrain de redéfinir une méthode de la classe mère
+\item Le compilateur va nous avertir d'une erreur si l'on fait override sur une méthode qui n'existe pas dans la classe mère (erreur de nom, type, arguments,...)
+\item Le contrat de la méthode doit être spécifiquement le même
+\end{itemize}
+\subsubsection{Final}
+\begin{itemize}
+\item Aspect \textbf{Robustesse}
+\item Permet de spécifier que l'on ne veut pas implémenter une nouvelle fois une classe, une méthode etc
+\item \textit{Final} avec les classes : stipule que la classe dit Final ne peut pas avoir de classe fille
+\begin{lstlisting}
+class A final {...};
+class B : public A {...} // Erreur car A final
+\end{lstlisting}
+\item \textit{Final} avec une méthode d'une classe : stipule qu'on ne peut pas implémenter la même méthode (contrat identique) dans une classe fille
+\begin{lstlisting}
+class A {
+public:
+	virtual void f() final;
+}
+class B : public A{
+public:
+	void f(); // Erreur car void f() est final
+}
+\end{lstlisting}
+\subsubsection{Constructeur hérité}
+\begin{itemize}
+\item Pour générer tous les constructeurs de la classe mère dans la classe fille MAIS il faut qu'il y ait la même signature (pas de données suplémentaires dans les classes filles)
+\item utiliser le mot clefs \textit{using} et générer les constructeurs
+\begin{lstlisting}
+// Dans la classe fille (avec meme signature)
+using classeMere::classeMere; //genere tous les constructeurs
+\end{lstlisting}
+\end{itemize}
+\end{itemize}
 
 \newpage
 \section{Programmation C++}
@@ -482,7 +682,7 @@ if ((a=b)) {...} //is false
 \item b. [\&] capture all variables within scope by reference
 \item c. [\& var] capture var by reference
 \item d. [\&, var] specify that the default way of capturing is by reference and we want to capture var
-\item e. [=, \& var] capture the variables in scope by value by default, but capture var using reference instead
+\item e. [=, \& var] capture the variables in scope by value by default, but capture var using reference instead.
 \end{itemize}
 \end{itemize}
 

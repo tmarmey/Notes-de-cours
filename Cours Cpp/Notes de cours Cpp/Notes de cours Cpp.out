@@ -14,9 +14,21 @@
 \BOOKMARK [3][-]{subsubsection.1.7.1}{Types de m\351moire}{subsection.1.7}% 14
 \BOOKMARK [3][-]{subsubsection.1.7.2}{M\351moire dynamique}{subsection.1.7}% 15
 \BOOKMARK [3][-]{subsubsection.1.7.3}{Multiplicit\351 optionnelle}{subsection.1.7}% 16
-\BOOKMARK [1][-]{section.2}{Programmation C++}{}% 17
-\BOOKMARK [2][-]{subsection.2.1}{L'h\351ritage}{section.2}% 18
-\BOOKMARK [2][-]{subsection.2.2}{Polymorphisme}{section.2}% 19
-\BOOKMARK [2][-]{subsection.2.3}{Design Pattern}{section.2}% 20
-\BOOKMARK [2][-]{subsection.2.4}{Template}{section.2}% 21
-\BOOKMARK [2][-]{subsection.2.5}{Autre}{section.2}% 22
+\BOOKMARK [2][-]{subsection.1.8}{Septi\350me Partie}{section.1}% 17
+\BOOKMARK [3][-]{subsubsection.1.8.1}{Constructeur par copie}{subsection.1.8}% 18
+\BOOKMARK [3][-]{subsubsection.1.8.2}{Polymorphisme \046 H\351ritage}{subsection.1.8}% 19
+\BOOKMARK [3][-]{subsubsection.1.8.3}{Classe virtuelle}{subsection.1.8}% 20
+\BOOKMARK [3][-]{subsubsection.1.8.4}{Classe abstraite}{subsection.1.8}% 21
+\BOOKMARK [3][-]{subsubsection.1.8.5}{Constructeurs et destructeurs}{subsection.1.8}% 22
+\BOOKMARK [3][-]{subsubsection.1.8.6}{Pointeur de classe}{subsection.1.8}% 23
+\BOOKMARK [2][-]{subsection.1.9}{Huiti\350me Partie}{section.1}% 24
+\BOOKMARK [3][-]{subsubsection.1.9.1}{M\351thode abstraite}{subsection.1.9}% 25
+\BOOKMARK [3][-]{subsubsection.1.9.2}{Override C++11}{subsection.1.9}% 26
+\BOOKMARK [3][-]{subsubsection.1.9.3}{Final}{subsection.1.9}% 27
+\BOOKMARK [3][-]{subsubsection.1.9.4}{Constructeur h\351rit\351}{subsection.1.9}% 28
+\BOOKMARK [1][-]{section.2}{Programmation C++}{}% 29
+\BOOKMARK [2][-]{subsection.2.1}{L'h\351ritage}{section.2}% 30
+\BOOKMARK [2][-]{subsection.2.2}{Polymorphisme}{section.2}% 31
+\BOOKMARK [2][-]{subsection.2.3}{Design Pattern}{section.2}% 32
+\BOOKMARK [2][-]{subsection.2.4}{Template}{section.2}% 33
+\BOOKMARK [2][-]{subsection.2.5}{Autre}{section.2}% 34

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.17)  18 DEC 2018 17:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.17)  19 DEC 2018 21:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -799,32 +799,40 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5] [6]
-Underfull \hbox (badness 10000) in paragraph at lines 270--276
+Underfull \hbox (badness 10000) in paragraph at lines 271--277
 
  []
 
-[7] [8] [9]
+[7] [8] [9] [10]
+<../Images/sous-classe-oiseau.png, id=388, 634.37pt x 149.55875pt>
+File: ../Images/sous-classe-oiseau.png Graphic file (type png)
+<use ../Images/sous-classe-oiseau.png>
+Package pdftex.def Info: ../Images/sous-classe-oiseau.png  used on input line 4
+40.
+(pdftex.def)             Requested size: 317.18422pt x 74.77919pt.
+ [11 <../Images/sous-classe-oiseau.png>] [12] [13] [14]
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 393.
- [10] [11] [12]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 489.
- [13]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 489.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 593.
+
+[15] [16] [17]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 689.
+ [18]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 689.
  (./Notes de cours Cpp.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 489.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 489.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 689.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 689.
 Package rerunfilecheck Info: File `"Notes de cours Cpp".out' has not changed.
-(rerunfilecheck)             Checksum: 5D39A4AF9918D4F5B46DA69C220FD2FA;1536.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 489.
+(rerunfilecheck)             Checksum: 7A7C261072F02810F40E2BA084DBB985;2467.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 689.
  ) 
 Here is how much of TeX's memory you used:
- 10531 strings out of 494880
- 149308 string characters out of 6179600
- 296695 words of memory out of 5000000
- 13556 multiletter control sequences out of 15000+600000
+ 10673 strings out of 494880
+ 151334 string characters out of 6179600
+ 297695 words of memory out of 5000000
+ 13625 multiletter control sequences out of 15000+600000
  13324 words of font info for 52 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 44i,6n,58p,434b,1918s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 44i,7n,58p,434b,1982s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texli
@@ -832,10 +840,10 @@ ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on "Notes de cours Cpp.pdf" (13 pages, 135582 bytes).
+Output written on "Notes de cours Cpp.pdf" (18 pages, 192248 bytes).
 PDF statistics:
- 414 PDF objects out of 1000 (max. 8388607)
- 388 compressed objects within 4 object streams
- 184 named destinations out of 1000 (max. 500000)
- 177 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 580 PDF objects out of 1000 (max. 8388607)
+ 545 compressed objects within 6 object streams
+ 254 named destinations out of 1000 (max. 500000)
+ 278 words of extra memory for PDF output out of 10000 (max. 10000000)
 
