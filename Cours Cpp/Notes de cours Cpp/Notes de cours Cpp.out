@@ -1,34 +1,52 @@
 \BOOKMARK [1][-]{section.1}{Formation C++ - D\351cembre 2018}{}% 1
 \BOOKMARK [2][-]{subsection.1.1}{G\351n\351ralit\351s}{section.1}% 2
-\BOOKMARK [2][-]{subsection.1.2}{Premi\350re Partie}{section.1}% 3
-\BOOKMARK [2][-]{subsection.1.3}{Deuxi\350me Partie}{section.1}% 4
-\BOOKMARK [2][-]{subsection.1.4}{Troisi\350me Partie}{section.1}% 5
-\BOOKMARK [3][-]{subsubsection.1.4.1}{Organisation du code}{subsection.1.4}% 6
-\BOOKMARK [3][-]{subsubsection.1.4.2}{Inline}{subsection.1.4}% 7
-\BOOKMARK [3][-]{subsubsection.1.4.3}{La constance}{subsection.1.4}% 8
-\BOOKMARK [2][-]{subsection.1.5}{Quatri\350me Partie}{section.1}% 9
-\BOOKMARK [3][-]{subsubsection.1.5.1}{Donn\351es et m\351thodes statiques}{subsection.1.5}% 10
-\BOOKMARK [2][-]{subsection.1.6}{Cinqui\350me Partie}{section.1}% 11
-\BOOKMARK [3][-]{subsubsection.1.6.1}{Gestion des excpetions}{subsection.1.6}% 12
-\BOOKMARK [2][-]{subsection.1.7}{Sixi\350me Partie}{section.1}% 13
-\BOOKMARK [3][-]{subsubsection.1.7.1}{Types de m\351moire}{subsection.1.7}% 14
-\BOOKMARK [3][-]{subsubsection.1.7.2}{M\351moire dynamique}{subsection.1.7}% 15
-\BOOKMARK [3][-]{subsubsection.1.7.3}{Multiplicit\351 optionnelle}{subsection.1.7}% 16
-\BOOKMARK [2][-]{subsection.1.8}{Septi\350me Partie}{section.1}% 17
-\BOOKMARK [3][-]{subsubsection.1.8.1}{Constructeur par copie}{subsection.1.8}% 18
-\BOOKMARK [3][-]{subsubsection.1.8.2}{Polymorphisme \046 H\351ritage}{subsection.1.8}% 19
-\BOOKMARK [3][-]{subsubsection.1.8.3}{Classe virtuelle}{subsection.1.8}% 20
-\BOOKMARK [3][-]{subsubsection.1.8.4}{Classe abstraite}{subsection.1.8}% 21
-\BOOKMARK [3][-]{subsubsection.1.8.5}{Constructeurs et destructeurs}{subsection.1.8}% 22
-\BOOKMARK [3][-]{subsubsection.1.8.6}{Pointeur de classe}{subsection.1.8}% 23
-\BOOKMARK [2][-]{subsection.1.9}{Huiti\350me Partie}{section.1}% 24
-\BOOKMARK [3][-]{subsubsection.1.9.1}{M\351thode abstraite}{subsection.1.9}% 25
-\BOOKMARK [3][-]{subsubsection.1.9.2}{Override C++11}{subsection.1.9}% 26
-\BOOKMARK [3][-]{subsubsection.1.9.3}{Final}{subsection.1.9}% 27
-\BOOKMARK [3][-]{subsubsection.1.9.4}{Constructeur h\351rit\351}{subsection.1.9}% 28
-\BOOKMARK [1][-]{section.2}{Programmation C++}{}% 29
-\BOOKMARK [2][-]{subsection.2.1}{L'h\351ritage}{section.2}% 30
-\BOOKMARK [2][-]{subsection.2.2}{Polymorphisme}{section.2}% 31
-\BOOKMARK [2][-]{subsection.2.3}{Design Pattern}{section.2}% 32
-\BOOKMARK [2][-]{subsection.2.4}{Template}{section.2}% 33
-\BOOKMARK [2][-]{subsection.2.5}{Autre}{section.2}% 34
+\BOOKMARK [3][-]{subsubsection.1.1.1}{L'analyse autour d'un projet}{subsection.1.1}% 3
+\BOOKMARK [3][-]{subsubsection.1.1.2}{Le concept orient\351 objet}{subsection.1.1}% 4
+\BOOKMARK [3][-]{subsubsection.1.1.3}{Smell-Code vs Clean-Code}{subsection.1.1}% 5
+\BOOKMARK [3][-]{subsubsection.1.1.4}{Repr\351sentation UML}{subsection.1.1}% 6
+\BOOKMARK [3][-]{subsubsection.1.1.5}{Visual Studio}{subsection.1.1}% 7
+\BOOKMARK [2][-]{subsection.1.2}{Premi\350re Partie}{section.1}% 8
+\BOOKMARK [3][-]{subsubsection.1.2.1}{Initialisation uniforme et argc/argv, \351num\351ration typ\351e}{subsection.1.2}% 9
+\BOOKMARK [3][-]{subsubsection.1.2.2}{Boucle For-Each \046 Do-While}{subsection.1.2}% 10
+\BOOKMARK [3][-]{subsubsection.1.2.3}{Array}{subsection.1.2}% 11
+\BOOKMARK [3][-]{subsubsection.1.2.4}{Liste d'initialisation g\351n\351rique}{subsection.1.2}% 12
+\BOOKMARK [2][-]{subsection.1.3}{Deuxi\350me Partie}{section.1}% 13
+\BOOKMARK [3][-]{subsubsection.1.3.1}{Using \046 this}{subsection.1.3}% 14
+\BOOKMARK [3][-]{subsubsection.1.3.2}{La ZIM}{subsection.1.3}% 15
+\BOOKMARK [3][-]{subsubsection.1.3.3}{Self-delegation}{subsection.1.3}% 16
+\BOOKMARK [3][-]{subsubsection.1.3.4}{Rand \046 srand}{subsection.1.3}% 17
+\BOOKMARK [3][-]{subsubsection.1.3.5}{M\351thode setup}{subsection.1.3}% 18
+\BOOKMARK [2][-]{subsection.1.4}{Troisi\350me Partie}{section.1}% 19
+\BOOKMARK [3][-]{subsubsection.1.4.1}{Organisation du code}{subsection.1.4}% 20
+\BOOKMARK [3][-]{subsubsection.1.4.2}{Inline}{subsection.1.4}% 21
+\BOOKMARK [3][-]{subsubsection.1.4.3}{La constance}{subsection.1.4}% 22
+\BOOKMARK [2][-]{subsection.1.5}{Quatri\350me Partie}{section.1}% 23
+\BOOKMARK [3][-]{subsubsection.1.5.1}{Donn\351es et m\351thodes statiques}{subsection.1.5}% 24
+\BOOKMARK [2][-]{subsection.1.6}{Cinqui\350me Partie}{section.1}% 25
+\BOOKMARK [3][-]{subsubsection.1.6.1}{Gestion des excpetions}{subsection.1.6}% 26
+\BOOKMARK [2][-]{subsection.1.7}{Sixi\350me Partie}{section.1}% 27
+\BOOKMARK [3][-]{subsubsection.1.7.1}{Types de m\351moire}{subsection.1.7}% 28
+\BOOKMARK [3][-]{subsubsection.1.7.2}{M\351moire dynamique}{subsection.1.7}% 29
+\BOOKMARK [3][-]{subsubsection.1.7.3}{Multiplicit\351 optionnelle}{subsection.1.7}% 30
+\BOOKMARK [2][-]{subsection.1.8}{Septi\350me Partie}{section.1}% 31
+\BOOKMARK [3][-]{subsubsection.1.8.1}{Constructeur par copie}{subsection.1.8}% 32
+\BOOKMARK [3][-]{subsubsection.1.8.2}{Polymorphisme \046 H\351ritage}{subsection.1.8}% 33
+\BOOKMARK [3][-]{subsubsection.1.8.3}{Classe abstraite}{subsection.1.8}% 34
+\BOOKMARK [3][-]{subsubsection.1.8.4}{Constructeurs et destructeurs}{subsection.1.8}% 35
+\BOOKMARK [3][-]{subsubsection.1.8.5}{Pointeur de classe}{subsection.1.8}% 36
+\BOOKMARK [2][-]{subsection.1.9}{Huiti\350me Partie}{section.1}% 37
+\BOOKMARK [3][-]{subsubsection.1.9.1}{M\351thode virtuelle}{subsection.1.9}% 38
+\BOOKMARK [3][-]{subsubsection.1.9.2}{M\351thode abstraite }{subsection.1.9}% 39
+\BOOKMARK [3][-]{subsubsection.1.9.3}{Override C++11}{subsection.1.9}% 40
+\BOOKMARK [3][-]{subsubsection.1.9.4}{Final}{subsection.1.9}% 41
+\BOOKMARK [3][-]{subsubsection.1.9.5}{Constructeur h\351rit\351}{subsection.1.9}% 42
+\BOOKMARK [3][-]{subsubsection.1.9.6}{R\351sum\351}{subsection.1.9}% 43
+\BOOKMARK [2][-]{subsection.1.10}{Neuvi\350me Partie}{section.1}% 44
+\BOOKMARK [3][-]{subsubsection.1.10.1}{STL : Standard Template Library}{subsection.1.10}% 45
+\BOOKMARK [3][-]{subsubsection.1.10.2}{Bibliographie - Pour la suite}{subsection.1.10}% 46
+\BOOKMARK [1][-]{section.2}{Programmation C++}{}% 47
+\BOOKMARK [2][-]{subsection.2.1}{L'h\351ritage}{section.2}% 48
+\BOOKMARK [2][-]{subsection.2.2}{Polymorphisme}{section.2}% 49
+\BOOKMARK [2][-]{subsection.2.3}{Design Pattern}{section.2}% 50
+\BOOKMARK [2][-]{subsection.2.4}{Template}{section.2}% 51
+\BOOKMARK [2][-]{subsection.2.5}{Autre}{section.2}% 52

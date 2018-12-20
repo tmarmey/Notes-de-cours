@@ -1,34 +1,52 @@
 \contentsline {section}{\numberline {1}Formation C++ - D\IeC {\'e}cembre 2018}{2}{section.1}
 \contentsline {subsection}{\numberline {1.1}G\IeC {\'e}n\IeC {\'e}ralit\IeC {\'e}s}{2}{subsection.1.1}
-\contentsline {subsection}{\numberline {1.2}Premi\IeC {\`e}re Partie}{3}{subsection.1.2}
-\contentsline {subsection}{\numberline {1.3}Deuxi\IeC {\`e}me Partie}{4}{subsection.1.3}
-\contentsline {subsection}{\numberline {1.4}Troisi\IeC {\`e}me Partie}{5}{subsection.1.4}
-\contentsline {subsubsection}{\numberline {1.4.1}Organisation du code}{5}{subsubsection.1.4.1}
-\contentsline {subsubsection}{\numberline {1.4.2}Inline}{6}{subsubsection.1.4.2}
-\contentsline {subsubsection}{\numberline {1.4.3}La constance}{6}{subsubsection.1.4.3}
-\contentsline {subsection}{\numberline {1.5}Quatri\IeC {\`e}me Partie}{6}{subsection.1.5}
-\contentsline {subsubsection}{\numberline {1.5.1}Donn\IeC {\'e}es et m\IeC {\'e}thodes statiques}{6}{subsubsection.1.5.1}
-\contentsline {subsection}{\numberline {1.6}Cinqui\IeC {\`e}me Partie}{7}{subsection.1.6}
-\contentsline {subsubsection}{\numberline {1.6.1}Gestion des excpetions}{7}{subsubsection.1.6.1}
-\contentsline {subsection}{\numberline {1.7}Sixi\IeC {\`e}me Partie}{8}{subsection.1.7}
-\contentsline {subsubsection}{\numberline {1.7.1}Types de m\IeC {\'e}moire}{8}{subsubsection.1.7.1}
-\contentsline {subsubsection}{\numberline {1.7.2}M\IeC {\'e}moire dynamique}{8}{subsubsection.1.7.2}
-\contentsline {subsubsection}{\numberline {1.7.3}Multiplicit\IeC {\'e} optionnelle}{9}{subsubsection.1.7.3}
-\contentsline {subsection}{\numberline {1.8}Septi\IeC {\`e}me Partie}{10}{subsection.1.8}
-\contentsline {subsubsection}{\numberline {1.8.1}Constructeur par copie}{10}{subsubsection.1.8.1}
-\contentsline {subsubsection}{\numberline {1.8.2}Polymorphisme \& H\IeC {\'e}ritage}{10}{subsubsection.1.8.2}
-\contentsline {subsubsection}{\numberline {1.8.3}Classe virtuelle}{11}{subsubsection.1.8.3}
-\contentsline {subsubsection}{\numberline {1.8.4}Classe abstraite}{11}{subsubsection.1.8.4}
-\contentsline {subsubsection}{\numberline {1.8.5}Constructeurs et destructeurs}{12}{subsubsection.1.8.5}
-\contentsline {subsubsection}{\numberline {1.8.6}Pointeur de classe}{12}{subsubsection.1.8.6}
-\contentsline {subsection}{\numberline {1.9}Huiti\IeC {\`e}me Partie}{13}{subsection.1.9}
-\contentsline {subsubsection}{\numberline {1.9.1}M\IeC {\'e}thode abstraite}{13}{subsubsection.1.9.1}
-\contentsline {subsubsection}{\numberline {1.9.2}Override C++11}{13}{subsubsection.1.9.2}
-\contentsline {subsubsection}{\numberline {1.9.3}Final}{14}{subsubsection.1.9.3}
-\contentsline {subsubsection}{\numberline {1.9.4}Constructeur h\IeC {\'e}rit\IeC {\'e}}{14}{subsubsection.1.9.4}
-\contentsline {section}{\numberline {2}Programmation C++}{15}{section.2}
-\contentsline {subsection}{\numberline {2.1}L'h\IeC {\'e}ritage}{15}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Polymorphisme}{16}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}Design Pattern}{16}{subsection.2.3}
-\contentsline {subsection}{\numberline {2.4}Template}{16}{subsection.2.4}
-\contentsline {subsection}{\numberline {2.5}Autre}{17}{subsection.2.5}
+\contentsline {subsubsection}{\numberline {1.1.1}L'analyse autour d'un projet}{2}{subsubsection.1.1.1}
+\contentsline {subsubsection}{\numberline {1.1.2}Le concept orient\IeC {\'e} objet}{2}{subsubsection.1.1.2}
+\contentsline {subsubsection}{\numberline {1.1.3}Smell-Code vs Clean-Code}{3}{subsubsection.1.1.3}
+\contentsline {subsubsection}{\numberline {1.1.4}Repr\IeC {\'e}sentation UML}{3}{subsubsection.1.1.4}
+\contentsline {subsubsection}{\numberline {1.1.5}Visual Studio}{4}{subsubsection.1.1.5}
+\contentsline {subsection}{\numberline {1.2}Premi\IeC {\`e}re Partie}{4}{subsection.1.2}
+\contentsline {subsubsection}{\numberline {1.2.1}Initialisation uniforme et argc/argv, \IeC {\'e}num\IeC {\'e}ration typ\IeC {\'e}e}{4}{subsubsection.1.2.1}
+\contentsline {subsubsection}{\numberline {1.2.2}Boucle For-Each \& Do-While}{4}{subsubsection.1.2.2}
+\contentsline {subsubsection}{\numberline {1.2.3}Array}{5}{subsubsection.1.2.3}
+\contentsline {subsubsection}{\numberline {1.2.4}Liste d'initialisation g\IeC {\'e}n\IeC {\'e}rique}{5}{subsubsection.1.2.4}
+\contentsline {subsection}{\numberline {1.3}Deuxi\IeC {\`e}me Partie}{5}{subsection.1.3}
+\contentsline {subsubsection}{\numberline {1.3.1}Using \& this}{5}{subsubsection.1.3.1}
+\contentsline {subsubsection}{\numberline {1.3.2}La ZIM}{5}{subsubsection.1.3.2}
+\contentsline {subsubsection}{\numberline {1.3.3}Self-delegation}{6}{subsubsection.1.3.3}
+\contentsline {subsubsection}{\numberline {1.3.4}Rand \& srand}{6}{subsubsection.1.3.4}
+\contentsline {subsubsection}{\numberline {1.3.5}M\IeC {\'e}thode setup}{6}{subsubsection.1.3.5}
+\contentsline {subsection}{\numberline {1.4}Troisi\IeC {\`e}me Partie}{6}{subsection.1.4}
+\contentsline {subsubsection}{\numberline {1.4.1}Organisation du code}{6}{subsubsection.1.4.1}
+\contentsline {subsubsection}{\numberline {1.4.2}Inline}{7}{subsubsection.1.4.2}
+\contentsline {subsubsection}{\numberline {1.4.3}La constance}{7}{subsubsection.1.4.3}
+\contentsline {subsection}{\numberline {1.5}Quatri\IeC {\`e}me Partie}{7}{subsection.1.5}
+\contentsline {subsubsection}{\numberline {1.5.1}Donn\IeC {\'e}es et m\IeC {\'e}thodes statiques}{7}{subsubsection.1.5.1}
+\contentsline {subsection}{\numberline {1.6}Cinqui\IeC {\`e}me Partie}{8}{subsection.1.6}
+\contentsline {subsubsection}{\numberline {1.6.1}Gestion des excpetions}{8}{subsubsection.1.6.1}
+\contentsline {subsection}{\numberline {1.7}Sixi\IeC {\`e}me Partie}{9}{subsection.1.7}
+\contentsline {subsubsection}{\numberline {1.7.1}Types de m\IeC {\'e}moire}{9}{subsubsection.1.7.1}
+\contentsline {subsubsection}{\numberline {1.7.2}M\IeC {\'e}moire dynamique}{10}{subsubsection.1.7.2}
+\contentsline {subsubsection}{\numberline {1.7.3}Multiplicit\IeC {\'e} optionnelle}{10}{subsubsection.1.7.3}
+\contentsline {subsection}{\numberline {1.8}Septi\IeC {\`e}me Partie}{11}{subsection.1.8}
+\contentsline {subsubsection}{\numberline {1.8.1}Constructeur par copie}{11}{subsubsection.1.8.1}
+\contentsline {subsubsection}{\numberline {1.8.2}Polymorphisme \& H\IeC {\'e}ritage}{12}{subsubsection.1.8.2}
+\contentsline {subsubsection}{\numberline {1.8.3}Classe abstraite}{12}{subsubsection.1.8.3}
+\contentsline {subsubsection}{\numberline {1.8.4}Constructeurs et destructeurs}{13}{subsubsection.1.8.4}
+\contentsline {subsubsection}{\numberline {1.8.5}Pointeur de classe}{13}{subsubsection.1.8.5}
+\contentsline {subsection}{\numberline {1.9}Huiti\IeC {\`e}me Partie}{14}{subsection.1.9}
+\contentsline {subsubsection}{\numberline {1.9.1}M\IeC {\'e}thode virtuelle}{14}{subsubsection.1.9.1}
+\contentsline {subsubsection}{\numberline {1.9.2}M\IeC {\'e}thode abstraite }{14}{subsubsection.1.9.2}
+\contentsline {subsubsection}{\numberline {1.9.3}Override C++11}{15}{subsubsection.1.9.3}
+\contentsline {subsubsection}{\numberline {1.9.4}Final}{15}{subsubsection.1.9.4}
+\contentsline {subsubsection}{\numberline {1.9.5}Constructeur h\IeC {\'e}rit\IeC {\'e}}{15}{subsubsection.1.9.5}
+\contentsline {subsubsection}{\numberline {1.9.6}R\IeC {\'e}sum\IeC {\'e}}{16}{subsubsection.1.9.6}
+\contentsline {subsection}{\numberline {1.10}Neuvi\IeC {\`e}me Partie}{16}{subsection.1.10}
+\contentsline {subsubsection}{\numberline {1.10.1}STL : Standard Template Library}{16}{subsubsection.1.10.1}
+\contentsline {subsubsection}{\numberline {1.10.2}Bibliographie - Pour la suite}{17}{subsubsection.1.10.2}
+\contentsline {section}{\numberline {2}Programmation C++}{18}{section.2}
+\contentsline {subsection}{\numberline {2.1}L'h\IeC {\'e}ritage}{18}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Polymorphisme}{19}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Design Pattern}{19}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Template}{19}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}Autre}{20}{subsection.2.5}
