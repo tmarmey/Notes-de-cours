@@ -56,7 +56,7 @@
 \item Concevoir c'est créer un système EVOLUTIF + ROBUSTE
 \begin{itemize}
 \item Maintenance (code à modifier)
-\item Robustesse (déterministe, si problème on trouve facilement, gestion des exception...)
+\item Robustesse (déterministe, si problème on trouve facilement, gestion des exceptions...)
 \end{itemize}
 \item \textbf{La conception est beaucoup plus importante que le developpement}
 \item Avant le code, grosse partie d'analyse pour : 
@@ -83,7 +83,7 @@
 \item On implémente les méthodes dans la classe
 \end{itemize}
 \item En C++ on est proche des objets réels, leur conception se fait en les conceptualisant
-\item \textbf{Encapsulation} : dans une même objet il y a des données et des fonctions qui peuvent ne pas être accessible depuis l'extérieur.
+\item \textbf{Encapsulation} : dans une même objet il y a des données et des fonctions qui peuvent ne pas être accessibles depuis l'extérieur.
 \end{itemize}
 \subsubsection{Smell-Code vs Clean-Code}
 \begin{itemize}
@@ -101,8 +101,8 @@
 \item nom clair
 \item économie des messages (méthodes)
 \end{itemize}
-\item Si méthode trop longue on extrait des lignes de codes pour créer une nouvelle fonction et ensuite placer ces nouvelles méthodes en "private" car ces méthodes ne sont pas utilisé par l'utilisateur !
-\item La documentation doit être automatisé par un logiciel : les mises à jour se font au fur et à mesure de l'avancement du code (la doc ne devrait pas être une activité humaine)
+\item Si méthode trop longue on extrait des lignes de codes pour créer une nouvelle fonction et ensuite placer ces nouvelles méthodes en "private" car ces méthodes ne sont pas utilisées par l'utilisateur !
+\item La documentation doit être automatisée par un logiciel : les mises à jour se font au fur et à mesure de l'avancement du code (la doc ne devrait pas être une activité humaine)
 \end{itemize}
 \subsubsection{Représentation UML}
 \begin{itemize}
@@ -112,10 +112,10 @@
 \item Seulement avec les choses "Public" (pour celui qui utilise)
 \item Il y a toujours un seul \textit{"system"}, c'est celui qui englobe tout le reste
 \end{itemize}
+\item Documentation CodeOrganization : permet de connaître, visualiser les dépendances entre les différents fichiers
 \end{itemize}
 \subsubsection{Visual Studio}
 \begin{itemize}
-\item Documentation CodeOrganization : permet de connaître, visualiser les dépendances entre les différents fichiers
 \item Raccourci Visual Studio
 \begin{lstlisting}
 // ctrl + k -> ctrl + c (comment)
@@ -250,7 +250,7 @@ Le jeu (objet) est d'abord créé puis on modifie sa configuration (beginner, ex
 \item \textbf{l'implémentation} : décrit le code des méthodes
 \end{itemize}
 \item Opérateur de résolution de portée "\textbf{::}"
-\item \textbf{Bonne pratique} : créer le fichier "util.h" pour inclure des librairies toujours utilisées, des \textit{"using std::"}, ou le petit matériel comme les \textit{"using"}. L'inclure dans le grain de classe le plus faible.
+\item \textbf{Bonne pratique} : créer le fichier "util.h" pour inclure des librairies toujours utilisées, des \textit{"using std::"}, ou le petit matériel comme les \textit{"using"}. L'inclure dans le grain de classe le plus petit.
 \begin{lstlisting}
 #include <string>
 using std::string
@@ -345,7 +345,7 @@ catch{}
 \begin{itemize}
 \item Si l'exception est trouvé le programme stop. Le runtime tue le programme si on n'intercepte pas le problème.
 \item Il faut donc utiliser un gestionnaire d'exception (avec les blocs try et catch)
-\item On ne peut donc pas ignorer une exception: On doit obligatoirement un \textit{catch{}}
+\item On ne peut donc pas ignorer une exception: On doit obligatoirement utiliser un \textit{catch{}}
 \end{itemize}
 \item Exemple de prise en compte d'une exception :
 \begin{lstlisting}
@@ -355,8 +355,11 @@ doThis(){
 
 // Dans main()
 //...
-try{ bla bla
-	doThis; }
+try{ 
+	// bla bla
+	doThis; 
+	// bla bla
+}
 
 catch(const exception& e){
 	cerr << e.what() << endl; // cerr a la place de cout pour les messages d'erreur
@@ -373,7 +376,7 @@ catch(const exception& e){
 \item Un objet dans un bloc : mémoire automatique de bloc
 \item Un objet anonyme : est détruit après son utilisation
 \begin{lstlisting}
-//classe A{}
+// Classe A{}
 A{}.doIt() // Constructeur d'un objet anonyme
 // Destructeur apres utilisation
 \end{lstlisting}
@@ -387,29 +390,30 @@ A{}.doIt() // Constructeur d'un objet anonyme
 A* a{new A{}};
 delete a;
 \end{lstlisting}
-\item On utilise \textit{delete[]} pour les tableaux
+\item On utilise \textit{delete[ ]} pour les tableaux
 \begin{lstlisting}
 A* tab = new A[3];
 delete[] tab;
-// Si seulement "delete tab" on delete la premiere case, donc un seul appel du destructeur
+// Si seulement "delete tab" on delete la premiere case, donc un seul appel du destructeur -> fuite de memoire = BUG
 \end{lstlisting}
 \item Pour une gestion rigoureuse : $1 new = 1 delete$
-\item Quand on fait du temps réel : c'est interdit de gérer la mémoire dynamique par ce que ce n'est pas déterministe.
+\item Quand on fait du \textbf{temps réel} : c'est interdit de gérer la mémoire dynamique par ce que ce n'est pas déterministe.
 \end{itemize}
 \subsubsection{Multiplicité optionnelle}
 \begin{itemize}
 \item Le pionteur \textit{nullptr} est pris en compte dans le C++, on peut donc delete un pointeur \textit{nullptr}. (enfait ça ne fera rien mais il n'y a pas d'erreur)
 \item Exemple avec la classe Voiture : Y a t-il une climatisation dans la voiture ?
 \begin{itemize}
-\item Si oui on crée la var pclim si non on ne l'a crée pas.
-\item On utilise donc un pointeur pour pclim pour pouvoir la créer ou la détruire quand on veut
+\item Si oui on crée la variable \textit{pclim} si non on ne l'a crée pas.
+\item Dans tous les cas on initialise l'attribut \textit{pclim} à \textit{nullptr}
+\item On utilise donc un pointeur pour \textit{pclim} pour pouvoir la créer ou la détruire quand on veut
 \begin{lstlisting}
 class Voiture {
 Climatisation* pclim{};
 ...
 }
 \end{lstlisting}
-\item On peut ainsi créer la pclim dans le constructeur avec un new dans la ZIM (ne pas oublier de delete la pclim dans le destructeur s'il y a eu un new)
+\item On peut ainsi créer la \textit{pclim} dans le constructeur avec un new dans la ZIM (ne pas oublier de delete la \textit{pclim} dans le destructeur s'il y a eu un new)
 \end{itemize}
 \item Autre exemple : avec le projet Game. On veut que l'utilisateur puisse choisir lui-même le nombre de dés.
 \begin{itemize}
@@ -437,7 +441,7 @@ Dice* dices{nullptr};
 dices = new Dice[nbDices] // 1 delete[] dices dans le destructeur
 \end{lstlisting}
 \end{itemize}
-\item Le jeu (ici Game) ne connais pas "Dice" et ne sait pas que c'est un objet. Il sait seulement ce qu'est "Cup".\\
+\item Le jeu (ici Game) ne connais pas "Dice" et ne sait pas que c'est un objet. Il sait seulement ce qu'est "Cup" : principe \textbf{d'encapsulation}.\\
 Comme le conducteur d'une voiture : il sait ce qu'est une voiture mais n'a pas besoin de savoir comment marche le moteur ou le vilbrequin pour pouvoir l'utiliser.
 \end{itemize}
 
@@ -449,7 +453,7 @@ Comme le conducteur d'une voiture : il sait ce qu'est une voiture mais n'a pas b
 Cup cup1;
 Cup cup2{cup1};
 \end{lstlisting}
-Donc quand on fait un delete du premier élément ça marche bien, les données sont bien delete. Or il y a deux objets. Donc pour le deuxième delete il y a une erreur puisque les données n'existent plus.
+Donc quand on fait un \textit{delete} du premier élément ça marche bien, les données sont bien \textit{delete}. Or il y a deux objets. Donc pour le deuxième \textit{delete} il y a une erreur puisque les données n'existent plus.
 \begin{lstlisting}
 delete cup1; //OK
 delete cup2; //ERREUR
@@ -466,12 +470,14 @@ nomClasse(const nomClass& src) = delete; // Contrat du constructeur par copie
 \subsubsection{Polymorphisme \& Héritage}
 \begin{itemize}
 \item Hiérarchie de spécialisation ou de généralisation (même chose dans le sens opposé)
+\begin{center}
 \begin{tabular}{|c|c|c|}
   \hline
   Bibliothèque & Document & Video/Livre \\ \hline
   \multicolumn{3}{|c|}{$-> ->$ spécialisation $-> ->$}\\\hline
   \multicolumn{3}{|c|}{$<- <-$ généralisation $<- <-$}\\\hline
 \end{tabular}
+\end{center}
 \item Les classes héritent des "dettes" des classes mères : les choses qu'il faut respecter pour que ça marche
 \begin{itemize}
 \item les arguments des constructeurs
@@ -483,7 +489,7 @@ nomClasse(const nomClass& src) = delete; // Contrat du constructeur par copie
 Ex : Classe Oiseau avec sous classe Autruche et Moineau. On ne peut pas mettre de méthode ".voler()" dans oiseau car une Autruche est un oiseau qui ne peut pas voler.\\
 On va donc créer une autre classe décendante qui sache voler. On obtient le schéma suivant :
 \begin{center}
-\includegraphics[scale=0.5]{sous-classe-oiseau}
+\includegraphics[scale=0.35]{sous-classe-oiseau}
 \end{center}
 \end{itemize}
 %\subsubsection{Classe virtuelle}
@@ -512,7 +518,7 @@ Figure* c = new Cercle{0,0,100};
 
 c->methode1();
 c->methode2();
-// Utilisation de -> pour utiliser les methodes avec un pointeur
+// Utilisation de -> pour les methodes avec un pointeur
 \end{lstlisting}
 \item On met le constructeur en protected : le \textit{main()} ne peut pas instancier d'objet de la classe abstraite
 \end{itemize}
@@ -545,7 +551,7 @@ Au final : 1) le destructeur de Rectangle est appelé, 2) Par chaînage le destr
 \item aspect \textbf{Evolutif} : si on rajoute une sous-classe on pourra la manipuler de la même façon \\
 Exemple avec les classes Zoo, Animal, Gazelle, Lion
 \begin{itemize}
-\item La méthode "enfermer()" de Zoo permet d'enfermer \textbf{tous} les animaux donc on utilse la classe animal pour ne pas spécifier quel animal à enfermer
+\item La méthode "enfermer()" de Zoo permet d'enfermer \textbf{tous} les animaux donc on utilse la classe Animal pour ne pas spécifier quel animal à enfermer
 \begin{lstlisting}
 zoo::enfermer(Animal& animal);
 \end{lstlisting}
@@ -575,7 +581,7 @@ Ex: les feux tricolores veulent dire la même chose pour les automobilistes, les
 \subsubsection{Méthode abstraite }
 \begin{itemize}
 \item \href{https://www.developpez.net/forums/d740612/c-cpp/cpp/debuter/methode-virtuelle-abstraite/}{Developpez : Explications virtuelle/abstraite}
-\item Une méthode abstraite est une méthode virtuelle \textit{(virtual)} pure \textit{(=0)}
+\item Une \textbf{méthode abstraite} est une \textbf{méthode virtuelle \textit{(virtual)} pure \textit{(=0)}}
 \begin{lstlisting}
 virtual type nomMethode() = 0; // methode abstraite
 \end{lstlisting}
@@ -589,7 +595,7 @@ virtual type nomMethode() = 0; // methode abstraite
 \item C'est une sorte de détrompeur
 \item \textit{Override} stipule que l'on est entrain de redéfinir une méthode de la classe mère
 \item Le compilateur va nous avertir d'une erreur si l'on fait \textit{override} sur une méthode qui n'existe pas dans la classe mère (erreur de nom, type, arguments,...)
-\item Le contrat de la méthode doit être spécifiquement le même
+\item Le contrat de la méthode \textit{override} doit être spécifiquement le même
 \end{itemize}
 \subsubsection{Final}
 \begin{itemize}
@@ -635,7 +641,7 @@ using classeMere::classeMere; //genere tous les constructeurs
 \item \textit{List} : facile/rapide pour rajouter/supprimer un élément MAIS lent pour accéder à un élément
 \item \textit{Deque} : compromis des deux
 \end{itemize}
-\item Les \textbf{itérateurs} : \textit{(Polymorphisme)}objet permettant de travailler avec n'importe quel conteneur (se balader dans la collection + pointer les éléments)
+\item Les \textbf{itérateurs} : \textit{(Polymorphisme)} objet permettant de travailler avec n'importe quel conteneur (se balader dans la collection + pointer les éléments)
 \begin{lstlisting}
 // v est un vector
 begin(v);
